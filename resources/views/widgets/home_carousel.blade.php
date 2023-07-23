@@ -28,7 +28,7 @@
                                                     <div class="nav-link">
                                                         <div class="d-flex align-items-center text-white position-relative">
                                                             <div class="avatar avatar-sm">
-                                                                <img class="avatar-img rounded-circle" src="assets/front/images/avatar/11.jpg" alt="avatar">
+                                                                <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/avatar/11.jpg') }}" alt="avatar">
                                                             </div>
                                                             <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
                                                         </div>
@@ -60,7 +60,7 @@
                                                         <div class="nav-link">
                                                             <div class="d-flex align-items-center text-white position-relative">
                                                             <div class="avatar avatar-sm">
-                                                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
+                                                                        <img class="avatar-img rounded-circle" src="{{ asset('assets/images/avatar/10.jpg') }}" alt="avatar">
                                                                     </div>
                                                                     <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
                                                                 </div>
@@ -91,7 +91,7 @@
                                                         <div class="nav-link">
                                                             <div class="d-flex align-items-center text-white position-relative">
                                                             <div class="avatar avatar-sm">
-                                                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar">
+                                                                        <img class="avatar-img rounded-circle" src="{{ asset('assets/images/avatar/10.jpg') }}" alt="avatar">
                                                                     </div>
                                                                     <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
                                                                 </div>
