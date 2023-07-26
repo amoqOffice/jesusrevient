@@ -15,134 +15,46 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<!-- Main navbar START -->
+			<!-- Menu de la page -->
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
 
-					<!-- Nav item 1 Demos -->
-					<li class="nav-item"> <a class="nav-link" href="dashboard.html">Accueil</a></li>
+					<!-- Accueil -->
+					<li class="nav-item"> <a class="nav-link {{ request()->routeIs('front.accueil') ? 'active' : '' }}" href="{{ route('front.accueil') }}">Accueil</a></li>
 
-					<!-- Nav item 2 Pages -->
+					<!-- Prédications -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prédications</a>
+						<a class="nav-link {{ request()->routeIs('front.predications.*') ? 'active' : '' }} dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prédications</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<li> <a class="dropdown-item" href="about-us.html">About</a></li>
-							<li> <a class="dropdown-item" href="contact-us.html">Contact</a></li>
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Shop</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="shop-grid.html">Shop grid</a> </li>
-									<li> <a class="dropdown-item" href="shop-detail.html">Shop detail</a> </li>
-									<li> <a class="dropdown-item" href="checkout.html">Checkout</a> </li>
-									<li> <a class="dropdown-item" href="my-cart.html">Cart</a> </li>
-									<li> <a class="dropdown-item" href="empty-cart.html">Empty Cart</a> </li>
-								</ul>
-							</li>
-							<!-- Dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Other Archives</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="author.html">Author Page</a> </li>
-									<li> <a class="dropdown-item" href="categories.html">Category page 1</a> </li>
-									<li> <a class="dropdown-item" href="categories-2.html">Category page 2</a> </li>
-									<li> <a class="dropdown-item" href="tag.html"># tag</a> </li>
-									<li> <a class="dropdown-item" href="search-result.html">Search result</a> </li>
-								</ul>
-							</li>
-							<li> <a class="dropdown-item" href="404.html">Error 404</a></li>
-							<li> <a class="dropdown-item" href="signin.html">signin</a></li>
-							<li> <a class="dropdown-item" href="signup.html">signup</a></li>
-							<li> <a class="dropdown-item" href="offline.html">offline</a></li>
-							<!-- Dropdown submenu levels -->
-							<li class="dropdown-divider"></li>
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Dropdown levels</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<!-- dropdown submenu open right -->
-									<li class="dropdown-submenu dropend">
-										<a class="dropdown-item dropdown-toggle" href="#">Dropdown (end)</a>
-										<ul class="dropdown-menu" data-bs-popper="none">
-											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-										</ul>
-									</li>
-									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-									<!-- dropdown submenu open left -->
-									<li class="dropdown-submenu dropstart">
-										<a class="dropdown-item dropdown-toggle" href="#">Dropdown (start)</a>
-										<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
-											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-										</ul>
-									</li>
-									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-								</ul>
-							</li>
-							<li class="dropdown-divider"></li>
 							<li>
-								<a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
-									<i class="text-warning fa-fw bi bi-life-preserver me-2"></i>Support
+								<a class="dropdown-item" href="{{ route('front.predications.enseignements') }}">
+									<i class="text-warning fa-fw bi bi-life-preserver me-2"></i>Enseignements
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="docs/index.html" target="_blank">
-									<i class="text-danger fa-fw bi bi-card-text me-2"></i>Documentation
-								</a>
-							</li>
-							<li class="dropdown-divider"></li>
-							<li>
-								<a class="dropdown-item" href="https://blogzine.webestica.com/rtl" target="_blank">
-									<i class="text-info fa-fw bi bi-toggle-off me-2"></i>RTL demo
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="https://themes.getbootstrap.com/store/webestica/" target="_blank">
-									<i class="text-success fa-fw bi bi-cloud-download-fill me-2"></i>Buy blogzine!
+								<a class="dropdown-item" href="{{ route('front.predications.evangelisations') }}">
+									<i class="text-danger fa-fw bi bi-card-text me-2"></i>Evangélisations
 								</a>
 							</li>
 						</ul>
 					</li>
 
-					<!-- Nav item 3 Post -->
+					<!-- Eglises / cellules -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nos Programmes</a>
+						<a class="nav-link {{ request()->routeIs('front.eglises.*') ? 'active' : '' }} dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eglises / cellules</a>
 						<ul class="dropdown-menu" aria-labelledby="postMenu">
-							<!-- dropdown submenu -->
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Post grid</a>
-								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="post-grid.html">Post grid</a> </li>
-									<li> <a class="dropdown-item" href="post-grid-4-col.html">Post grid 4 col</a> </li>
-									<li> <a class="dropdown-item" href="post-grid-masonry.html">Post grid masonry</a> </li>
-									<li> <a class="dropdown-item" href="post-grid-masonry-filter.html">Post grid masonry filter</a> </li>
-									<li> <a class="dropdown-item" href="post-large-and-grid.html">Post mixed large than grid</a> </li>
-								</ul>
-							</li>
-							<li> <a class="dropdown-item" href="post-list.html">Post list</a> </li>
-							<li> <a class="dropdown-item" href="post-list-2.html">Post list 2</a> </li>
-							<li> <a class="dropdown-item" href="post-cards.html">Post card</a> </li>
-							<li> <a class="dropdown-item" href="post-overlay.html">Post Overlay</a> </li>
-							<li> <a class="dropdown-item" href="post-types.html">Post types</a> </li>
-							<li class="dropdown-divider"></li>
-							<li> <a class="dropdown-item" href="post-single.html">Post single magazine</a> </li>
-							<li> <a class="dropdown-item" href="post-single-2.html">Post single classic</a> </li>
-							<li> <a class="dropdown-item" href="post-single-3.html">Post single minimal</a> </li>
-							<li> <a class="dropdown-item" href="post-single-4.html">Post single card</a> </li>
-							<li> <a class="dropdown-item" href="post-single-5.html">Post single review</a> </li>
-							<li> <a class="dropdown-item" href="post-single-6.html">Post single video</a> </li>
-							<li> <a class="dropdown-item" href="podcast-single.html">Podcast single</a> </li>
-							<li class="dropdown-divider"></li>
-							<li> <a class="dropdown-item" href="pagination-styles.html">Pagination styles</a> </li>
+							<li> <a class="dropdown-item" href="{{ route('front.eglises.evenements') }}">Evènements</a> </li>
+							<li> <a class="dropdown-item" href="{{ route('front.eglises.programmes') }}">Progammes</a> </li>
+							<li> <a class="dropdown-item" href="{{ route('front.eglises.apropos') }}">A Propos</a> </li>
 						</ul>
 					</li>
 
-					<!-- Nav item 5 link-->
-					<li class="nav-item"> <a class="nav-link" href="dashboard.html">Blog</a></li>
+					<!-- BLog -->
+					<li class="nav-item"> <a class="nav-link {{ request()->routeIs('front.blog') ? 'active' : '' }}" href="{{ route('front.blog') }}">Blog</a></li>
 
-					<!-- Nav item 4 Mega menu -->
+					<!-- Emissions TV -->
 					<li class="nav-item dropdown dropdown-fullwidth">
-						<a class="nav-link dropdown-toggle" href="#" id="megaMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Emissions TV</a>
+						<a class="nav-link {{ request()->routeIs('front.emissionsTV') ? 'active' : '' }} dropdown-toggle" href="#" id="megaMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Emissions TV</a>
 						<div class="dropdown-menu" aria-labelledby="megaMenu">
 							<div class="container">
 								<div class="row g-4 p-3 flex-fill">
@@ -206,7 +118,7 @@
 											<span>The Blogzine</span>
 											<h3>Premium Membership</h3>
 											<p>Become a Member Today!</p>
-											<a href="#" class="btn btn-warning">View pricing plans</a>
+											<a href="{{ route('front.emissionsTV') }}" class="btn btn-warning">Voir tout</a>
 										</div>
 									</div>
 									<!-- Card item END -->
@@ -231,12 +143,11 @@
 							</div>
 						</div>
 					</li>
-					
-					<!-- Nav item 5 link-->
-					<li class="nav-item"> <a class="nav-link" href="dashboard.html">Bible</a></li>
+
+					<!-- Bible -->
+					{{-- <li class="nav-item"> <a class="nav-link" href="dashboard.html">Bible</a></li> --}}
 				</ul>
 			</div>
-			<!-- Main navbar END -->
 
 			<!-- Nav right START -->
 			<div class="nav flex-nowrap align-items-center ms-3 ms-sm-4">
@@ -278,42 +189,16 @@
 				</div>
 				<!-- Dark mode options END -->
 
-				<!-- Nav additional link -->
-				{{-- <div class="nav-item dropdown dropdown-toggle-icon-none d-none d-sm-block">
-					<a class="nav-link dropdown-toggle" role="button" href="#" id="navAdditionalLink" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="bi bi-three-dots fs-4"></i>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded text-end" aria-labelledby="navAdditionalLink">
-						<li><a class="dropdown-item fw-normal" href="#">About</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">Newsletter</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">Author</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">#Tags</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">Contact</a></li>
-						<li><a class="dropdown-item fw-normal" href="#"><span class="badge bg-danger me-2 align-middle">2 Job</span>Careers</a></li>
-					</ul>
-				</div> --}}
-				<!-- Nav Button -->
+				<!-- Direct TV -->
 				<div class="nav-item d-none d-md-block">
-					<a href="#" class="btn btn-sm btn-danger mb-0 mx-2">Direct TV</a>
+					<a href="{{ route('front.directTV') }}" class="btn btn-sm btn-danger {{ request()->routeIs('front.directTV') ? 'active' : '' }} mb-0 mx-2">Direct TV</a>
 				</div>
+
+				<!-- Donation -->
 				<div class="nav-item d-none d-md-block">
-					<a href="#" class="btn btn-sm btn-primary mb-0 mx-2">Faire un don</a>
+					<a href="{{ route('front.donation') }}" class="btn btn-sm btn-primary {{ request()->routeIs('front.donation') ? 'active' : '' }} mb-0 mx-2">Faire un don</a>
 				</div>
-				<!-- Nav Search -->
-				{{-- <div class="nav-item dropdown nav-search dropdown-toggle-icon-none">
-					<a class="nav-link pe-0 dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="bi bi-search fs-4"> </i>
-					</a>
-					<div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
-						<form class="input-group">
-							<input class="form-control border-success" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-success m-0" type="submit">Search</button>
-						</form>
-					</div>
-				</div> --}}
 			</div>
-			<!-- Nav right END -->
 		</div>
 	</nav>
-	<!-- Logo Nav END -->
 </header>
