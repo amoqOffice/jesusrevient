@@ -82,7 +82,7 @@
 											<!-- Card img -->
 											<img class="card-img rounded" src="assets/front/images/blog/16by9/small/02.jpg" alt="Card image">
 											<div class="card-body px-0 pt-3">
-												<h6 class="card-title mb-0"><a href="#" class="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h6>
+												<h6 class="card-title mb-0"><a href="#" class="btn-link text-reset fw-bold">Business accounts you follow on Twitter</a></h6>
 												<!-- Card info -->
 												<ul class="nav nav-divider align-items-center text-uppercase small mt-2">
 													<li class="nav-item">
