@@ -40,6 +40,10 @@ Route::prefix('emissions-TV')->group(function () {
     Route::get('/', 'front\EmissionTVController@index')->name('front.emissionsTV');
 });
 
+Route::prefix('bible')->group(function () {
+    Route::get('/', 'front\BibleController@index')->name('front.bible');
+});
+
 Route::prefix('direct-TV')->group(function () {
     Route::get('/', 'front\DirectTVController@index')->name('front.directTV');
 });
