@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 
-class HomeCarousel extends AbstractWidget
+class informationBannerFront extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -21,7 +21,7 @@ class HomeCarousel extends AbstractWidget
     {
         //
 
-        return view('widgets.home_carousel', [
+        return view('widgets.information_banner_front', [
             'config' => $this->config,
         ]);
     }

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// GENERATEUR D'IMAGE
+Route::get('/image/{width}/{height}','ImageController@generateImage')->name('generateImage');
+
 // FRONT ONLY
 Route::get('/', function () {
     return view('front/accueil');
@@ -146,4 +149,24 @@ Route::prefix('admin')->group(function () {
         Route::post('destroy', 'EmissionController@destroy')->name('back.emission.destroy'); // Suppression de emission
         Route::post('destroyAll', 'EmissionController@destroyAll')->name('back.emission.destroyAll'); // Suppression de plusieurs emissions
     });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Categorie Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'categorie'], function () {
+    Route::get('index', 'CategorieController@index')->name('back.categorie.index'); // Liste des categories
+
+    Route::get('create', 'CategorieController@create')->name('back.categorie.create'); // Formulaire de création de categorie
+    Route::post('store', 'CategorieController@store')->name('back.categorie.store'); // Enrégistrement de categorie
+
+    Route::get('{id}/show', 'CategorieController@show')->name('back.categorie.show'); //Informations sur categorie
+
+    Route::get('{id}/edit', 'CategorieController@edit')->name('back.categorie.edit'); //Formulaire d'édition de categorie
+    Route::post('{id}/update', 'CategorieController@update')->name('back.categorie.update'); // Enregistrement des modification de categorie
+
+    Route::post('destroy', 'CategorieController@destroy')->name('back.categorie.destroy'); // Suppression de categorie
+    Route::post('destroyAll', 'CategorieController@destroyAll')->name('back.categorie.destroyAll'); // Suppression de plusieurs categories
 });

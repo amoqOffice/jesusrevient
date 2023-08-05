@@ -9574,6 +9574,10 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-dark-overlay-1 {
+    background-color: #efefef;
+}
+
 .bg-success {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
@@ -14785,6 +14789,7 @@ textarea.form-control-lg {
   font-weight: 400;
   text-transform: capitalize;
   position: relative;
+  margin: 0px 10px 0px 10px !important;
 }
 
 .dropdown-item.active {
@@ -14820,6 +14825,14 @@ textarea.form-control-lg {
   font-weight: 900;
   vertical-align: middle;
   border: none;
+}
+
+.item-active {
+    border-radius: 0.325rem;
+    color: #066ac9;
+    background: #066ac91a;
+    width: auto;
+    /* margin: 0px 10px 0px 10px; */
 }
 
 .dropdown-menu .dropdown-toggle:after {
@@ -16322,7 +16335,7 @@ html.font-sm {
 }
 
 /* rtl:raw:
-  .rotating-text-badge { 
+  .rotating-text-badge {
     direction: ltr !important;
   }
 */

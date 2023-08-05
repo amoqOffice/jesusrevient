@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class EvangelisationController extends Controller
 {
     public function index() {
+        // https://img.youtube.com/vi/vus1z3ETBxo/hqdefault.jpg
         return view('front.predications.evangelisations.index');
     }
 }

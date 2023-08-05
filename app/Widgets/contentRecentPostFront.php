@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 
-class ViewMore extends AbstractWidget
+class contentRecentPostFront extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -21,7 +21,7 @@ class ViewMore extends AbstractWidget
     {
         //
 
-        return view('widgets.view_more', [
+        return view('widgets.content_recent_post_front', [
             'config' => $this->config,
         ]);
     }

@@ -27,12 +27,12 @@
 						<a class="nav-link {{ request()->routeIs('front.predications.*') ? 'active' : '' }} dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prédications</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 							<li>
-								<a class="dropdown-item" href="{{ route('front.predications.enseignements') }}">
+								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="{{ route('front.predications.enseignements') }}">
 									<i class="text-warning fa-fw bi bi-life-preserver me-2"></i>Enseignements
 								</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="{{ route('front.predications.evangelisations') }}">
+								<a class="dropdown-item {{ request()->routeIs('front.predications.evangelisations') ? 'item-active' : '' }}" href="{{ route('front.predications.evangelisations') }}">
 									<i class="text-danger fa-fw bi bi-card-text me-2"></i>Evangélisations
 								</a>
 							</li>
@@ -43,9 +43,9 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link {{ request()->routeIs('front.eglises.*') ? 'active' : '' }} dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eglises / cellules</a>
 						<ul class="dropdown-menu" aria-labelledby="postMenu">
-							<li> <a class="dropdown-item" href="{{ route('front.eglises.evenements') }}">Evènements</a> </li>
-							<li> <a class="dropdown-item" href="{{ route('front.eglises.programmes') }}">Progammes</a> </li>
-							<li> <a class="dropdown-item" href="{{ route('front.eglises.apropos') }}">A Propos</a> </li>
+							<li> <a class="dropdown-item {{ request()->routeIs('front.eglises.evenements') ? 'item-active' : '' }}" href="{{ route('front.eglises.evenements') }}">Evènements</a> </li>
+							<li> <a class="dropdown-item {{ request()->routeIs('front.eglises.programmes') ? 'item-active' : '' }}" href="{{ route('front.eglises.programmes') }}">Progammes</a> </li>
+							<li> <a class="dropdown-item {{ request()->routeIs('front.eglises.evangelisations') ? 'item-active' : '' }}" href="{{ route('front.eglises.apropos') }}">A Propos</a> </li>
 						</ul>
 					</li>
 

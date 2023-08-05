@@ -125,8 +125,15 @@ JS libraries, plugins and custom scripts -->
 
 <!-- Vendors -->
 <script src="{{ asset('assets/front/js/tiny-slider.js') }}"></script>
+<script src="{{ asset('assets/front/js/jarallax.min.js') }}"></script>
+<script src="{{ asset('assets/front/js/jarallax-video.min.js') }}"></script>
+<script src="{{ asset('assets/front/js/sticky.min.js') }}"></script>
+{{-- @yield('script') --}}
+<script src="{{ asset('assets/front/js/vanilla-tilt.min.js') }}"></script>
+
 
 <!-- Template Functions -->
 <script src="{{ asset('assets/front/js/functions.js') }}"></script>
+
 </body>
 </html>
