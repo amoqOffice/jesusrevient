@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/magr1093/sites/jesusrevient/
-    - /bin/cp * $DEPLOYPATH
