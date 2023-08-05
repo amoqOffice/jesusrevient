@@ -1,14 +1,7 @@
 <?php
 
-namespace App\External;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Image extends Model
-{
-    protected $guarded = ['id'];
-
-    public static function generate($width, $height) {
+if (!function_exists('generateImage')) {
+    function generateImage($width, $height) {
         $image = imagecreatetruecolor($width, $height);
 
         $backgroundColor = imagecolorallocate($image, 170, 170, 170);
@@ -16,7 +9,8 @@ class Image extends Model
 
         imagefill($image, 0, 0, $backgroundColor);
 
-        $font = 'C:\Windows\Fonts\arial.ttf';
+        // $font = 'C:\Windows\Fonts\arial.ttf';
+        $font = __DIR__.'\\..\\public\\assets\\front\\font\\arial.ttf';
         $text = "$width X $height";
 
         $fontSize = min($width, $height) * 0.2;

@@ -1,7 +1,7 @@
 @extends('front/layouts/app', ['title' => 'Enseignements'])
 
 @section('content')
-<img src="data:image/png;base64, {{ App\External\Image::generate(100, 70) }}" alt="">
+<img src="data:image/png;base64, {{ generateImage(100, 70) }}" alt="">
 <section class="pt-0 pb-3">
     <div class="container-fluid">
         <div class="row">
