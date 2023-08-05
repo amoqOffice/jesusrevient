@@ -10,7 +10,7 @@ if (!function_exists('generateImage')) {
         imagefill($image, 0, 0, $backgroundColor);
 
         // $font = 'C:\Windows\Fonts\arial.ttf';
-        $font = asset('assets/front/font/arial.ttf');
+        $font = __DIR__.'/../public/assets/front/font/arial.ttf';
         $text = "$width X $height";
 
         $fontSize = min($width, $height) * 0.2;
