@@ -6,15 +6,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                @widget('breadcrumbSimpleFront')
+                {{ Widget::breadcrumbSimpleFront() }}
                 <div class="container" -sticky-container>
                     @widget('titleFront')
                     <div class="row pt-1">
                         <!-- Main Post -->
                         <div class="col-lg-9">
-                            @widget('contentCardFront', [
+                            {{
+                                Widget::contentCardFront([
+                                    'enseignements' => $enseignements
+                                ])
+                            }}
+                            {{-- @widget('contentCardFront', [
                                 'enseignements' => $enseignements
-                            ])
+                            ]) --}}
                         </div>
 
                         <!-- Sidebar START -->
