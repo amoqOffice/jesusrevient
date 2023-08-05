@@ -12,6 +12,7 @@ class ActivitesTableSeeder extends Seeder
      */
     public function run()
     {
+        Youtube::setApiKey('AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA'); // Youtube api key
         // Clé de la playlist ENSEIGNEMENT
         $playlistId = 'PLSpKxRyN4Ds1DU62NywtnFw3sIVKRJL9f'; // Youtube Ense playlist
 
