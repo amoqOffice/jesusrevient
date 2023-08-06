@@ -8,7 +8,7 @@
     </nav>
 </div> --}}
 <div class="bg-dark p-4 text-center rounded-3">
-    <h1 class="text-white">Post grid masonry</h1>
+    <h1 class="text-white">Post grid masonry - </h1>
     <nav class="d-flex justify-content-center" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-dark m-0">
             <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house me-1"></i> Home</a></li>

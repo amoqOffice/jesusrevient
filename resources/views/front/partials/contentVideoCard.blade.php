@@ -1,6 +1,6 @@
 <div class="row gy-4">
-    @widget('videoCardFront')
-    @widget('videoCardFront')
+    @include('front.partials.videoCard')
+    @include('front.partials.videoCard')
 
     <div class="col-sm-6">
         <div class="card bg-transparent overflow-hidden mb-4">

@@ -6,9 +6,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                {{ Widget::breadcrumbSimpleFront() }}
+                @include('front.partials.breadcrumbSimple')
                 <div class="container" -sticky-container>
-                    @widget('titleFront')
+                    @include('front.partials.title')
                     <div class="row pt-1">
                         <!-- Main Post -->
                         <div class="col-lg-9">
@@ -25,8 +25,8 @@
                         <!-- Sidebar START -->
                         <div class="col-lg-3 mt-5 mt-lg-0">
                             <div>
-                                @widget('contentTopicFront')
-                                @widget('contentRecentPostFront')
+                                @include('front.partials.ContentTopic')
+                                @include('front.partials.ContentRecentPost')
                             </div>
                         </div>
                     </div>

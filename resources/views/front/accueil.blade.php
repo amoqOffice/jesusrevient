@@ -1,7 +1,7 @@
 @extends('front/layouts/app', ['title' => 'Accueil'])
 
 @section('content')
-    @widget('homeCarouselFront')
+    @include('front/partials/homeCarousel')
 
     <div class="container"><div class="border-bottom border-primary border-2 opacity-1"></div></div>
 
@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    @widget('breadcrumbSimpleFront')
+                    @include('front/partials/breadcrumbSimple')
                 </div>
             </div>
         </div>
     </section>
 
-    @widget('informationBannerFront')
+    @include('front/partials/informationBanner')
 
     <section class="position-relative pt-0">
         <div class="container" data-sticky-container>
@@ -31,7 +31,7 @@
                         <!-- Social widget START -->
                         <div class="row g-2">
                             <div class="col-4">
-                                @widget('socialNetworkCardFront')
+                                @include('front/partials/socialNetworkCard')
                             </div>
                             <div class="col-4">
                                 <a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
@@ -49,9 +49,9 @@
                             </div>
                         </div>
 
-                        @widget('contentCategorieFront')
-                        @widget('contentRecentPostFront')
-                        @widget('contentTopicFront')
+                        @include('front/partials/contentCategorie')
+                        @include('front/partials/contentRecentPost')
+                        @include('front/partials/contentTopic')
 
                         <!-- ADV widget START -->
                         <div class="col-12 col-sm-6 col-lg-12 my-4">

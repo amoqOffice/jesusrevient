@@ -5,23 +5,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                @widget('breadcrumbSimpleFront')
+                @include('front.partials.breadcrumbSimple')
                 {{-- <div class="container" data-sticky> --}}
                 <div class="container">
-                    @widget('titleFront')
+                    @include('front.partials.title')
                     <div class="row pt-1">
 
                         <!-- Main Post -->
                         <div class="col-lg-9">
-                            @widget('contentVideoCardFront')
+                            @include('front.partials.contentVideoCard')
                         </div>
 
                         <!-- Sidebar START -->
                         <div class="col-lg-3 mt-5 mt-lg-0">
                             {{-- <div data-sticky data-margin-top="80" data-sticky-for="767"> --}}
                             <div>
-                                @widget('contentTopicFront')
-                                @widget('contentRecentPostFront')
+                                @include('front.partials.contentTopic')
+                                @include('front.partials.contentRecentPost')
                             </div>
                         </div>
                     </div>

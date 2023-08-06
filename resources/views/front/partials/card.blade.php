@@ -2,7 +2,7 @@
     <div class="card">
         <!-- Card img -->
         <div class="position-relative">
-            <img class="card-img" src="{{ $config['img'] }}" alt="Card image">
+            <img class="card-img" src="{{ $enseignement->img }}" alt="Card image">
             <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                 <div class="w-100 mb-auto d-flex justify-content-end">
                     <div class="text-end ms-auto">
@@ -18,8 +18,8 @@
             </div>
         </div>
         <div class="card-body px-0 pt-3">
-            <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">{{ preg_replace('/\s*\S{1,}(\s*)$/u', '...', substr($config['titre'], 0, 55)) }}</a></h4>
-            <p class="card-text">{{ preg_replace('/\s*\S{1,}(\s*)$/u', '...', substr($config['description'], 0, 160)) }}</p>
+            <h4 class="card-title"><a href="#" class="btn-link text-reset fw-bold">{{ preg_replace('/\s*\S{1,}(\s*)$/u', '...', substr($enseignement->titre, 0, 55)) }}</a></h4>
+            <p class="card-text">{{ preg_replace('/\s*\S{1,}(\s*)$/u', '...', substr($enseignement->description, 0, 160)) }}</p>
             <!-- Card info -->
             <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                 <li class="nav-item">
