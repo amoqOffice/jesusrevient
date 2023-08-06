@@ -25,8 +25,8 @@
                         <!-- Sidebar START -->
                         <div class="col-lg-3 mt-5 mt-lg-0">
                             <div>
-                                @include('front.partials.ContentTopic')
-                                @include('front.partials.ContentRecentPost')
+                                @include('front.partials.contentTopic')
+                                @include('front.partials.contentRecentPost')
                             </div>
                         </div>
                     </div>
