@@ -53,10 +53,10 @@ class {{ class }} extends Controller
         return redirect()->route('back.{{ modelVariable }}.index');
     }
 
-    public function delete()
+    public function delete($id)
     {
         ${{ modelVariable }} = {{ model }}::findOrFail($id);
-        {{ modelVariable }}->delete();
+        ${{ modelVariable }}->delete();
 
         Toastr::success('{{ model }} a été bien supprimé', 'Action sur {{ model }}');
 

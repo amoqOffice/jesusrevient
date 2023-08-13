@@ -170,14 +170,11 @@ class MakeCrudCommand extends Command
         // Contenue des differentes vues qui seront créées
         $views = [
             "create",
-            "delete_modal",
-            "deleteAll_modal",
             "edit",
             "form",
             "index",
             "show",
         ];
-
 
         foreach ($views as $viewName) {
             $viewPath = "resources/views/back/$modelName/$viewName.blade.php";
@@ -349,7 +346,6 @@ class MakeCrudCommand extends Command
                     }
                 }
 
-                // dump($input,$this->arrayToObject($input),"\n\n");
                 $inputs[] = $this->arrayToObject($input);
                 $input = [];
             }
@@ -372,7 +368,7 @@ class MakeCrudCommand extends Command
             $inputInfos = $this->files->get('stubs/colForm.stub');
             $inputInfos = str_replace('{{ name }}', $input->name, $inputInfos);
             $inputInfos = str_replace('{{ size }}', $input->size, $inputInfos);
-            $inputInfos = str_replace('{{ label }}', $input->label, $inputInfos);
+                $inputInfos = str_replace('{{ label }}', $input->label, $inputInfos);
             $inputInfos = str_replace('{{ modelVariable }}', $modelVariable, $inputInfos);
             $inputInfos = str_replace('{{ migrationName }}', $input->name, $inputInfos);
 
