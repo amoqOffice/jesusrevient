@@ -1,16 +1,19 @@
 <?php
 
-if (!function_exists('generateImage')) {
-    function generateImage($width, $height) {
-        $image = imagecreatetruecolor($width, $height);
+namespace App\Helpers;
 
+class ImageHelper
+{
+    public static function generate($width, $height)
+    {
+        $image = imagecreatetruecolor($width, $height);
         $backgroundColor = imagecolorallocate($image, 170, 170, 170);
         $textColor = imagecolorallocate($image, 0, 0, 0);
 
         imagefill($image, 0, 0, $backgroundColor);
 
         // $font = 'C:\Windows\Fonts\arial.ttf';
-        $font = __DIR__.'/../public/assets/front/font/arial.ttf';
+        $font = __DIR__.'/../../public/assets/front/font/arial.ttf';
         $text = "$width X $height";
 
         $fontSize = min($width, $height) * 0.2;
@@ -32,6 +35,6 @@ if (!function_exists('generateImage')) {
 
         return base64_encode($image_data);
 
-        // <img src="data:image/png;base64, {{ App\External\Image::generate(100, 70) }}" alt="">
+        // <img src="data:image/png;base64, {{ generateImage(100, 70) }}" alt="">
     }
 }

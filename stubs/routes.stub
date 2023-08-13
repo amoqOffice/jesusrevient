@@ -15,6 +15,7 @@ Route::group(['prefix' => '{{ modelVariable }}'], function () {
     Route::get('{id}/edit', '{{ controllerName }}@edit')->name('back.{{ modelVariable }}.edit'); //Formulaire d'édition de {{ modelVariable }}
     Route::post('{id}/update', '{{ controllerName }}@update')->name('back.{{ modelVariable }}.update'); // Enregistrement des modification de {{ modelVariable }}
 
-    Route::post('destroy', '{{ controllerName }}@destroy')->name('back.{{ modelVariable }}.destroy'); // Suppression de {{ modelVariable }}
-    Route::post('destroyAll', '{{ controllerName }}@destroyAll')->name('back.{{ modelVariable }}.destroyAll'); // Suppression de plusieurs {{ modelVariable }}s
+    Route::get('{id}/delete', '{{ controllerName }}@delete')->name('back.{{ modelVariable }}.delete'); // Suppression de {{ modelVariable }}
+
+    Route::post('delete_all', '{{ controllerName }}@deleteAll')->name('back.{{ modelVariable }}.delete_all'); // Suppression de plusieurs {{ modelVariable }}s
 });

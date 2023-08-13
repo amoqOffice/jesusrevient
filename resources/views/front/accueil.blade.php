@@ -1,7 +1,59 @@
 @extends('front/layouts/app', ['title' => 'Accueil'])
 
+@php
+    use App\Services\Front\InformationBanner;
+    use App\Services\Front\ContentCategorie;
+    use App\Services\Front\ContentVideoCard;
+    use App\Services\Front\Card;
+    use App\Services\Front\Title;
+
+    $title = Title::dataFormat([
+        'icon' => 'bi bi-megaphone',
+        'content' => 'Enseignements'
+    ]);
+
+    $banner = InformationBanner::dataFormat([
+        'link' => '#',
+        'img' => 'img',
+    ]);
+
+    $contentCategorie = ContentCategorie::dataFormat([
+        'title' => 'Autres Catégories',
+    ]);
+
+    $card = Card::dataFormat([
+        'img' => 'fkk',
+        'icon_color' => 'text-bg-primary',
+        'icon' => 'fa fa-book',
+        'tag_color' => 'text-bg-success',
+        'tag_title' => 'HEllo test',
+        'link' => '#',
+        'title' => 'Ceci est un card',
+        'description' => 'lorem',
+        'logo' => 'kjf',
+        'author_link' => '#',
+        'author_name' => 'Ceci',
+        'date' => '29 Dec 2020',
+    ]);
+
+    $contentVideoCard = ContentVideoCard::dataFormat([
+        'title' => 'Hello',
+    ]);
+@endphp
+
 @section('content')
-    @include('front/partials/homeCarousel')
+    @include('front.partials.homeCarousel')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {!! Title::frontRender($title) !!}
+
+                {{-- content --}}
+            </div>
+        </div>
+    </div>
+
 
     <div class="container"><div class="border-bottom border-primary border-2 opacity-1"></div></div>
 
@@ -9,13 +61,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    @include('front/partials/breadcrumbSimple')
+                    {{-- @include('front/partials/breadcrumbSimple') --}}
                 </div>
             </div>
         </div>
     </section>
 
-    @include('front/partials/informationBanner')
+    {{-- @include('front/partials/informationBanner') --}}
 
     <section class="position-relative pt-0">
         <div class="container" data-sticky-container>
@@ -31,7 +83,7 @@
                         <!-- Social widget START -->
                         <div class="row g-2">
                             <div class="col-4">
-                                @include('front/partials/socialNetworkCard')
+                                {{-- @include('front/partials/socialNetworkCard') --}}
                             </div>
                             <div class="col-4">
                                 <a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
@@ -49,9 +101,9 @@
                             </div>
                         </div>
 
-                        @include('front/partials/contentCategorie')
+                        {{-- @include('front/partials/contentCategorie')
                         @include('front/partials/contentRecentPost')
-                        @include('front/partials/contentTopic')
+                        @include('front/partials/contentTopic') --}}
 
                         <!-- ADV widget START -->
                         <div class="col-12 col-sm-6 col-lg-12 my-4">

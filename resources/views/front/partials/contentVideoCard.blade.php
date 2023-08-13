@@ -1,6 +1,23 @@
 <div class="row gy-4">
-    @include('front.partials.videoCard')
-    @include('front.partials.videoCard')
+    {{-- @include('front.partials.videoCard') --}}
+    {{-- @foreach ($videos as $video) --}}
+        @php
+            $video = [
+                'img' => '',
+                'icon_color' => '',
+                'icon' => '',
+                'title_link' => '',
+                'title' => '',
+                'tag_color' => '',
+                'tag_title' => '',
+                'date' => '',
+            ];
+
+            $video = App\Services\Front\VideoCard::dataFormat($video);
+        @endphp
+
+        {!! App\Services\Front\VideoCard::frontRender($video) !!}
+    {{-- @endforeach --}}
 
     <div class="col-sm-6">
         <div class="card bg-transparent overflow-hidden mb-4">

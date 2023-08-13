@@ -13,6 +13,7 @@ class ActivitesTableSeeder extends Seeder
     public function run()
     {
         Youtube::setApiKey('AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA'); // Youtube api key
+
         // Clé de la playlist ENSEIGNEMENT
         $playlistId = 'PLSpKxRyN4Ds1DU62NywtnFw3sIVKRJL9f'; // Youtube Ense playlist
 
@@ -41,10 +42,10 @@ class ActivitesTableSeeder extends Seeder
                 DB::table('activites')->insert([
                     'titre' => $video->snippet->title,
                     'lieu'=> '',
-                    'img'=> $video->snippet->thumbnails->maxres->url ?? $video->snippet->thumbnails->default->url ?? '',
+                    'img'=> $video->snippet->thumbnails->default->url ?? $video->snippet->thumbnails->maxres->url ?? '',
                     'url'=> "https://www.youtube.com/watch?v=".$video->contentDetails->videoId,
                     'description'=> $video->snippet->description,
-                    'date_deb'=> '',
+                    'date_deb'=> date('d/m/Y', strtotime($video->snippet->publishedAt)),
                     'date_fin'=> '',
                     'created_at'=> $timestamp,
                     'updated_at'=> $timestamp,

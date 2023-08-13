@@ -53,22 +53,24 @@ class CategorieController extends Controller
         return redirect()->route('back.categorie.index');
     }
 
-    public function destroy()
+    public function delete($id)
     {
-        $categorieNom = Categorie::findOrFail(request('id'))->nom;
-        Categorie::destroy(request('id'));
+        $categorie = Categorie::findOrFail($id);
+        $categorie->delete();
 
-        return response($categorieNom);
+        Toastr::success('Catégorie bien supprimée');
+
+        return redirect()->route('back.categorie.index');
     }
 
-    public function destroyAll()
+    public function deleteAll()
     {
-        $elements = request('ids');
-
-        foreach ($elements as $element) {
-            Categorie::destroy($element);
+        foreach (request('deleted_ids') as $id) {
+            Categorie::destroy($id);
         }
 
-        return $elements;
+        Toastr::success('Les Catégories sélectionnées ont été bien supprimé', 'Action sur Catégories');
+        
+        return 'end';
     }
 }

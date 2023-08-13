@@ -80,6 +80,9 @@ a:focus {
 	outline: none;
 	text-decoration: none;
 }
+.opacity-0 {
+    opacity: 0;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {

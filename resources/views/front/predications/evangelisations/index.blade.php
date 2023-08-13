@@ -1,5 +1,23 @@
 @extends('front/layouts/app', ['title' => 'Evangélisations'])
 
+@php
+    use App\Services\Front\SimpleBreadcrumb;
+    use App\Services\Front\Title;
+    use App\Services\Front\ContentVideoCard;
+    use App\Services\Front\ContentTopic;
+    use App\Services\Front\ContentRecentPost;
+
+    $breadcrumb = [];
+
+    $title = [];
+
+    $contentVideo = [];
+
+    $contentTopic = [];
+
+    $contentRecentPost = [];
+@endphp
+
 @section('content')
 <section class="pt-0 pb-3">
     <div class="container-fluid">

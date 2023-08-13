@@ -24,7 +24,7 @@ class {{ class }} extends Controller
     {
         {{ model }}::create($request->all());
 
-        Toastr::success('{{ model }} bien ajouté');
+        Toastr::success('{{ model }} bien ajouté', 'Action sur {{ model }}');
 
         return redirect()->route('back.{{ modelVariable }}.create');
     }
@@ -48,27 +48,29 @@ class {{ class }} extends Controller
         ${{ modelVariable }} = {{ model }}::findOrFail($id);
         ${{ modelVariable }}->update($request->all());
 
-        Toastr::success('{{ model }} bien mis à jour');
+        Toastr::success('{{ model }} bien mis à jour', 'Action sur {{ model }}');
 
         return redirect()->route('back.{{ modelVariable }}.index');
     }
 
-    public function destroy()
+    public function delete()
     {
-        ${{ modelVariable }}Nom = {{ model }}::findOrFail(request('id'))->nom;
-        {{ model }}::destroy(request('id'));
+        ${{ modelVariable }} = {{ model }}::findOrFail($id);
+        {{ modelVariable }}->delete();
 
-        return response(${{ modelVariable }}Nom);
+        Toastr::success('{{ model }} a été bien supprimé', 'Action sur {{ model }}');
+
+        return redirect()->route('back.{{ modelVariable }}.index');
     }
 
-    public function destroyAll()
+    public function deleteAll()
     {
-        $elements = request('ids');
-
-        foreach ($elements as $element) {
-            {{ model }}::destroy($element);
+        foreach (request('deleted_ids') as $id) {
+            {{ model }}::destroy($id);
         }
 
-        return $elements;
+        Toastr::success('Les {{ model }}s sélectionné(e)s ont été bien supprimé', 'Action sur {{ model }}');
+
+        return '200';
     }
 }

@@ -126,8 +126,8 @@ Route::prefix('admin')->group(function () {
         Route::get('{id}/edit', 'CategorieController@edit')->name('back.categorie.edit'); //Formulaire d'édition de categorie
         Route::post('{id}/update', 'CategorieController@update')->name('back.categorie.update'); // Enregistrement des modification de categorie
 
-        Route::post('destroy', 'CategorieController@destroy')->name('back.categorie.destroy'); // Suppression de categorie
-        Route::post('destroyAll', 'CategorieController@destroyAll')->name('back.categorie.destroyAll'); // Suppression de plusieurs categories
+        Route::get('{id}/delete', 'CategorieController@delete')->name('back.categorie.delete'); // Suppression de categorie
+        Route::post('delete_all', 'CategorieController@deleteAll')->name('back.categorie.delete_all'); // Suppression de plusieurs categories
     });
 
     /*
