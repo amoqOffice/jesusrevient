@@ -7,7 +7,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>JESUS-REVIENT</title>
 
-
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/back/img/favicon.png') }}">
 
@@ -28,34 +27,23 @@
         <!-- Toastr JS -->
         <link rel="stylesheet" href="{{ asset('assets/back/css/toastr.min.css') }}">
 
-        @yield('css')
+        {{-- Lity --}}
+        <link rel="stylesheet" href="{{ asset('assets/back/css/lity.min.css') }}">
 
-        <style>
-            /* .subdrop {
-                font-weight: bold !important;
-            } */
-            /* .form-check-input {
-                cursor: pointer
-            } */
-            /* input[type=checkbox], input[type=radio] {
-                cursor: pointer
-            } */
-        </style>
+        {{-- Datatables --}}
+        <link rel="stylesheet" href="{{ asset('assets/back/css/datatables.min.css') }}">
+
+        @yield('css')
     </head>
     <body class="mini-sidebars">
 
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-
-			<!-- Header -->
-            {{-- @include('back.layouts.header') --}}
-
 			<!-- Sidebar -->
             @include('back.layouts.menu')
 
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
-
                 <div class="content container-fluid">
                     @yield('content')
                 </div>
@@ -77,6 +65,13 @@
 
         @yield('script')
 
+        {{-- Datatables JS --}}
+        <script src="{{ asset('assets/back/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/back/js/datatables.min.js') }}"></script>
+
+        {{-- Lity JS --}}
+        <script src="{{ asset('assets/back/js/lity.min.js') }}"></script>
+
 		<!-- Custom JS -->
         <script  src="{{ asset('assets/back/js/script.js') }}"></script>
 
@@ -84,25 +79,12 @@
         <script src="{{ asset('assets/back/js/toastr.min.js') }}"></script>
         {!! Toastr::message() !!}
 
-        <!-- Excel bootstrap table filter JS -->
-        {{-- <script src="{{ asset('assets/back/js/excel-bootstrap-table-filter-bundle.min.js') }}"></script> --}}
-
-
-        
-
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#sidebarCollapse').on('click', function() {
                     $('#sidebar').toggleClass('active');
                 });
             });
-
-            // $('.item-nav').click(function(e) {
-            //     e.preventDefault();
-            //     console.log('link:' + $(this).attr('href'))
-
-            //     $('.contenu').load( $(this).attr('href'))
-            // });
         </script>
     </body>
 </html>

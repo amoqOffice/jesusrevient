@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-xl-12 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h4 class="card-title"> {{ $title }} </h4>
+            </div>
+            <div class="card-body">
+                <form action="{{ !$edit ? route('back.type.store') : route('back.type.update', $type->id) }}" method="POST">
+                    @csrf
+                    {{ rowContent }}
+                    <div class="text-right pt-2">
+                        <a href="{{ route('back.type.index') }}" class="btn btn-sm btn-danger  btn-navs"><i class="fa fa-close"></i> Fermer</a>
+                        @if(!$show)
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                <i class="fa fa-floppy-o"></i> Enregistrer
+                            </button>
+                        @endif
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -89,7 +89,7 @@ class MakeCrudCommand extends Command
         $modelPath = "app/$modelName.php";
 
         if (!file_exists($modelPath)) {
-            dd('no');
+            // dd('no');
             $this->createDir($modelPath);
 
             $newModelContent = $this->files->get("stubs/model.stub");
@@ -139,7 +139,7 @@ class MakeCrudCommand extends Command
 
         $modelVariable = lcfirst($name);
 
-        $controllerPath = "app/Http/controllers/$controllerName.php";
+        $controllerPath = "app/Http/controllers/back/$controllerName.php";
 
         $this->createDir($controllerPath);
 
@@ -368,7 +368,16 @@ class MakeCrudCommand extends Command
             $inputInfos = $this->files->get('stubs/colForm.stub');
             $inputInfos = str_replace('{{ name }}', $input->name, $inputInfos);
             $inputInfos = str_replace('{{ size }}', $input->size, $inputInfos);
+
+            // Ajoute * à label si champs requis
+            if (property_exists($input, 'required')) {
+                $input->label = $input->label.' <span class="text-danger font-weight-bold">*</span>';
                 $inputInfos = str_replace('{{ label }}', $input->label, $inputInfos);
+            }
+            else {
+                $inputInfos = str_replace('{{ label }}', $input->label, $inputInfos);
+            }
+
             $inputInfos = str_replace('{{ modelVariable }}', $modelVariable, $inputInfos);
             $inputInfos = str_replace('{{ migrationName }}', $input->name, $inputInfos);
 
@@ -391,12 +400,11 @@ class MakeCrudCommand extends Command
 
             if ($sizeLimit <= 12) {
                 if ($sizeLimit == 12) {
-                    $inputsRow = $inputsRow."\n\t\t\t\t\t".$row['tag_start'].$inputsCols."\n".$inputInfos."\t\t\t\t\t".$row['tag_end']."\n";
+                    $inputsRow = $inputsRow."\n".$row['tag_start'].$inputsCols."\n".$inputInfos." ".$row['tag_end']."\n";
                     $sizeLimit = 0;
                     $inputsCols = '';
                 } else {
                     $inputsCols = $inputsCols . $inputInfos;
-
                 }
             }
         }
@@ -442,7 +450,7 @@ class MakeCrudCommand extends Command
         $tableFieldChoices = explode('|', $tableFieldChoices);
 
         foreach ($tableFieldChoices as $field) {
-            $columnsValues = $columnsValues."\t\t\t\t\t\t\t<td>{{ $".$modelVariable."->$field }}</td>\n";
+            $columnsValues = $columnsValues."<td>{{ $".$modelVariable."->$field }}</td>\n";
         }
 
         $titleFieldMigration = $this->ask("Entrer le titre de chaque champs en suivant l'ordre de la liste precedente\n Exp: $titleFieldMigration");
@@ -450,7 +458,7 @@ class MakeCrudCommand extends Command
         $titleFieldMigration = explode('|', $titleFieldMigration);
 
         foreach ($titleFieldMigration as $title) {
-            $columnsNames = $columnsNames."\t\t\t\t\t\t\t".'<th class="filter">'.$title."</th>\n";
+            $columnsNames = $columnsNames."".'<th>'.$title."</th>\n";
         }
 
         $newIndexContent = $this->files->get('stubs/index.view.stub');

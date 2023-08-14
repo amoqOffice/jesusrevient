@@ -5,13 +5,13 @@
         <div class="col-sm-12">
             <div class="form-group">
                 {{-- Bouton de rafraîchissement --}}
-                <a href="{{ route('back.{{ modelVariable }}.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
+                <a href="{{ route('back.activite.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
 
                 {{-- Bouton de suppression multiple --}}
                 <button class="btn bg-danger-light btn-delete-all opacity-0" data-plalcement="top" title="Supprimer"><i class="fa fa-trash"></i></button>
 
                 {{-- Bouton Ajout Elément --}}
-                <a href="{{ route('back.{{ modelVariable }}.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) {{ modelName }}</a>
+                <a href="{{ route('back.activite.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) Activité</a>
             </div>
         </div>
     </div>
@@ -20,10 +20,10 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Liste des {{ modelName }}s </h4>
+                    <h4 class="card-title">Liste des Activités</h4>
                 </div>
                 <div class="card-body">
-                    <table id="table_{{ modelVariable }}" class="table table-hover mb-0">
+                    <table id="table_activite" class="table mb-0 table-hover">
                         <thead>
                             <tr>
                                 <th>
@@ -34,28 +34,35 @@
                                     </div>
                                 </th>
                                 <th>ID</th>
-                                {{ columnName }}
+                                <th>Titre</th>
+                                <th>Date de Debut</th>
+                                <th>Date de fin</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (${{ modelVariable }}s as ${{ modelVariable }})
+                            @foreach ($activites as $activite)
                                 <tr>
                                     <td>
                                         <div class="form-check">
-                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ ${{ modelVariable }}->id }}">
+                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $activite->id }}">
                                         </div>
                                     </td>
-                                    <td data-id="{{ ${{ modelVariable }}->id }}">#{{ $loop->index + 1 }}</td>
-                                    {{ columnValue }}
+                                    <td data-id="{{ $activite->id }}">#{{ $loop->index + 1 }}</td>
                                     <td>
-                                        <a href="{{ route('back.{{ modelVariable }}.show', ${{ modelVariable }}->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
+                                        <img src="{{ $activite->img }}" data-lity class="rounded-circle mr-2 img-fluid" style="width: 45px; height: 45px; cursor: pointer">
+                                        <a href="{{ $activite->url }}" class="text-dark font-weight-bold" target="_blank">{{ truncate_string($activite->titre, 30) }}</a>
+                                    </td>
+                                    <td class="text-center">{{ $activite->date_deb }}</td>
+                                    <td>{{ $activite->date_fin }}</td>
+                                    <td>
+                                        <a href="{{ route('back.activite.show', $activite->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
                                             <span class="text-success"><i class="fa fa-eye"></i></span>
                                         </a>
-                                        <a href="{{ route('back.{{ modelVariable }}.edit', ${{ modelVariable }}->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
+                                        <a href="{{ route('back.activite.edit', $activite->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
                                             <span class="text-warning"><i class="fa fa-pencil-square-o "></i></span>
                                         </a>
-                                        <a href="{{ route('back.{{ modelVariable }}.delete', ${{ modelVariable }}->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette {{ modelVariable }} ?')">
+                                        <a href="{{ route('back.activite.delete', $activite->id) }}" class="bg-danger-light btn-delete btn-sm" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette activite ?')">
                                             <span class="text-danger"><i class="fa fa-trash"></i></span>
                                         </a>
                                     </td>
@@ -71,9 +78,9 @@
 
 @section('script')
     <script>
-        // Datatable
+        // Datatables
         $(document).ready( function () {
-            $('#table_{{ modelVariable }}').DataTable();
+            $('#table_activite').DataTable();
         } );
 
         // Affiche le bouton de suppression multiple si plus de 2 éléments sont selectionné
@@ -152,7 +159,7 @@
                 });
                 $.ajax({
                     type: "post",
-                    url: "{{ route('back.{{ modelVariable }}.delete_all') }}",
+                    url: "{{ route('back.activite.delete_all') }}",
                     data: {'deleted_ids': ids},
                     success: function (response) {
                         location.reload();

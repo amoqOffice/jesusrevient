@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Back;
 
 use App\{{ namespacedModel }};
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Http\Controllers\Controller;
+
 
 class {{ class }} extends Controller
 {
@@ -24,7 +26,7 @@ class {{ class }} extends Controller
     {
         {{ model }}::create($request->all());
 
-        Toastr::success('{{ model }} bien ajouté', 'Action sur {{ model }}');
+        Toastr::success('{{ model }} bien ajouté(e)', 'Action sur {{ model }}');
 
         return redirect()->route('back.{{ modelVariable }}.create');
     }
@@ -58,7 +60,7 @@ class {{ class }} extends Controller
         ${{ modelVariable }} = {{ model }}::findOrFail($id);
         ${{ modelVariable }}->delete();
 
-        Toastr::success('{{ model }} a été bien supprimé', 'Action sur {{ model }}');
+        Toastr::success('{{ model }} bien supprimé(e)', 'Action sur {{ model }}');
 
         return redirect()->route('back.{{ modelVariable }}.index');
     }

@@ -8,11 +8,12 @@ class Type extends Model
 {
     protected $guarded = ['id'];
 
-    public function activite()
+    public function activites()
     {
-        return $this->belongsTo(Activite::class, 'activite_type');
+        return $this->hasMany(Activite::class, 'type_activite');
     }
 
     //
+
 
 }

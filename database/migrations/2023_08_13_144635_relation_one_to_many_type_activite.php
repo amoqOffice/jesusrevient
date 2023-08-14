@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class RelationOneToManyActiviteType extends Migration
+class RelationOneToManyTypeActivite extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class RelationOneToManyActiviteType extends Migration
      */
     public function up()
     {
-        Schema::table('types', function (Blueprint $table) {
-            $table->unsignedInteger('activite_id')->nullable();
-            $table->foreign('activite_id')->references('id')->on('activites')->onDelete('cascade');
+        Schema::table('activites', function (Blueprint $table) {
+            $table->unsignedInteger('type_id')->nullable();
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
         });
     }
 

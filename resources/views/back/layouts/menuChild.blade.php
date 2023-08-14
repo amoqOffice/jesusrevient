@@ -1,84 +1,49 @@
 <li class="menu-title">
     <span>CONTENU</span>
 </li>
-<li class="{{ request()->is('admin') ? 'active' : '' }}">
+<li class="{{ request()->is('admin/accueil') ? 'active' : '' }}">
     <a href="{{ route('back.home') }}">
         <i class="fe fe-home text-primary"></i>
         <span>Dashboard</span>
     </a>
 </li>
-
-{{-- Enseignements --}}
-{{-- <li class="{{ request()->is('admin/enseignement/*') ? 'active' : '' }}">
-    <a href="{{ route('enseignement.index') }}">
-      <i class="fe fe-book text-success"></i>
-      <span> Enseignements</span>
-      <span class="badge badge-danger text-light">{{ App\Enseignement::count() }}</span>
-    </a>
-</li> --}}
-
-{{-- <li class="submenu my-2">
-    <a href="#"><i class="fe fe-book text-success"></i> <span> Enseignements</span> <span class="menu-arrow"></span></a>
-    <ul style="display: none;">
-        <!-- <li><a class="{{ request()->is('admin/enseignement/create') ? 'active' : '' }}" href="{{ route('enseignement.create') }}">Ajouter</a></li> -->
-        <!-- <li><a class="{{ request()->is('admin/enseignement/index') ? 'active' : '' }}" href="{{ route('enseignement.index') }}">Liste</a></li> -->
-    </ul>
-</li> --}}
-
-{{-- Accueil --}}
-<li class="{{ request()->is('admin/accueil/index') ? 'active':'' }}">
-    <a href="{{ route('back.accueil.index') }}">
-        <i class="fe fe-home text-primary"></i>
-        <span>Accueil</span>
-    </a>
-</li>
-
-{{-- 
-Enseignements
-Evangelisations
-Article
-Commentaire
-Emissions
-Evenements
-Programmes
-A Propos 
---}}{{-- Redactions --}}
+{{-- Rubriques --}}
 <li class="submenu my-2">
-    <a href="#"><i class="fe fe-file-word"></i> <span> Rédactions</span> <span class="menu-arrow"></span></a>
+    <a href="#"><i class="fa fa-tag"></i> <span> Rubriques</span> <span class="menu-arrow"></span></a>
     <ul style="display: none;">
-        <li><a class="{{ request()->is('admin/redaction/create') ? 'active' : '' }}" href="{{ route('back.redaction.create') }}">Ajouter</a></li>
-        <li><a class="{{ request()->is('admin/redaction/index') ? 'active' : '' }}" href="{{ route('back.redaction.index') }}">Liste</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/create') ? 'active' : '' }}" href="{{ route('back.rubrique.create') }}">Ajouter</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/index') ? 'active' : '' }}" href="{{ route('back.rubrique.index') }}">Liste</a></li>
     </ul>
 </li>
-{{-- Reseaux sociaux --}}
+{{-- Rubriques --}}
 <li class="submenu my-2">
-    <a href="#"><i class="fe fe-google text-danger"></i> <span> Réseaux sociaux</span> <span class="menu-arrow"></span></a>
+    <a href="#"><i class="fa fa-book"></i> <span> Rubriques</span> <span class="menu-arrow"></span></a>
     <ul style="display: none;">
-        <li><a class="{{ request()->is('admin/reseau/create') ? 'active' : '' }}" href="{{ route('back.reseau.create') }}">Ajouter</a></li>
-        <li><a class="{{ request()->is('admin/reseau/index') ? 'active' : '' }}" href="{{ route('back.reseau.index') }}">Liste</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/create') ? 'active' : '' }}" href="{{ route('back.rubrique.create') }}">Ajouter</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/index') ? 'active' : '' }}" href="{{ route('back.rubrique.index') }}">Liste</a></li>
     </ul>
 </li>
-{{-- Categories --}}
+{{-- Rubriques --}}
 <li class="submenu my-2">
-    <a href="#"><i class="fe fe-list-bullet"></i> <span> Catégories</span> <span class="menu-arrow"></span></a>
+    <a href="#"><i class="fa fa-facebook"></i> <span> Rubriques</span> <span class="menu-arrow"></span></a>
     <ul style="display: none;">
-        <li><a class="{{ request()->is('admin/categorie/create') ? 'active' : '' }}" href="{{ route('back.categorie.create') }}">Ajouter</a></li>
-        <li><a class="{{ request()->is('admin/categorie/index') ? 'active' : '' }}" href="{{ route('back.categorie.index') }}">Liste</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/create') ? 'active' : '' }}" href="{{ route('back.rubrique.create') }}">Ajouter</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/index') ? 'active' : '' }}" href="{{ route('back.rubrique.index') }}">Liste</a></li>
     </ul>
 </li>
-{{-- Emissions --}}
+{{-- Rubriques --}}
 <li class="submenu my-2">
-    <a href="#"><i class="fe fe-video text-danger"></i> <span> Emissions TV</span> <span class="menu-arrow"></span></a>
+    <a href="#"><i class="fa fa-youtube"></i> <span> Rubriques</span> <span class="menu-arrow"></span></a>
     <ul style="display: none;">
-        <li><a class="{{ request()->is('admin/emission/create') ? 'active' : '' }}" href="{{ route('back.emission.create') }}">Ajouter</a></li>
-        <li><a class="{{ request()->is('admin/emission/index') ? 'active' : '' }}" href="{{ route('back.emission.index') }}">Liste</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/create') ? 'active' : '' }}" href="{{ route('back.rubrique.create') }}">Ajouter</a></li>
+        <li><a class="{{ request()->is('admin/rubriques/index') ? 'active' : '' }}" href="{{ route('back.rubrique.index') }}">Liste</a></li>
     </ul>
 </li>
-{{-- Categories --}}
+{{-- Activites --}}
 <li class="submenu my-2">
-    <a href="#"><i class="fa fa-catalog"></i> <span> Categories</span> <span class="menu-arrow"></span></a>
+    <a href="#"><i class="fa fa-home"></i> <span> Activites</span> <span class="menu-arrow"></span></a>
     <ul style="display: none;">
-        <li><a class="{{ request()->is('admin/categorie/create') ? 'active' : '' }}" href="{{ route('back.categorie.create') }}">Ajouter</a></li>
-        <li><a class="{{ request()->is('admin/categorie/index') ? 'active' : '' }}" href="{{ route('back.categorie.index') }}">Liste</a></li>
+        <li><a class="{{ request()->is('admin/activites/create') ? 'active' : '' }}" href="{{ route('back.activite.create') }}">Ajouter</a></li>
+        <li><a class="{{ request()->is('admin/activites/index') ? 'active' : '' }}" href="{{ route('back.activite.index') }}">Liste</a></li>
     </ul>
 </li>

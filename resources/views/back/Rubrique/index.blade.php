@@ -5,64 +5,63 @@
         <div class="col-sm-12">
             <div class="form-group">
                 {{-- Bouton de rafraîchissement --}}
-                <a href="{{ route('back.{{ modelVariable }}.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
+                <a href="{{ route('back.rubrique.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
 
                 {{-- Bouton de suppression multiple --}}
                 <button class="btn bg-danger-light btn-delete-all opacity-0" data-plalcement="top" title="Supprimer"><i class="fa fa-trash"></i></button>
 
                 {{-- Bouton Ajout Elément --}}
-                <a href="{{ route('back.{{ modelVariable }}.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) {{ modelName }}</a>
+                <a href="{{ route('back.rubrique.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) Rubrique</a>
             </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
+            <div class="card card-table">
                 <div class="card-header">
-                    <h4 class="card-title"> Liste des {{ modelName }}s </h4>
+                    <h4 class="card-title"> Liste des Rubriques </h4>
                 </div>
                 <div class="card-body">
-                    <table id="table_{{ modelVariable }}" class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" style="margin: 0px 0px 0px 9px;padding: 10px;">
-                                            <input type="checkbox" style="cursor: pointer" class="checkbox-parent">
-                                        </span>
-                                    </div>
-                                </th>
-                                <th>ID</th>
-                                {{ columnName }}
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (${{ modelVariable }}s as ${{ modelVariable }})
+                    <div class="">
+                        <table id="table" class="table mb-0 table-hover">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ ${{ modelVariable }}->id }}">
+                                    <th>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="margin: 0px 0px 0px 9px; padding: 10px;">
+                                                <input type="checkbox" style="cursor: pointer" class="checkbox-parent">
+                                            </span>
                                         </div>
-                                    </td>
-                                    <td data-id="{{ ${{ modelVariable }}->id }}">#{{ $loop->index + 1 }}</td>
-                                    {{ columnValue }}
-                                    <td>
-                                        <a href="{{ route('back.{{ modelVariable }}.show', ${{ modelVariable }}->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
-                                            <span class="text-success"><i class="fa fa-eye"></i></span>
-                                        </a>
-                                        <a href="{{ route('back.{{ modelVariable }}.edit', ${{ modelVariable }}->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
-                                            <span class="text-warning"><i class="fa fa-pencil-square-o "></i></span>
-                                        </a>
-                                        <a href="{{ route('back.{{ modelVariable }}.delete', ${{ modelVariable }}->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette {{ modelVariable }} ?')">
-                                            <span class="text-danger"><i class="fa fa-trash"></i></span>
-                                        </a>
-                                    </td>
+                                    </th>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Actions</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($rubriques as $rubrique)
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $rubrique->id }}">
+                                            </div>
+                                        </td>
+                                        <td data-id="{{ $rubrique->id }}">#{{ $loop->index + 1 }}</td>
+                                        <td>{{ $rubrique->nom }}</td>
+
+                                        <td>
+                                            <a href="{{ route('back.rubrique.show', $rubrique->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
+                                                <span class="text-success"><i class="fa fa-eye"></i> Voir</span>
+                                            </a>
+                                            <a href="{{ route('back.rubrique.edit', $rubrique->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
+                                                <span class="text-warning"><i class="fa fa-pencil-square-o "></i>  Modifier</span>
+                                            </a>
+                                            <a href="{{ route('back.rubrique.delete', $rubrique->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette rubrique ?')">
+                                                <span class="text-danger"><i class="fa fa-trash"></i> Supprimer</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,11 +70,6 @@
 
 @section('script')
     <script>
-        // Datatable
-        $(document).ready( function () {
-            $('#table_{{ modelVariable }}').DataTable();
-        } );
-
         // Affiche le bouton de suppression multiple si plus de 2 éléments sont selectionné
         var counterCheckbox = 0
         $(".checkbox-child").click(function(e) {
@@ -152,7 +146,7 @@
                 });
                 $.ajax({
                     type: "post",
-                    url: "{{ route('back.{{ modelVariable }}.delete_all') }}",
+                    url: "{{ route('back.rubrique.delete_all') }}",
                     data: {'deleted_ids': ids},
                     success: function (response) {
                         location.reload();

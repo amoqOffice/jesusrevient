@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// GENERATEUR D'IMAGE
-Route::get('/image/{width}/{height}','ImageController@generateImage')->name('generateImage');
-
 // FRONT ONLY
 Route::get('/', function () {
     return view('front/accueil');
@@ -57,116 +54,108 @@ Route::prefix('donation')->group(function () {
 
 
 // BACKOFFICE ONLY
-Route::prefix('admin')->group(function () {
-    // Route::view('/', ('back/home'));
-    Route::get('/', 'DashboardController@index')->name('back.home');
+Route::view('admin/accueil', 'back\home')->name('back.home');
+/*
+|--------------------------------------------------------------------------
+| Rubrique Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin/rubriques'], function () {
+    Route::get('index', 'back\RubriqueController@index')->name('back.rubrique.index'); // Liste des rubriques
 
-    /*
-    |--------------------------------------------------------------------------
-    | Accueil Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'accueil'], function () {
-        Route::get('index', 'AccueilController@index')->name('back.accueil.index'); // Liste des accueils
-    });
+    Route::get('create', 'back\RubriqueController@create')->name('back.rubrique.create'); // Formulaire de création de rubrique
+    Route::post('store', 'back\RubriqueController@store')->name('back.rubrique.store'); // Enrégistrement de rubrique
 
-    /*
-    |--------------------------------------------------------------------------
-    | Redaction Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'redaction'], function () {
-        Route::get('index', 'RedactionController@index')->name('back.redaction.index'); // Liste des redactions
+    Route::get('{id}/show', 'back\RubriqueController@show')->name('back.rubrique.show'); //Informations sur rubrique
 
-        Route::get('create', 'RedactionController@create')->name('back.redaction.create'); // Formulaire de création de redaction
-        Route::post('store', 'RedactionController@store')->name('back.redaction.store'); // Enrégistrement de redaction
+    Route::get('{id}/edit', 'back\RubriqueController@edit')->name('back.rubrique.edit'); //Formulaire d'édition de rubrique
+    Route::post('{id}/update', 'back\RubriqueController@update')->name('back.rubrique.update'); // Enregistrement des modification de rubrique
 
-        Route::get('{id}/show', 'RedactionController@show')->name('back.redaction.show'); //Informations sur redaction
+    Route::get('{id}/delete', 'back\RubriqueController@delete')->name('back.rubrique.delete'); // Suppression de rubrique
 
-        Route::get('{id}/edit', 'RedactionController@edit')->name('back.redaction.edit'); //Formulaire d'édition de redaction
-        Route::post('{id}/update', 'RedactionController@update')->name('back.redaction.update'); // Enregistrement des modification de redaction
-
-        Route::post('destroy', 'RedactionController@destroy')->name('back.redaction.destroy'); // Suppression de redaction
-        Route::post('destroyAll', 'RedactionController@destroyAll')->name('back.redaction.destroyAll'); // Suppression de plusieurs redactions
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Reseau Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'reseau'], function () {
-        Route::get('index', 'ReseauController@index')->name('back.reseau.index'); // Liste des reseaus
-
-        Route::get('create', 'ReseauController@create')->name('back.reseau.create'); // Formulaire de création de reseau
-        Route::post('store', 'ReseauController@store')->name('back.reseau.store'); // Enrégistrement de reseau
-
-        Route::get('{id}/show', 'ReseauController@show')->name('back.reseau.show'); //Informations sur reseau
-
-        Route::get('{id}/edit', 'ReseauController@edit')->name('back.reseau.edit'); //Formulaire d'édition de reseau
-        Route::post('{id}/update', 'ReseauController@update')->name('back.reseau.update'); // Enregistrement des modification de reseau
-
-        Route::post('destroy', 'ReseauController@destroy')->name('back.reseau.destroy'); // Suppression de reseau
-        Route::post('destroyAll', 'ReseauController@destroyAll')->name('back.reseau.destroyAll'); // Suppression de plusieurs reseaus
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Categorie Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'categorie'], function () {
-        Route::get('index', 'CategorieController@index')->name('back.categorie.index'); // Liste des categories
-
-        Route::get('create', 'CategorieController@create')->name('back.categorie.create'); // Formulaire de création de categorie
-        Route::post('store', 'CategorieController@store')->name('back.categorie.store'); // Enrégistrement de categorie
-
-        Route::get('{id}/show', 'CategorieController@show')->name('back.categorie.show'); //Informations sur categorie
-
-        Route::get('{id}/edit', 'CategorieController@edit')->name('back.categorie.edit'); //Formulaire d'édition de categorie
-        Route::post('{id}/update', 'CategorieController@update')->name('back.categorie.update'); // Enregistrement des modification de categorie
-
-        Route::get('{id}/delete', 'CategorieController@delete')->name('back.categorie.delete'); // Suppression de categorie
-        Route::post('delete_all', 'CategorieController@deleteAll')->name('back.categorie.delete_all'); // Suppression de plusieurs categories
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Emission Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'emission'], function () {
-        Route::get('index', 'EmissionController@index')->name('back.emission.index'); // Liste des emissions
-
-        Route::get('create', 'EmissionController@create')->name('back.emission.create'); // Formulaire de création de emission
-        Route::post('store', 'EmissionController@store')->name('back.emission.store'); // Enrégistrement de emission
-
-        Route::get('{id}/show', 'EmissionController@show')->name('back.emission.show'); //Informations sur emission
-
-        Route::get('{id}/edit', 'EmissionController@edit')->name('back.emission.edit'); //Formulaire d'édition de emission
-        Route::post('{id}/update', 'EmissionController@update')->name('back.emission.update'); // Enregistrement des modification de emission
-
-        Route::post('destroy', 'EmissionController@destroy')->name('back.emission.destroy'); // Suppression de emission
-        Route::post('destroyAll', 'EmissionController@destroyAll')->name('back.emission.destroyAll'); // Suppression de plusieurs emissions
-    });
+    Route::post('delete_all', 'back\RubriqueController@deleteAll')->name('back.rubrique.delete_all'); // Suppression de plusieurs rubriques
 });
 
 /*
 |--------------------------------------------------------------------------
-| Categorie Routes
+| Rubrique Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'categorie'], function () {
-    Route::get('index', 'CategorieController@index')->name('back.categorie.index'); // Liste des categories
+Route::group(['prefix' => 'admin/rubriques'], function () {
+    Route::get('index', 'back\RubriqueController@index')->name('back.rubrique.index'); // Liste des rubriques
 
-    Route::get('create', 'CategorieController@create')->name('back.categorie.create'); // Formulaire de création de categorie
-    Route::post('store', 'CategorieController@store')->name('back.categorie.store'); // Enrégistrement de categorie
+    Route::get('create', 'back\RubriqueController@create')->name('back.rubrique.create'); // Formulaire de création de rubrique
+    Route::post('store', 'back\RubriqueController@store')->name('back.rubrique.store'); // Enrégistrement de rubrique
 
-    Route::get('{id}/show', 'CategorieController@show')->name('back.categorie.show'); //Informations sur categorie
+    Route::get('{id}/show', 'back\RubriqueController@show')->name('back.rubrique.show'); //Informations sur rubrique
 
-    Route::get('{id}/edit', 'CategorieController@edit')->name('back.categorie.edit'); //Formulaire d'édition de categorie
-    Route::post('{id}/update', 'CategorieController@update')->name('back.categorie.update'); // Enregistrement des modification de categorie
+    Route::get('{id}/edit', 'back\RubriqueController@edit')->name('back.rubrique.edit'); //Formulaire d'édition de rubrique
+    Route::post('{id}/update', 'back\RubriqueController@update')->name('back.rubrique.update'); // Enregistrement des modification de rubrique
 
-    Route::post('destroy', 'CategorieController@destroy')->name('back.categorie.destroy'); // Suppression de categorie
-    Route::post('destroyAll', 'CategorieController@destroyAll')->name('back.categorie.destroyAll'); // Suppression de plusieurs categories
+    Route::get('{id}/delete', 'back\RubriqueController@delete')->name('back.rubrique.delete'); // Suppression de rubrique
+
+    Route::post('delete_all', 'back\RubriqueController@deleteAll')->name('back.rubrique.delete_all'); // Suppression de plusieurs rubriques
+});
+
+/*
+|--------------------------------------------------------------------------
+| Rubrique Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin/rubriques'], function () {
+    Route::get('index', 'back\RubriqueController@index')->name('back.rubrique.index'); // Liste des rubriques
+
+    Route::get('create', 'back\RubriqueController@create')->name('back.rubrique.create'); // Formulaire de création de rubrique
+    Route::post('store', 'back\RubriqueController@store')->name('back.rubrique.store'); // Enrégistrement de rubrique
+
+    Route::get('{id}/show', 'back\RubriqueController@show')->name('back.rubrique.show'); //Informations sur rubrique
+
+    Route::get('{id}/edit', 'back\RubriqueController@edit')->name('back.rubrique.edit'); //Formulaire d'édition de rubrique
+    Route::post('{id}/update', 'back\RubriqueController@update')->name('back.rubrique.update'); // Enregistrement des modification de rubrique
+
+    Route::get('{id}/delete', 'back\RubriqueController@delete')->name('back.rubrique.delete'); // Suppression de rubrique
+
+    Route::post('delete_all', 'back\RubriqueController@deleteAll')->name('back.rubrique.delete_all'); // Suppression de plusieurs rubriques
+});
+
+/*
+|--------------------------------------------------------------------------
+| Rubrique Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin/rubriques'], function () {
+    Route::get('index', 'back\RubriqueController@index')->name('back.rubrique.index'); // Liste des rubriques
+
+    Route::get('create', 'back\RubriqueController@create')->name('back.rubrique.create'); // Formulaire de création de rubrique
+    Route::post('store', 'back\RubriqueController@store')->name('back.rubrique.store'); // Enrégistrement de rubrique
+
+    Route::get('{id}/show', 'back\RubriqueController@show')->name('back.rubrique.show'); //Informations sur rubrique
+
+    Route::get('{id}/edit', 'back\RubriqueController@edit')->name('back.rubrique.edit'); //Formulaire d'édition de rubrique
+    Route::post('{id}/update', 'back\RubriqueController@update')->name('back.rubrique.update'); // Enregistrement des modification de rubrique
+
+    Route::get('{id}/delete', 'back\RubriqueController@delete')->name('back.rubrique.delete'); // Suppression de rubrique
+
+    Route::post('delete_all', 'back\RubriqueController@deleteAll')->name('back.rubrique.delete_all'); // Suppression de plusieurs rubriques
+});
+
+/*
+|--------------------------------------------------------------------------
+| Activite Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin/activites'], function () {
+    Route::get('index', 'back\ActiviteController@index')->name('back.activite.index'); // Liste des activites
+
+    Route::get('create', 'back\ActiviteController@create')->name('back.activite.create'); // Formulaire de création de activite
+    Route::post('store', 'back\ActiviteController@store')->name('back.activite.store'); // Enrégistrement de activite
+
+    Route::get('{id}/show', 'back\ActiviteController@show')->name('back.activite.show'); //Informations sur activite
+
+    Route::get('{id}/edit', 'back\ActiviteController@edit')->name('back.activite.edit'); //Formulaire d'édition de activite
+    Route::post('{id}/update', 'back\ActiviteController@update')->name('back.activite.update'); // Enregistrement des modification de activite
+
+    Route::get('{id}/delete', 'back\ActiviteController@delete')->name('back.activite.delete'); // Suppression de activite
+
+    Route::post('delete_all', 'back\ActiviteController@deleteAll')->name('back.activite.delete_all'); // Suppression de plusieurs activites
 });

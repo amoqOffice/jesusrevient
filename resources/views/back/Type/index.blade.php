@@ -5,13 +5,13 @@
         <div class="col-sm-12">
             <div class="form-group">
                 {{-- Bouton de rafraîchissement --}}
-                <a href="{{ route('back.{{ modelVariable }}.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
+                <a href="{{ route('back.type.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
 
                 {{-- Bouton de suppression multiple --}}
                 <button class="btn bg-danger-light btn-delete-all opacity-0" data-plalcement="top" title="Supprimer"><i class="fa fa-trash"></i></button>
 
                 {{-- Bouton Ajout Elément --}}
-                <a href="{{ route('back.{{ modelVariable }}.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) {{ modelName }}</a>
+                <a href="{{ route('back.type.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) Type</a>
             </div>
         </div>
     </div>
@@ -20,10 +20,10 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Liste des {{ modelName }}s </h4>
+                    <h4 class="card-title"> Liste des Types </h4>
                 </div>
                 <div class="card-body">
-                    <table id="table_{{ modelVariable }}" class="table table-hover mb-0">
+                    <table id="table_type" class="table table-hover mb-0">
                         <thead>
                             <tr>
                                 <th>
@@ -39,23 +39,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (${{ modelVariable }}s as ${{ modelVariable }})
+                            @foreach ($types as $type)
                                 <tr>
                                     <td>
                                         <div class="form-check">
-                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ ${{ modelVariable }}->id }}">
+                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $type->id }}">
                                         </div>
                                     </td>
-                                    <td data-id="{{ ${{ modelVariable }}->id }}">#{{ $loop->index + 1 }}</td>
+                                    <td data-id="{{ $type->id }}">#{{ $loop->index + 1 }}</td>
                                     {{ columnValue }}
                                     <td>
-                                        <a href="{{ route('back.{{ modelVariable }}.show', ${{ modelVariable }}->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
+                                        <a href="{{ route('back.type.show', $type->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
                                             <span class="text-success"><i class="fa fa-eye"></i></span>
                                         </a>
-                                        <a href="{{ route('back.{{ modelVariable }}.edit', ${{ modelVariable }}->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
+                                        <a href="{{ route('back.type.edit', $type->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
                                             <span class="text-warning"><i class="fa fa-pencil-square-o "></i></span>
                                         </a>
-                                        <a href="{{ route('back.{{ modelVariable }}.delete', ${{ modelVariable }}->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette {{ modelVariable }} ?')">
+                                        <a href="{{ route('back.type.delete', $type->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette type ?')">
                                             <span class="text-danger"><i class="fa fa-trash"></i></span>
                                         </a>
                                     </td>
@@ -73,7 +73,7 @@
     <script>
         // Datatable
         $(document).ready( function () {
-            $('#table_{{ modelVariable }}').DataTable();
+            $('#table_type').DataTable();
         } );
 
         // Affiche le bouton de suppression multiple si plus de 2 éléments sont selectionné
@@ -152,7 +152,7 @@
                 });
                 $.ajax({
                     type: "post",
-                    url: "{{ route('back.{{ modelVariable }}.delete_all') }}",
+                    url: "{{ route('back.type.delete_all') }}",
                     data: {'deleted_ids': ids},
                     success: function (response) {
                         location.reload();
