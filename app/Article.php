@@ -15,7 +15,7 @@ class Article extends Model
 
     public function commentaires()
     {
-        return $this->hasMany(Commentaire::class, 'article_commentaire');
+        return $this->hasMany(Commentaire::class, 'article_id');
     }
 
     public function tags()

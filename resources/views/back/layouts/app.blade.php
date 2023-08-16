@@ -24,10 +24,13 @@
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('assets/back/css/style.css') }}">
 
-        <!-- Toastr JS -->
+        <!-- Toastr CSS -->
         <link rel="stylesheet" href="{{ asset('assets/back/css/toastr.min.css') }}">
 
-        {{-- Lity --}}
+        {{-- Select2 CSS --}}
+        <link rel="stylesheet" href="{{ asset('assets/back/css/select2.min.css') }}">
+
+        {{-- Lity CSS --}}
         <link rel="stylesheet" href="{{ asset('assets/back/css/lity.min.css') }}">
 
         {{-- Datatables --}}
@@ -63,8 +66,6 @@
         <!-- Raphael JS -->
         <script src="{{ asset('assets/back/plugins/raphael/raphael.min.js') }}"></script>
 
-        @yield('script')
-
         {{-- Datatables JS --}}
         <script src="{{ asset('assets/back/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('assets/back/js/datatables.min.js') }}"></script>
@@ -72,12 +73,17 @@
         {{-- Lity JS --}}
         <script src="{{ asset('assets/back/js/lity.min.js') }}"></script>
 
+        {{-- Select2 JS --}}
+        <script src="{{ asset('assets/back/js/select2.min.js') }}"></script>
+
 		<!-- Custom JS -->
         <script  src="{{ asset('assets/back/js/script.js') }}"></script>
 
         <!-- Toastr JS -->
         <script src="{{ asset('assets/back/js/toastr.min.js') }}"></script>
         {!! Toastr::message() !!}
+
+        @yield('script')
 
         <script type="text/javascript">
             $(document).ready(function() {

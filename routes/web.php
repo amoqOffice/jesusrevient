@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // FRONT ONLY
-Route::get('/', function () {
-    return view('front/accueil');
-})->name('front.accueil'); // Afficher la page d'accueil
+Route::get('/', 'front\AccueilController@index')->name('front.accueil'); // Afficher la page d'accueil
 
 Route::prefix('predications')->group(function () {
     Route::get('enseignements', 'front\EnseignementController@index')->name('front.predications.enseignements'); //Retourne la liste des enseignements
@@ -158,4 +156,21 @@ Route::group(['prefix' => 'admin/activites'], function () {
     Route::get('{id}/delete', 'back\ActiviteController@delete')->name('back.activite.delete'); // Suppression de activite
 
     Route::post('delete_all', 'back\ActiviteController@deleteAll')->name('back.activite.delete_all'); // Suppression de plusieurs activites
+});
+
+/*
+|--------------------------------------------------------------------------
+| Type Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin/types'], function () {
+    Route::get('ajax', 'back\TypeController@getTypesAjax')->name('back.types.ajax'); // Liste des types
+    Route::get('index', 'back\TypeController@index')->name('back.type.index'); // Liste des types
+    Route::get('create', 'back\TypeController@create')->name('back.type.create'); // Formulaire de création de type
+    Route::post('store', 'back\TypeController@store')->name('back.type.store'); // Enrégistrement de type
+    Route::get('{id}/show', 'back\TypeController@show')->name('back.type.show'); //Informations sur type
+    Route::get('{id}/edit', 'back\TypeController@edit')->name('back.type.edit'); //Formulaire d'édition de type
+    Route::post('{id}/update', 'back\TypeController@update')->name('back.type.update'); // Enregistrement des modification de type
+    Route::get('{id}/delete', 'back\TypeController@delete')->name('back.type.delete'); // Suppression de type
+    Route::post('delete_all', 'back\TypeController@deleteAll')->name('back.type.delete_all'); // Suppression de plusieurs types
 });

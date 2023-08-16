@@ -10,7 +10,7 @@ class Type extends Model
 
     public function activites()
     {
-        return $this->hasMany(Activite::class, 'type_activite');
+        return $this->hasMany(Activite::class, 'type_id');
     }
 
     //

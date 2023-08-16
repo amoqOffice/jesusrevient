@@ -65,7 +65,6 @@
 
 			}
 		})
-
 	</script>
 
 	<!-- Favicon -->
@@ -82,7 +81,32 @@
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/style.css') }}">
-
+    <style>
+        .btn-pulse {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: none;
+            box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+            border-radius: 50%;
+            background-color: #e84c3d;
+            background-image: url(http:YOUR-URL-IMAGE.png);
+            background-size:cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        .btn-pulse:hover {
+            -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+        }
+        @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+    </style>
 </head>
 
 <body>

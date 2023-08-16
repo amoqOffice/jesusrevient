@@ -47,3 +47,11 @@
         <li><a class="{{ request()->is('admin/activites/index') ? 'active' : '' }}" href="{{ route('back.activite.index') }}">Liste</a></li>
     </ul>
 </li>
+{{-- Types --}}
+<li class="submenu my-2">
+    <a href="#"><i class="fa fa-home"></i> <span> Types</span> <span class="menu-arrow"></span></a>
+    <ul style="display: none;">
+        <li><a class="{{ request()->is('admin/types/create') ? 'active' : '' }}" href="{{ route('back.type.create') }}">Ajouter</a></li>
+        <li><a class="{{ request()->is('admin/types/index') ? 'active' : '' }}" href="{{ route('back.type.index') }}">Liste</a></li>
+    </ul>
+</li>

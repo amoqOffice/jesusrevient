@@ -6,6 +6,7 @@ use App\Type;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 
 class TypeController extends Controller
@@ -17,17 +18,57 @@ class TypeController extends Controller
         return view('back.Type.index', compact('types'));
     }
 
+    public function getTypesAjax(Request $request) {
+        $term = $request->term;
+        $types = Type::where('nom', 'LIKE', '%' . $term . '%')->get();
+
+        $formattedTypes = [];
+        foreach ($types as $type) {
+            $formattedTypes[] = [
+                'id' => $type->id,
+                'text' => $type->nom
+            ];
+        }
+
+        return response()->json($formattedTypes);
+    }
+
     public function create()
     {
+        // Enregistre le lien précedent après enregistrement
+        if(request('back') != null) {
+            session()->put('back', request('back'));
+        }
+
         return view('back.Type.create');
     }
 
     public function store(Request $request)
     {
-        Type::create($request->all());
+        // Validation des données du formulaire
+        $request->validate([
+            'nom' => 'required',
+        ]);
 
+        // Enregistrement des données
+        Type::create([
+            'nom' => $request->nom,
+            'description' => $request->description,
+        ]);
+
+        // Message de succès
         Toastr::success('Type bien ajouté(e)', 'Action sur Type');
 
+        // Gestion des Différentes conditions de redirection
+        if(session()->has('isExist') && session()->get('isExist') == true) {
+            session()->forget('isExist'); // Remise a 0 de isExist
+            return redirect()->route('back.activite.create');
+        } // Redirection quand controle procédure enclenché
+        elseif (session()->has('back')) {
+            $backUrl = session()->get('back');
+            session()->forget('back'); // Remise a 0 de back
+            return redirect($backUrl);
+        } // Redirection quand ajouter select 2 cliqué
         return redirect()->route('back.type.create');
     }
 

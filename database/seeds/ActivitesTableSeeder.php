@@ -1,6 +1,8 @@
 <?php
 
 use Alaouy\Youtube\Facades\Youtube;
+use App\Activite;
+use App\Type;
 use Illuminate\Database\Seeder;
 
 class ActivitesTableSeeder extends Seeder
@@ -12,44 +14,57 @@ class ActivitesTableSeeder extends Seeder
      */
     public function run()
     {
-        Youtube::setApiKey('AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA'); // Youtube api key
+        // Youtube api key
+        Youtube::setApiKey('AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA');
 
-        // Clé de la playlist ENSEIGNEMENT
-        $playlistId = 'PLSpKxRyN4Ds1DU62NywtnFw3sIVKRJL9f'; // Youtube Ense playlist
+        // Playlist youtube pour le site web
+        $youtubeVideos = [
+            (object)['nom_type' => 'Enseignement', 'playlist' => 'PLSpKxRyN4Ds0rOYD2f9fNc-n4VNxwJ_Kc'],
+            (object)['nom_type' => 'Temoignage', 'playlist' => 'PLSpKxRyN4Ds1FoXB2kUR0cPN53Zgi29y-'],
+        ];
 
-        // Récuppération de toutes les vidéos dans la playlist
-        $videos = [];
-        $nextPageToken = null;
-        do {
-            $playlistItems = Youtube::getPlaylistItemsByPlaylistId($playlistId, $nextPageToken, 50);
+        foreach ($youtubeVideos as $youtubeVideo) {
+            // Récuppération de toutes les vidéos dans la playlist
+            $videos = [];
+            $nextPageToken = null;
+            do {
+                $playlistItems = Youtube::getPlaylistItemsByPlaylistId($youtubeVideo->playlist, $nextPageToken, 50);
+                if (isset($playlistItems['results'])) {
+                    $videos = array_merge($videos, $playlistItems['results']);
+                }
 
-            if (isset($playlistItems['results'])) {
-                $videos = array_merge($videos, $playlistItems['results']);
-            }
+                $nextPageToken = $playlistItems['info']['nextPageToken'];
+            } while ($nextPageToken);
 
-            $nextPageToken = $playlistItems['info']['nextPageToken'];
-        } while ($nextPageToken);
+            // Reccuperation du Type associcé à l'activite
+            $type = Type::where('nom', $youtubeVideo->nom_type)->first();
 
-        // Enregistrement des vidéos dans la table enseignement
-        foreach ($videos as $video) {
-            if ($video->status->privacyStatus === "public") {
-                // Génération de created_at
-                $date = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $video->snippet->publishedAt, 'UTC');
-                $date->setTimezone('Europe/Paris');
-                $timestamp = $date->toDateTimeString();
+            // Enregistrement des vidéos dans la table enseignement
+            foreach ($videos as $video) {
+                if ($video->status->privacyStatus === "public") {
+                    // Génération de created_at
+                    $date = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $video->snippet->publishedAt, 'UTC');
+                    $date->setTimezone('Europe/Paris');
+                    $timestamp = $date->toDateTimeString();
 
-                // Enregistremnt dans la bdd
-                DB::table('activites')->insert([
-                    'titre' => $video->snippet->title,
-                    'lieu'=> '',
-                    'img'=> $video->snippet->thumbnails->default->url ?? $video->snippet->thumbnails->maxres->url ?? '',
-                    'url'=> "https://www.youtube.com/watch?v=".$video->contentDetails->videoId,
-                    'description'=> $video->snippet->description,
-                    'date_deb'=> date('d/m/Y', strtotime($video->snippet->publishedAt)),
-                    'date_fin'=> '',
-                    'created_at'=> $timestamp,
-                    'updated_at'=> $timestamp,
-                ]);
+                    // Enregistremnt dans la bdd
+                    $activite = Activite::firstOrCreate([
+                        'titre' => $video->snippet->title,
+                        'lieu'=> '',
+                        'img'=> $video->snippet->thumbnails->maxres->url ?? $video->snippet->thumbnails->default->url ?? '',
+                        'url'=> "https://www.youtube.com/watch?v=".$video->contentDetails->videoId,
+                        'description'=> $video->snippet->description,
+                        'date_deb'=> date('d/m/Y', strtotime($video->snippet->publishedAt)),
+                        'date_fin'=> '',
+                        'type_id'=> $type->id,
+                        'created_at'=> $timestamp,
+                        'updated_at'=> $timestamp,
+                    ]);
+
+                    // Association avec type
+                    // $activite->type()->associate($type);
+                    // $activite->save();
+                }
             }
         }
     }

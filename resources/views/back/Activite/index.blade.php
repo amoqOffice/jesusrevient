@@ -50,7 +50,7 @@
                                     </td>
                                     <td data-id="{{ $activite->id }}">#{{ $loop->index + 1 }}</td>
                                     <td>
-                                        <img src="{{ $activite->img }}" data-lity class="rounded-circle mr-2 img-fluid" style="width: 45px; height: 45px; cursor: pointer">
+                                        <img src="{{ asset($activite->img) }}" data-lity class="rounded-circle mr-2 img-fluid" style="width: 45px; height: 45px; cursor: pointer">
                                         <a href="{{ $activite->url }}" class="text-dark font-weight-bold" target="_blank">{{ truncate_string($activite->titre, 30) }}</a>
                                     </td>
                                     <td class="text-center">{{ $activite->date_deb }}</td>

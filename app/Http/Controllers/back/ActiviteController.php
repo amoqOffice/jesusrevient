@@ -21,28 +21,52 @@ class ActiviteController extends Controller
     public function create()
     {
         // Vérification de Type avant création d'Activité
-        session()->push('isExist', false);
+        // session()->forget('isExist');
+        session()->put('isExist', false);
         if(Type::first() == null) {
-            session()->push('isExist', true);
-
+            session()->put('isExist', true);
             Toastr::warning('Vous devez créer le Type d\'Activité en premier', 'Alerte Système');
-            redirect()->route('back.activite.create');
+            return redirect()->route('back.type.create')->with([
+                'message' => 'Vous devez créer le Type d\'Activité en premier',
+                'alert' => 'warning',
+            ]);
         }
         return view('back.Activite.create');
     }
 
     public function store(Request $request)
     {
-        // Redirection sur Type Activité si ce dernier n'est pas encore créé
-        if(session()->has('isExist')) {
-            (session()->get('isExist') == true) ? redirect()->route('back.home') : '';
-        }
+        // Validation des données du formulaire
+        $request->validate([
+            'titre' => 'required',
+            'type_id' => 'required',
+        ]);
 
-        //  vers Type d'Activité
-        Activite::create($request->all());
+        // Enregistrement de l'image
+        $fileName = time() . '.' . $request->img->extension();
+        $request->img->move('assets/back/img/uploaded', $fileName);
+
+        $activite = Activite::create([
+            'titre' => $request->titre,
+            'lieu' => $request->lieu,
+            'url' => $request->url,
+            'description' => $request->description,
+            'date_deb' => $request->date_deb,
+            'date_fin' => $request->date_fin,
+            'type_id' => $request->type_id,
+            'img' => "assets/back/img/uploaded/$fileName",
+        ]);
+
+        // Récupérer le type associé à l'activité
+        $type = Type::find($request->type_id);
+
+        // Ajouter l'activité au type
+        $type->activites()->save($activite);
+
+        // $activite->type()->associate($type)->save();
+        // dd($activite->type);
 
         Toastr::success('Activité bien ajouté(e)', 'Action sur Activité');
-
         return redirect()->route('back.activite.create');
     }
 

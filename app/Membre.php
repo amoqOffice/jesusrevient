@@ -15,7 +15,7 @@ class Membre extends Model
 
     public function reponses()
     {
-        return $this->hasMany(Reponse::class, 'membre_reponse');
+        return $this->hasMany(Reponse::class, 'membre_id');
     }
 
     //

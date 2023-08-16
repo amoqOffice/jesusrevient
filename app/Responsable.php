@@ -20,7 +20,7 @@ class Responsable extends Model
 
     public function articles()
     {
-        return $this->hasMany(Article::class, 'responsable_article');
+        return $this->hasMany(Article::class, 'responsable_id');
     }
 
     //

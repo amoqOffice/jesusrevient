@@ -15,7 +15,7 @@ class Commentaire extends Model
 
     public function reponses()
     {
-        return $this->hasMany(Reponse::class, 'commentaire_reponse');
+        return $this->hasMany(Reponse::class, 'commentaire_id');
     }
 
     public function membre()

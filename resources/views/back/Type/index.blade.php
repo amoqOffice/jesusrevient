@@ -34,7 +34,8 @@
                                     </div>
                                 </th>
                                 <th>ID</th>
-                                {{ columnName }}
+                                <th>Nom</th>
+
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -47,7 +48,8 @@
                                         </div>
                                     </td>
                                     <td data-id="{{ $type->id }}">#{{ $loop->index + 1 }}</td>
-                                    {{ columnValue }}
+                                    <td>{{ $type->nom }}</td>
+
                                     <td>
                                         <a href="{{ route('back.type.show', $type->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
                                             <span class="text-success"><i class="fa fa-eye"></i></span>
@@ -55,7 +57,7 @@
                                         <a href="{{ route('back.type.edit', $type->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
                                             <span class="text-warning"><i class="fa fa-pencil-square-o "></i></span>
                                         </a>
-                                        <a href="{{ route('back.type.delete', $type->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette type ?')">
+                                        <a href="{{ route('back.type.delete', $type->id) }}" class="bg-danger-light btn-delete btn-sm" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette type ?')">
                                             <span class="text-danger"><i class="fa fa-trash"></i></span>
                                         </a>
                                     </td>

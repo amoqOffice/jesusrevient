@@ -17,8 +17,8 @@ class CreateActivitesTable extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->string('lieu')->nullable();
-            $table->string('img');
-            $table->string('url');
+            $table->string('img')->nullable();
+            $table->string('url')->nullable();
             $table->text('description')->nullable();
             $table->string('date_deb')->nullable();
             $table->string('date_fin')->nullable();
