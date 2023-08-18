@@ -132,9 +132,74 @@
                     </div>
                 </div>
             </div>
+            {{-- Evenements recents --}}
             <div class="row">
-                <div class="col-sm-12">
-                    collapse
+                <div class="col-md-12">
+                    <!-- Title -->
+                    <div class="my-3 d-md-flex justify-content-between align-items-center">
+                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Evènements récents</h2>
+                    </div>
+                    <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
+                        <div class="tiny-slider-inner"
+                            data-autoplay="true"
+                            data-hoverpause="true"
+                            data-gutter="24"
+                            data-arrow="true"
+                            data-dots="false"
+                            data-items-xl="4"
+                            data-items-md="3"
+                            data-items-sm="2"
+                            data-items-xs="1">
+
+                            {{-- @foreach ($temoignages as $temoignage) --}}
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="{{ asset('assets/front/images/blog/16by9/05.jpg') }}" alt="Card image">
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">Test</a></h5>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="{{ asset('assets/front/images/blog/16by9/05.jpg') }}" alt="Card image">
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">Test</a></h5>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="{{ asset('assets/front/images/blog/16by9/05.jpg') }}" alt="Card image">
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">Test</a></h5>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="{{ asset('assets/front/images/blog/16by9/05.jpg') }}" alt="Card image">
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">Test</a></h5>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="{{ asset('assets/front/images/blog/16by9/05.jpg') }}" alt="Card image">
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">Test</a></h5>
+                                    </div>
+                                </div>
+                            {{-- @endforeach --}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

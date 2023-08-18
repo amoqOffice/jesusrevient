@@ -11,7 +11,7 @@
     @include('front.partials.homeCarousel')
 
     <div class="container">
-        {{-- Paypal --}}
+        {{-- Témoignages --}}
         <div class="row">
 			<div class="col-md-12">
 				<!-- Title -->
