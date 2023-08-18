@@ -9,5 +9,6 @@ function truncate_string($string, $length)
 }
 
 function generateImage($width, $height) {
+    // <img src="data:image/png;base64, {{ generateImage(100, 70) }}" alt="">
     return ImageHelper::generate($width, $height);
 }

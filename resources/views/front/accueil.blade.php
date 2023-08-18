@@ -58,9 +58,7 @@
         {{-- Don paypal --}}
         <div class="row mt-1 mb-4">
             <div class="col">
-                <a href="#" class="d-block card-img-flash  rounded-3 overflow-hidden">
-                    <img src="{{ asset('assets/front/images/adv-3.png') }}" alt="">
-                </a>
+                <img src="{{ asset('assets/front/images/adv-3.png') }}" alt="">
             </div>
         </div>
 
