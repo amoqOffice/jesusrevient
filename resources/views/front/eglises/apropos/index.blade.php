@@ -36,10 +36,10 @@
                         </div>
                         <div class="row my-2">
                             <!-- Title -->
-                            <div class="mt-3 d-md-flex justify-content-between align-items-center">
-                                <h3 class="m-0"><i class="fas fa-search"></i> Recherche sur les Eglises JESUS-REVIENT</h3>
+                            <div class="mt-3 mb-2 d-md-flex justify-content-between align-items-center">
+                                <h4 class="m-0"><i class="fas fa-search"></i> Recherche sur les Eglises JESUS-REVIENT</h4>
                             </div>
-                            <form class="row g-2 gxl-4">
+                            <form class="row g-2 gxl-4 bg-light p-3">
                                 <!-- Search -->
                                 <div class="col-xl-6">
                                     <div class="rounded position-relative">
