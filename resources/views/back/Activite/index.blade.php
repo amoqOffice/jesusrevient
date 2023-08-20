@@ -53,8 +53,8 @@
                                         <img src="{{ asset($activite->img) }}" data-lity class="rounded-circle mr-2 img-fluid" style="width: 45px; height: 45px; cursor: pointer">
                                         <a href="{{ $activite->url }}" class="text-dark font-weight-bold" target="_blank">{{ truncate_string($activite->titre, 30) }}</a>
                                     </td>
-                                    <td class="text-center">{{ $activite->date_deb }}</td>
-                                    <td>{{ $activite->date_fin }}</td>
+                                    <td class="text-cente">{{ date('d/m/Y', strtotime($activite->date_deb)) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($activite->date_fin)) }}</td>
                                     <td>
                                         <a href="{{ route('back.activite.show', $activite->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
                                             <span class="text-success"><i class="fa fa-eye"></i></span>

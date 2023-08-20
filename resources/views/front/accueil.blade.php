@@ -3,8 +3,12 @@
 @php
     // Reccupération des témoignages
     $temoignages = $types->where('nom', 'Temoignage')->first()->activites;
+
     // Reccupération des Enseignements
-    $enseignements = $types->where('nom', 'Enseignement')->first()->activites()->paginate(4);
+    $enseignements = $types->where('nom', 'Enseignement')->first()->activites()->orderBy('date_deb', 'desc')->paginate(4);
+
+    // Reccupération des Tags
+    $tags = DB::table('tags')->select('*')->get();
 @endphp
 
 @section('content')
@@ -153,14 +157,20 @@
                                             <li class="nav-item">
                                                 <div class="nav-link">
                                                     <div class="d-flex align-items-center position-relative">
-                                                        <div class="avatar avatar-xs">
+                                                        <div class="avatar avatar-sm">
                                                             <img class="avatar-img rounded-circle" src="data:image/png;base64, {{ generateImage(80, 80) }}" alt="avatar">
                                                         </div>
-                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                        <span class="ms-3">by
+                                                            <a href="#" class="stretched-link text-reset btn-link">
+                                                                @foreach ($enseignement->responsables as $responsable)
+                                                                    {{ $responsable->nom }}
+                                                                @endforeach
+                                                            </a>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="nav-item">Jun 17, 2022</li>
+                                            <li class="nav-item">{{ $enseignement->date_deb }}</li>
                                         </ul>
                                     </div>
                                 </a>
@@ -204,37 +214,15 @@
 
 					<!-- Trending topics widget START -->
 					<div>
-						<h4 class="mt-4 mb-3">Trending topics</h4>
+						<h4 class="mt-4 mb-3">Thèmes récents</h4>
 						<!-- Category item -->
-						<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(/assets/front/images/blog/4by3/01.jpg); background-position: center left; background-size: cover;">
-							<div class="p-3">
-								<a href="#" class="stretched-link btn-link fw-bold text-white h5">Travel</a>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(/assets/front/images/blog/4by3/02.jpg); background-position: center left; background-size: cover;">
-							<div class="bg-dark-overlay-4 p-3">
-								<a href="#" class="stretched-link btn-link fw-bold text-white h5">Business</a>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(/assets/front/images/blog/4by3/03.jpg); background-position: center left; background-size: cover;">
-							<div class="bg-dark-overlay-4 p-3">
-								<a href="#" class="stretched-link btn-link fw-bold text-white h5">Marketing</a>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(/assets/front/images/blog/4by3/04.jpg); background-position: center left; background-size: cover;">
-							<div class="bg-dark-overlay-4 p-3">
-								<a href="#" class="stretched-link btn-link fw-bold text-white h5">Photography</a>
-							</div>
-						</div>
-						<!-- Category item -->
-						<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(/assets/front/images/blog/4by3/05.jpg); background-position: center left; background-size: cover;">
-							<div class="bg-dark-overlay-4 p-3">
-								<a href="#" class="stretched-link btn-link fw-bold text-white h5">Sports</a>
-							</div>
-						</div>
+                        @foreach ($tags as $tag)
+                            <div class="text-center mb-2 card-bg-scale position-relative overflow-hidden rounded bg-primary bg-dark-overlay-4">
+                                <div class="p-3">
+                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">{{ $tag->nom }}</a>
+                                </div>
+                            </div>
+                        @endforeach
 					</div>
 				</div>
 			</div>

@@ -7,7 +7,6 @@
             <div class="card-body">
                 <form action="{{ !$edit ? route('back.activite.store') : route('back.activite.update', $activite->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" value="{{ $activite->id }}" name="activite_id">
                     <div class="row">
                         <!-- Champ titre -->
                         <div class="col-md-6">
@@ -40,8 +39,12 @@
                         <!-- Champ img -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label> Image :</label>
-                                <input required class="form-control form-control-sm" type="file" name="img" value="{{ $activite->img ?? old('img') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <label for="">Image <span class="text-danger font-weight-bold">*</span> :</label><br>
+                                <div class="avatar avatar-xxl">
+                                    <img id="blah" data-lity style="cursor: pointer" class="avatar-img rounded-circle" alt="your image" src="data:image/png;base64, {{ generateImage(128, 128) }}"/>
+                                </div>
+                                <input class="ml-3" name="img" type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -84,12 +87,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label> Date de Debut <span class="text-danger font-weight-bold">*</span> :</label>
-                                <input class="form-control form-control-sm" type="text" required name="date_deb" value="{{ $activite->date_deb ?? old('date_deb') }}" {{ ($show) ? 'disabled' : ''}}>
-                                {{-- @error('')
-                                    <span class="invalid-feedback">
-                                        {{ $errors->first('') }}
-                                    </span>
-                                @enderror --}}
+                                <input class="form-control form-control-sm" type="date" name="date_deb" value="{{ $activite->date_deb ?? date('Y-m-d') ?? old('date_deb') }}" {{ ($show) ? 'disabled' : ''}}>
+                                {{-- <input class="form-control form-control-sm" onchange="formatDate(this)" type="date" required name="date_deb" value="{{ $activite->date_deb ?? date('Y-m-d') ?? old('date_deb') }}" {{ ($show) ? 'disabled' : ''}}> --}}
                             </div>
                         </div>
 
@@ -97,7 +96,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label> Date de Fin :</label>
-                                <input class="form-control form-control-sm" type="date" name="date_fin" value="{{ $activite->date_fin ?? old('date_fin') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <input class="form-control form-control-sm" type="date" name="date_fin" value="{{ $activite->date_fin ?? date('Y-m-d') ?? old('date_fin') }}" {{ ($show) ? 'disabled' : ''}}>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -144,6 +143,18 @@
                                 </select>
                             </div>
                         </div>
+
+                        {{-- Responsables --}}
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Responsables associés à l'Activité <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select name="responsable_ids[]" class="form-control  form-control-sm selectpicker" multiple title="Sélectionner les Responsables liés à l'Activité" data-live-search="false" {{ ($show) ? 'disabled' : ''}}>
+                                    @foreach (DB::table('responsables')->select('*')->get() as $responsable)
+                                        <option value="{{ $responsable->id }}" {{ isset($activite) && in_array($responsable->id, $activite->responsables->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $responsable->nom ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="text-right pt-2">
@@ -162,27 +173,14 @@
 
 @section('script')
     <script>
-        // Url de la page
-        currentUrl = window.location.href;
+        function formatDate(input) {
+            const dateValue = input.value;
 
-        // Select2 avec ajout de bouton
-        // $(document).ready(function() {
-        //     $('#selectTypeActivite').select2({
-        //         // placeholder: 'Sélectionnez un Type d\'activité',
-        //         ajax: {
-        //             url: '{{ route('back.types.ajax') }}',
-        //             dataType: 'json',
-        //             delay: 250,
-        //             processResults: function(data) {
-        //                 return {
-        //                     results: data
-        //                 };
-        //             },
-        //             cache: true
-        //         },
-        //     }).on('select2:open', () => {
-        //         $(".select2-results:not(:has(a))").append('<a href="{{ route('back.type.create') }}/?back='+currentUrl+'"'+' style="padding: 6px; height: 20px; display: inline-table;"><i class="fa fa-plus"><i/>  Créer un nouveau Type</a>');
-        //     });
-        // })
+            if (dateValue) {
+                const [year, month, day] = dateValue.split('-');
+                const formattedDate = `${day}-${month}-${year}`;
+                input.value = formattedDate;
+            }
+        }
     </script>
 @endsection

@@ -13,7 +13,7 @@ class ActiviteController extends Controller
 {
     public function index()
     {
-        $activites = Activite::all();
+        $activites = Activite::orderBy('date_deb', 'desc')->get();
 
         return view('back.Activite.index', compact('activites'));
     }
@@ -41,6 +41,12 @@ class ActiviteController extends Controller
             'type_id' => 'required',
         ]);
 
+        // Vérifie l'image
+        if($request->img == null) {
+            Toastr::error('Image non ajoutée', 'Action sur Activité');
+            return back();
+        }
+
         // Enregistrement de l'image
         $fileName = time() . '.' . $request->img->extension();
         $request->img->move('assets/back/img/uploaded', $fileName);
@@ -51,8 +57,8 @@ class ActiviteController extends Controller
             'lieu' => $request->lieu,
             'url' => $request->url,
             'description' => $request->description,
-            'date_deb' => $request->date_deb,
-            'date_fin' => $request->date_fin,
+            'date_deb' => date('Y-m-d', strtotime($request->date_deb)),
+            'date_fin' => date('Y-m-d', strtotime($request->date_fin)),
             'type_id' => $request->type_id,
             'img' => "assets/back/img/uploaded/$fileName",
         ]);
@@ -87,11 +93,7 @@ class ActiviteController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Enregistrement de l'image
-        $fileName = time() . '.' . $request->img->extension();
-        $request->img->move('assets/back/img/uploaded', $fileName);
-
-        // Mis à jour des enrégistrements de l'Activité
+        // Mise à jour des enrégistrements de l'Activité
         $activite = Activite::findOrFail($id);
         $activite->titre = $request->titre;
         $activite->lieu = $request->lieu;
@@ -100,7 +102,12 @@ class ActiviteController extends Controller
         $activite->date_deb = $request->date_deb;
         $activite->date_fin = $request->date_fin;
         $activite->type_id = $request->type_id;
-        $activite->img = "assets/back/img/uploaded/$fileName";
+        // Enregistrement de l'image si ajoutée
+        if($request->img) {
+            $fileName = time() . '.' . $request->img->extension();
+            $request->img->move('assets/back/img/uploaded', $fileName);
+            $activite->img = "assets/back/img/uploaded/$fileName";
+        }
         $activite->save();
 
         // Association du Type à l'Activité
