@@ -15,9 +15,9 @@ class CreateEgliseResponsableTable extends Migration
     {
         Schema::create('eglise_responsable', function (Blueprint $table) {
             $table->integer('eglise_id')->unsigned()->nullable();
-            $table->foreign('eglise_id')->references('id')->on('eglises');
+            $table->foreign('eglise_id')->references('id')->on('eglises')->onDelete('cascade');
             $table->integer('responsable_id')->unsigned()->nullable();
-            $table->foreign('responsable_id')->references('id')->on('responsables');
+            $table->foreign('responsable_id')->references('id')->on('responsables')->onDelete('cascade');
         });
     }
 

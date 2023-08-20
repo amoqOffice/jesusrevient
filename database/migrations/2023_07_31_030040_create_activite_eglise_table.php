@@ -15,9 +15,9 @@ class CreateActiviteEgliseTable extends Migration
     {
         Schema::create('activite_eglise', function (Blueprint $table) {
             $table->integer('activite_id')->unsigned()->nullable();
-            $table->foreign('activite_id')->references('id')->on('activites');
+            $table->foreign('activite_id')->references('id')->on('activites')->onDelete('cascade');
             $table->integer('eglise_id')->unsigned()->nullable();
-            $table->foreign('eglise_id')->references('id')->on('eglises');
+            $table->foreign('eglise_id')->references('id')->on('eglises')->onDelete('cascade');
         });
     }
 

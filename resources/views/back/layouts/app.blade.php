@@ -5,13 +5,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <title>JESUS-REVIENT</title>
+        <title>JESUS-REVIENT TV</title>
 
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/back/img/favicon.png') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/front/images/_content/favicon.ico') }}">
 
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('assets/back/css/bootstrap.min.css') }}">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{ asset('assets/back/css/font-awesome.min.css') }}">
@@ -35,6 +37,7 @@
 
         {{-- Datatables --}}
         <link rel="stylesheet" href="{{ asset('assets/back/css/datatables.min.css') }}">
+
 
         @yield('css')
     </head>
@@ -82,6 +85,8 @@
         <!-- Toastr JS -->
         <script src="{{ asset('assets/back/js/toastr.min.js') }}"></script>
         {!! Toastr::message() !!}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
         @yield('script')
 

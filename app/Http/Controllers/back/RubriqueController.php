@@ -26,7 +26,7 @@ class RubriqueController extends Controller
     {
         Rubrique::create($request->all());
 
-        Toastr::success('Ce Rubrique a été bien ajouté', 'Action sur Rubrique');
+        Toastr::success('Rubrique bien ajouté(e)', 'Action sur Rubrique');
 
         return redirect()->route('back.rubrique.create');
     }
@@ -50,7 +50,7 @@ class RubriqueController extends Controller
         $rubrique = Rubrique::findOrFail($id);
         $rubrique->update($request->all());
 
-        Toastr::success('Ce Rubrique a été bien mis à jour', 'Action sur Rubrique');
+        Toastr::success('Rubrique bien mis à jour', 'Action sur Rubrique');
 
         return redirect()->route('back.rubrique.index');
     }
@@ -60,7 +60,7 @@ class RubriqueController extends Controller
         $rubrique = Rubrique::findOrFail($id);
         $rubrique->delete();
 
-        Toastr::success('Ce Rubrique a été bien supprimé', 'Action sur Rubrique');
+        Toastr::success('Rubrique bien supprimé(e)', 'Action sur Rubrique');
 
         return redirect()->route('back.rubrique.index');
     }

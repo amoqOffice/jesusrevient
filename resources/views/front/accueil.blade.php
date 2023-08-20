@@ -8,7 +8,73 @@
 @endphp
 
 @section('content')
-    @include('front.partials.homeCarousel')
+    {{-- Banner --}}
+    <section class="pt-0 pb-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tiny-slider arrow-hover arrow-blur arrow-white arrow-round rounded-3 overflow-hidden">
+                        <div class="tiny-slider-inner"
+                            data-autoplay="true"
+                            data-hoverpause="true"
+                            data-gutter="1"
+                            data-arrow="true"
+                            data-dots="false"
+                            data-items="1">
+
+                            <!-- Slide 1 -->
+                            <div class="card card-overlay-bottom card-bg-scale h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url({{ asset('assets/front/images/_banner/banner-1.jpg') }}); background-position: center left; background-size: cover;">
+                                <!-- Card Image overlay -->
+                                <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
+                                    <div class="w-100 mt-auto">
+                                        <div class="col-md-10 col-lg-7">
+                                            <!-- Card category -->
+                                            <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualité</a>
+                                            <!-- Card title -->
+                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Le feu du reveil embrase tout les pays du monde entier🔥</a></h2>
+                                            <p class="text-white">Tel un feu, le réveil enflamme le monde chaque jour, d'un bout à l'autre. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="card card-overlay-bottom card-bg-scale h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url({{ asset('assets/front/images/_banner/banner-2.jpg') }}); background-position: center left; background-size: cover;">
+                                <!-- Card Image overlay -->
+                                <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
+                                    <div class="w-100 mt-auto">
+                                        <div class="col-md-10 col-lg-7">
+                                            <!-- Card category -->
+                                            <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualité</a>
+                                            <!-- Card title -->
+                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">💥La puissance de l'Evangile transforme les vies</a></h2>
+                                            <p class="text-white">Des vies sont profondément transformées par la puissance de l'Evangile. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="card card-overlay-bottom card-bg-scale h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url({{ asset('assets/front/images/_banner/banner-3.jpg') }}); background-position: center left; background-size: cover;">
+                                <!-- Card Image overlay -->
+                                <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
+                                    <div class="w-100 mt-auto">
+                                        <div class="col-md-10 col-lg-7">
+                                            <!-- Card category -->
+                                            <a href="#" class="badge text-bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualié</a>
+                                            <!-- Card title -->
+                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Jésus-Christ prépare son Eglise pour l'enlèvement</a></h2>
+                                            <p class="text-white">La fin des temps est proche, Rachetez le temps car les jours sont mauvais, soyez prêt. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         {{-- Témoignages --}}
@@ -68,7 +134,7 @@
             <div class="col-lg-9 col-sm-12">
                 <div class="mb-4">
 					<h2 class="m-0"><i class="bi bi-megaphone me-2"></i>Enseignements</h2>
-					<p>Latest breaking news, pictures, videos, and special reports</p>
+					<p>Bénéficiez des enseignements basé sur sur la saine doctrine</p>
 				</div>
                 <div class="row gy-4">
                     @foreach ($enseignements as $enseignement)

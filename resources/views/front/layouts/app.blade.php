@@ -5,8 +5,8 @@
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description" content="Bootstrap based News, Magazine and Blog Theme">
+	<meta name="author" content="Jesusrevient.tv">
+	<meta name="description" content="JESUS-REVIENT.TV EST UNE CHAÎNE CHRÉTIENNE QUI SONNE LA TROMPETTE DE LA REPENTANCE À TOUTE LA TERRE.">
 
 	<!-- Dark mode -->
 	<script>
@@ -62,13 +62,12 @@
 						showActiveTheme(theme)
 					})
 				})
-
 			}
 		})
 	</script>
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="{{ asset('assets/front/images/favicon.ico') }}">
+	<link rel="shortcut icon" href="{{ asset('assets/front/images/_content/favicon.ico') }}">
 
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -79,9 +78,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/bootstrap-icons.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/tiny-slider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/glightbox.css') }}">
-
-<script src="assets/vendor/glightbox/js/glightbox.js"></script>
-
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/style.css') }}">
@@ -114,59 +110,53 @@
 </head>
 
 <body>
+    <!-- HEADER -->
+    @include('front/layouts/header')
 
-<!-- HEADER -->
-@include('front/layouts/header')
+    <!-- CONTENT -->
+    <main>
+        @yield('content')
+    </main>
 
-<!-- CONTENT -->
-<main>
-    @yield('content')
-</main>
+    <!-- FOOTER -->
+    @include('front/layouts/footer')
 
-<!-- FOOTER -->
-@include('front/layouts/footer')
+    <!-- Cookies alert START -->
+    {{-- <div class="alert alert-light alert-dismissible fade show position-fixed bottom-0 start-50 translate-middle-x z-index-99 d-lg-flex justify-content-between align-items-center shadow p-4 col-9 col-md-5" role="alert" id="cookieAlert">
+        <p class="m-0 pe-3">Ce site web stocke des cookies sur votre ordinateur. Pour en savoir plus sur les cookies que nous utilisons, consultez notre <a class="text-reset" href="#"> <u>
+            Politique de confidentialité</u></a></p>
+        <div class="d-flex mt-3 mt-lg-0">
+            <button type="button" class="btn btn-success-soft btn-sm mb-0 me-2" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">Accepter</span>
+            </button>
+            <button type="button" class="btn btn-danger-soft btn-sm mb-0" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">Decliner</span>
+            </button>
+        </div>
+    </div> --}}
 
-<!-- =======================
-Cookies alert START -->
-<div class="alert alert-light alert-dismissible fade show position-fixed bottom-0 start-50 translate-middle-x z-index-99 d-lg-flex justify-content-between align-items-center shadow p-4 col-9 col-md-5" role="alert">
-	<p class="m-0 pe-3">This website stores cookies on your computer. To find out more about the cookies we use, see our <a class="text-reset" href="#"> <u>Privacy Policy</u></a></p>
-	<div class="d-flex mt-3 mt-lg-0">
-		<button type="button" class="btn btn-success-soft btn-sm mb-0 me-2" data-bs-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">Accept</span>
-		</button>
-		<button type="button" class="btn btn-danger-soft btn-sm mb-0" data-bs-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">Decline</span>
-		</button>
-	</div>
-</div>
-<!-- =======================
-Cookies alert END -->
+    <!-- Back to top -->
+    <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
 
-<!-- Back to top -->
-<div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
+    <!-- =======================
+    JS libraries, plugins and custom scripts -->
 
-<!-- =======================
-JS libraries, plugins and custom scripts -->
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('assets/front/js/bootstrap.bundle.min.js') }}"></script>
 
-<!-- Bootstrap JS -->
-<script src="{{ asset('assets/front/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Vendors -->
+    <script src="{{ asset('assets/front/js/tiny-slider.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jarallax.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jarallax-video.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/sticky.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/back/js/lity.min.js') }}"></script> --}}
 
-<!-- Vendors -->
-<script src="{{ asset('assets/front/js/tiny-slider.js') }}"></script>
-<script src="{{ asset('assets/front/js/jarallax.min.js') }}"></script>
-<script src="{{ asset('assets/front/js/jarallax-video.min.js') }}"></script>
-<script src="{{ asset('assets/front/js/sticky.min.js') }}"></script>
-{{-- <script src="{{ asset('assets/back/js/lity.min.js') }}"></script> --}}
-	<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+    <script src="{{ asset('assets/front/js/glightbox.js') }}"></script>
 
-<script src="{{ asset('assets/front/js/glightbox.js') }}"></script>
+    {{-- @yield('script') --}}
+    <script src="{{ asset('assets/front/js/vanilla-tilt.min.js') }}"></script>
 
-{{-- @yield('script') --}}
-<script src="{{ asset('assets/front/js/vanilla-tilt.min.js') }}"></script>
-
-
-<!-- Template Functions -->
-<script src="{{ asset('assets/front/js/functions.js') }}"></script>
-
+    <!-- Template Functions -->
+    <script src="{{ asset('assets/front/js/functions.js') }}"></script>
 </body>
 </html>

@@ -13,55 +13,58 @@
                 {{-- Bouton Ajout Elément --}}
                 <a href="{{ route('back.rubrique.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) Rubrique</a>
             </div>
+        </div>
+    </div>
 
-            <div class="card card-table">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Liste des Rubriques </h4>
                 </div>
                 <div class="card-body">
-                    <div class="">
-                        <table id="table" class="table mb-0 table-hover">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" style="margin: 0px 0px 0px 9px; padding: 10px;">
-                                                <input type="checkbox" style="cursor: pointer" class="checkbox-parent">
-                                            </span>
-                                        </div>
-                                    </th>
-                                    <th>ID</th>
-                                    <th>Nom</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($rubriques as $rubrique)
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $rubrique->id }}">
-                                            </div>
-                                        </td>
-                                        <td data-id="{{ $rubrique->id }}">#{{ $loop->index + 1 }}</td>
-                                        <td>{{ $rubrique->nom }}</td>
+                    <table id="table_rubrique" class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="margin: 0px 0px 0px 9px;padding: 10px;">
+                                            <input type="checkbox" style="cursor: pointer" class="checkbox-parent">
+                                        </span>
+                                    </div>
+                                </th>
+                                <th>ID</th>
+                                <th>Nom</th>
 
-                                        <td>
-                                            <a href="{{ route('back.rubrique.show', $rubrique->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
-                                                <span class="text-success"><i class="fa fa-eye"></i> Voir</span>
-                                            </a>
-                                            <a href="{{ route('back.rubrique.edit', $rubrique->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
-                                                <span class="text-warning"><i class="fa fa-pencil-square-o "></i>  Modifier</span>
-                                            </a>
-                                            <a href="{{ route('back.rubrique.delete', $rubrique->id) }}" class="bg-danger-light btn-delete btn-sm" title="Modifier" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette rubrique ?')">
-                                                <span class="text-danger"><i class="fa fa-trash"></i> Supprimer</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($rubriques as $rubrique)
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $rubrique->id }}">
+                                        </div>
+                                    </td>
+                                    <td data-id="{{ $rubrique->id }}">#{{ $loop->index + 1 }}</td>
+                                    <td>{{ $rubrique->nom }}</td>
+
+                                    <td>
+                                        <a href="{{ route('back.rubrique.show', $rubrique->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
+                                            <span class="text-success"><i class="fa fa-eye"></i></span>
+                                        </a>
+                                        <a href="{{ route('back.rubrique.edit', $rubrique->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
+                                            <span class="text-warning"><i class="fa fa-pencil-square-o "></i></span>
+                                        </a>
+                                        <a href="{{ route('back.rubrique.delete', $rubrique->id) }}" class="bg-danger-light btn-delete btn-sm" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette rubrique ?')">
+                                            <span class="text-danger"><i class="fa fa-trash"></i></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -70,6 +73,11 @@
 
 @section('script')
     <script>
+        // Datatable
+        $(document).ready( function () {
+            $('#table_rubrique').DataTable();
+        } );
+
         // Affiche le bouton de suppression multiple si plus de 2 éléments sont selectionné
         var counterCheckbox = 0
         $(".checkbox-child").click(function(e) {

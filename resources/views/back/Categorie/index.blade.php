@@ -5,66 +5,66 @@
         <div class="col-sm-12">
             <div class="form-group">
                 {{-- Bouton de rafraîchissement --}}
-                <a href="{{ route('back.categorie.index') }}" class="btn bg-warning-light" data-toggle="tooltip"
-                data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
+                <a href="{{ route('back.categorie.index') }}" class="btn bg-warning-light" data-toggle="tooltip" data-placement="top" title="Rafraîchir"><i class="fa fa-refresh"></i></a>
 
                 {{-- Bouton de suppression multiple --}}
                 <button class="btn bg-danger-light btn-delete-all opacity-0" data-plalcement="top" title="Supprimer"><i class="fa fa-trash"></i></button>
 
                 {{-- Bouton Ajout Elément --}}
-                <a href="{{ route('back.categorie.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Ajouter un(e) Categorie</a>
+                <a href="{{ route('back.categorie.create') }}" class="font-weight-bold btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Ajouter un(e) Categorie</a>
             </div>
+        </div>
+    </div>
 
-            <div class="card card-table">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
                 <div class="card-header">
                     <h4 class="card-title"> Liste des Categories </h4>
                 </div>
                 <div class="card-body">
-                    <div class="">
-                        <table id="table" class="table mb-0 table-hover">
-                            <thead>
+                    <table id="table_categorie" class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="margin: 0px 0px 0px 9px;padding: 10px;">
+                                            <input type="checkbox" style="cursor: pointer" class="checkbox-parent">
+                                        </span>
+                                    </div>
+                                </th>
+                                <th>ID</th>
+                                <th>Nom</th>
+
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categories as $categorie)
                                 <tr>
-                                    <th>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" style="margin: 0px 0px 0px 9px;padding: 10px;">
-                                                <input style="cursor: pointer" type="checkbox" class="checkbox-parent">
-                                            </span>
+                                    <td>
+                                        <div class="form-check">
+                                            <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $categorie->id }}">
                                         </div>
-                                    </th>
-                                    <th>ID</th>
-                                    <th class="filter">Nom</th>
-                                    <th>Actions</th>
+                                    </td>
+                                    <td data-id="{{ $categorie->id }}">#{{ $loop->index + 1 }}</td>
+                                    <td>{{ $categorie->nom }}</td>
+
+                                    <td>
+                                        <a href="{{ route('back.categorie.show', $categorie->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">
+                                            <span class="text-success"><i class="fa fa-eye"></i></span>
+                                        </a>
+                                        <a href="{{ route('back.categorie.edit', $categorie->id) }}" class="btn bg-warning-light btn-sm mr-1" title="Modifier">
+                                            <span class="text-warning"><i class="fa fa-pencil-square-o "></i></span>
+                                        </a>
+                                        <a href="{{ route('back.categorie.delete', $categorie->id) }}" class="bg-danger-light btn-delete btn-sm" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ce ou cette categorie ?')">
+                                            <span class="text-danger"><i class="fa fa-trash"></i></span>
+                                        </a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($categories as $categorie)
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $categorie->id }}">
-                                            </div>
-                                        </td>
-                                        <td data-id="{{ $categorie->id }}">#{{ $loop->index + 1 }}</td>
-                                        <td>{{ $categorie->nom }}</td>
-                                        <td>
-                                            <a href="{{ route('back.categorie.show', $categorie->id) }}"
-                                                class="btn bg-success-light btn-sm mr-1" title="Voir">
-                                                <span class="text-success"><i class="fa fa-eye"></i> Voir</span>
-                                            </a>
-                                            <a href="{{ route('back.categorie.edit', $categorie->id) }}"
-                                                class="btn bg-warning-light btn-sm mr-1" title="Modifier">
-                                                <span class="text-warning"><i class="fa fa-pencil-square-o "></i>
-                                                    Modifier</span>
-                                            </a>
-                                            <a href="{{ route('back.categorie.delete', $categorie->id) }}" class="bg-danger-light btn-sm btn-delete" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?')">
-                                                <span class="text-danger"><i class="fa fa-trash"></i> Supprimer</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -73,6 +73,11 @@
 
 @section('script')
     <script>
+        // Datatable
+        $(document).ready( function () {
+            $('#table_categorie').DataTable();
+        } );
+
         // Affiche le bouton de suppression multiple si plus de 2 éléments sont selectionné
         var counterCheckbox = 0
         $(".checkbox-child").click(function(e) {
@@ -152,7 +157,6 @@
                     url: "{{ route('back.categorie.delete_all') }}",
                     data: {'deleted_ids': ids},
                     success: function (response) {
-                        // toastr["success"]("Elements supprimés avec succès")
                         location.reload();
                     }
                 });

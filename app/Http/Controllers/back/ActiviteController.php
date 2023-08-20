@@ -34,8 +34,7 @@ class ActiviteController extends Controller
         return view('back.Activite.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         // Validation des données du formulaire
         $request->validate([
             'titre' => 'required',
@@ -46,6 +45,7 @@ class ActiviteController extends Controller
         $fileName = time() . '.' . $request->img->extension();
         $request->img->move('assets/back/img/uploaded', $fileName);
 
+        // Enregistrements de l'Activité
         $activite = Activite::create([
             'titre' => $request->titre,
             'lieu' => $request->lieu,
@@ -57,15 +57,16 @@ class ActiviteController extends Controller
             'img' => "assets/back/img/uploaded/$fileName",
         ]);
 
-        // Récupérer le type associé à l'activité
+        // Association du Type à l'Activité
         $type = Type::find($request->type_id);
-
-        // Ajouter l'activité au type
         $type->activites()->save($activite);
 
-        // $activite->type()->associate($type)->save();
-        // dd($activite->type);
+        // Différentes Associations liées à l'Activité
+        $activite->eglises()->sync($request->eglise_ids);
+        $activite->rubriques()->sync($request->rubrique_ids);
+        $activite->responsables()->sync($request->responsable_ids);
 
+        // Message de succès et redirection
         Toastr::success('Activité bien ajouté(e)', 'Action sur Activité');
         return redirect()->route('back.activite.create');
     }
@@ -86,11 +87,33 @@ class ActiviteController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Enregistrement de l'image
+        $fileName = time() . '.' . $request->img->extension();
+        $request->img->move('assets/back/img/uploaded', $fileName);
+
+        // Mis à jour des enrégistrements de l'Activité
         $activite = Activite::findOrFail($id);
-        $activite->update($request->all());
+        $activite->titre = $request->titre;
+        $activite->lieu = $request->lieu;
+        $activite->url = $request->url;
+        $activite->description = $request->description;
+        $activite->date_deb = $request->date_deb;
+        $activite->date_fin = $request->date_fin;
+        $activite->type_id = $request->type_id;
+        $activite->img = "assets/back/img/uploaded/$fileName";
+        $activite->save();
 
+        // Association du Type à l'Activité
+        $type = Type::find($request->type_id);
+        $type->activites()->save($activite);
+
+        // Différentes Associations liées à l'Activité
+        $activite->eglises()->sync($request->eglise_ids);
+        $activite->rubriques()->sync($request->rubrique_ids);
+        $activite->responsables()->sync($request->responsable_ids);
+
+        // Message de succès et redirection
         Toastr::success('Activité bien mis à jour', 'Action sur Activité');
-
         return redirect()->route('back.activite.index');
     }
 

@@ -15,9 +15,9 @@ class CreateActiviteRubriqueTable extends Migration
     {
         Schema::create('activite_rubrique', function (Blueprint $table) {
             $table->integer('activite_id')->unsigned()->nullable();
-            $table->foreign('activite_id')->references('id')->on('activites');
+            $table->foreign('activite_id')->references('id')->on('activites')->onDelete('cascade');
             $table->integer('rubrique_id')->unsigned()->nullable();
-            $table->foreign('rubrique_id')->references('id')->on('rubriques');
+            $table->foreign('rubrique_id')->references('id')->on('rubriques')->onDelete('cascade');
         });
     }
 

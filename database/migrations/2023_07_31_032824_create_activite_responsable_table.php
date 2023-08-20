@@ -15,9 +15,9 @@ class CreateActiviteResponsableTable extends Migration
     {
         Schema::create('activite_responsable', function (Blueprint $table) {
             $table->integer('activite_id')->unsigned()->nullable();
-            $table->foreign('activite_id')->references('id')->on('activites');
+            $table->foreign('activite_id')->references('id')->on('activites')->onDelete('cascade');
             $table->integer('responsable_id')->unsigned()->nullable();
-            $table->foreign('responsable_id')->references('id')->on('responsables');
+            $table->foreign('responsable_id')->references('id')->on('responsables')->onDelete('cascade');
         });
     }
 

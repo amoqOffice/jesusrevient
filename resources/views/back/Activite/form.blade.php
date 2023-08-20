@@ -7,6 +7,7 @@
             <div class="card-body">
                 <form action="{{ !$edit ? route('back.activite.store') : route('back.activite.update', $activite->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" value="{{ $activite->id }}" name="activite_id">
                     <div class="row">
                         <!-- Champ titre -->
                         <div class="col-md-6">
@@ -40,7 +41,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label> Image :</label>
-                                <input class="form-control form-control-sm" type="file" name="img" value="{{ $activite->img ?? old('img') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <input required class="form-control form-control-sm" type="file" name="img" value="{{ $activite->img ?? old('img') }}" {{ ($show) ? 'disabled' : ''}}>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -106,19 +107,41 @@
                         </div>
 
                         <!-- Champ type activité -->
-                        {{-- @dd($activite->type) --}}
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Type de l'Activité <span class="text-danger font-weight-bold">*</span> :</label>
-                                <select id="selectTypeActivite" name="type_id" class="form-control" {{ ($show) ? 'disabled' : ''}}>
-                                    {{-- <option value="{{ $activite->type->id ?? '' }}">{{ $activite->type->nom ?? '' }}</option> --}}
+                                <label>Type associé à l'Activité <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select name="type_id" class="form-control form-control-sm" {{ ($show) ? 'disabled' : ''}} title="Sélectionner un Type d'activité">
+                                    <option disabled selected value="">Sélectionnez un Type pour l'Activité</option>
+                                    @foreach (DB::table('types')->select('*')->get() as $type)
+                                        <option value="{{ $type->id }}" {{ isset($activite) && ($activite->type->id == $type->id) ? 'selected' : '' }}>{{ $type->nom }}</option>
+                                    @endforeach
                                 </select>
-                                {{-- <input class="form-control form-control-sm" type="text" required name="type_id" value="{{ $activite->type->id ?? old('type') }}" {{ ($show) ? 'disabled' : ''}}> --}}
-                                {{-- @error('')
-                                    <span class="invalid-feedback">
-                                        {{ $errors->first('') }}
-                                    </span>
-                                @enderror --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        {{-- Rubriques --}}
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Rubriques associées à l'Activité (TV) <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select name="rubrique_ids[]" class="form-control  form-control-sm selectpicker" multiple title="Sélectionner des Rubriques" data-live-search="false" {{ ($show) ? 'disabled' : ''}}>
+                                    @foreach (DB::table('rubriques')->select('*')->get() as $rubrique)
+                                        <option value="{{ $rubrique->id }}" {{ isset($activite) && in_array($rubrique->id, $activite->rubriques->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $rubrique->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- Eglises --}}
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Eglises associées à l'Activité <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select name="eglise_ids[]" class="form-control  form-control-sm selectpicker" multiple title="Sélectionner des Eglises" data-live-search="false" {{ ($show) ? 'disabled' : ''}}>
+                                    @foreach (DB::table('eglises')->select('*')->get() as $eglise)
+                                        <option value="{{ $eglise->id }}" {{ isset($activite) && in_array($eglise->id, $activite->eglises->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $eglise->nom ?? '' }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -143,23 +166,23 @@
         currentUrl = window.location.href;
 
         // Select2 avec ajout de bouton
-        $(document).ready(function() {
-            $('#selectTypeActivite').select2({
-                // placeholder: 'Sélectionnez un Type d\'activité',
-                ajax: {
-                    url: '{{ route('back.types.ajax') }}',
-                    dataType: 'json',
-                    delay: 250,
-                    processResults: function(data) {
-                        return {
-                            results: data
-                        };
-                    },
-                    cache: true
-                },
-            }).on('select2:open', () => {
-                $(".select2-results:not(:has(a))").append('<a href="{{ route('back.type.create') }}/?back='+currentUrl+'"'+' style="padding: 6px; height: 20px; display: inline-table;"><i class="fa fa-plus"><i/>  Créer un nouveau Type</a>');
-            });
-        })
+        // $(document).ready(function() {
+        //     $('#selectTypeActivite').select2({
+        //         // placeholder: 'Sélectionnez un Type d\'activité',
+        //         ajax: {
+        //             url: '{{ route('back.types.ajax') }}',
+        //             dataType: 'json',
+        //             delay: 250,
+        //             processResults: function(data) {
+        //                 return {
+        //                     results: data
+        //                 };
+        //             },
+        //             cache: true
+        //         },
+        //     }).on('select2:open', () => {
+        //         $(".select2-results:not(:has(a))").append('<a href="{{ route('back.type.create') }}/?back='+currentUrl+'"'+' style="padding: 6px; height: 20px; display: inline-table;"><i class="fa fa-plus"><i/>  Créer un nouveau Type</a>');
+        //     });
+        // })
     </script>
 @endsection

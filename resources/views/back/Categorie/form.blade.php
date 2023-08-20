@@ -8,12 +8,12 @@
                 <form action="{{ !$edit ? route('back.categorie.store') : route('back.categorie.update', $categorie->id) }}" method="POST">
                     @csrf
                     
-					<div class="row">
+<div class="row">
                         <!-- Champ nom -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label> Nom :</label>
-                                <input class="form-control form-control-sm" type="text" placeholder="Entrer le nom de la commande:" required name="nom" value="{{ $categorie->nom ?? old('nom') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <label> Nom <span class="text-danger font-weight-bold">*</span> :</label>
+                                <input class="form-control form-control-sm" type="text" required name="nom" value="{{ $categorie->nom ?? old('nom') }}" {{ ($show) ? 'disabled' : ''}}>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -21,7 +21,7 @@
                                 @enderror --}}
                             </div>
                         </div>
-					</div>
+ </div>
 
                     <div class="text-right pt-2">
                         <a href="{{ route('back.categorie.index') }}" class="btn btn-sm btn-danger  btn-navs"><i class="fa fa-close"></i> Fermer</a>
