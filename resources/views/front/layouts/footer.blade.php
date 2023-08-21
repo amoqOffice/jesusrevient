@@ -8,9 +8,9 @@ Footer START -->
 			<!-- Footer Widget -->
 			<div class="col-md-6 col-lg-4 mb-4">
 				<img class="light-mode-item" src="{{ asset('assets/front/images/logo-footer.png') }}" alt="logo">
-				<img class="dark-mode-item" src="{{ asset('assets/images/logo-light.svg') }}" alt="logo">
+				<img class="dark-mode-item" src="{{ asset('assets/front/images/logo-footer.png') }}" alt="logo">
 				<p class="mt-3">The next-generation blog, news, and magazine theme for you to start sharing your stories today! This Bootstrap 5 based theme is ideal for all types of sites that deliver the news.</p>
-				<div class="mt-4">©2023 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">Webestica</a>. All rights reserved
+				<div class="mt-4">©2023 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">JESUS-REVIENT.STUDIO</a>. Tout droits sont réservés
 				</div>
 			</div>
 
