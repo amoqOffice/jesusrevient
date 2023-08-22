@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label for="">Image <span class="text-danger font-weight-bold">*</span> :</label><br>
                                 <div class="avatar avatar-xxl">
-                                    <img id="blah" data-lity style="cursor: pointer" class="avatar-img rounded-circle" alt="your image" src="data:image/png;base64, {{ generateImage(128, 128) }}"/>
+                                    <img id="blah" data-lity style="cursor: pointer" class="avatar-img rounded-circle" alt="{{ $activite->nom ?? 'your image' }}" src="{{ isset($activite) ? asset("$activite->img") : 'data:image/png;base64,'.generateImage(128, 128) }}"/>
                                 </div>
                                 <input class="ml-3" name="img" type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
 
@@ -64,6 +64,18 @@
                                     </span>
                                 @enderror --}}
                             </div>
+                            <div class="form-group mt-3">
+                                <label> Ajouter en Evènement ?</label>
+                                <select name="isEvent" {{ ($show) ? 'disabled' : ''}} class="form-control form-control-sm">
+                                    <option value="true" {{ isset($activite) && ($activite->isEvent == true) ? 'selected' : '' }}>Oui</option>
+                                    <option value="false" {{ isset($activite) && ($activite->isEvent == false) ? 'selected' : '' }}>Non</option>
+                                </select>
+                                {{-- @error('')
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('') }}
+                                    </span>
+                                @enderror --}}
+                            </div>
                         </div>
                     </div>
 
@@ -71,7 +83,7 @@
                         <!-- Champ description -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label> Description :</label>
+                                <label> Description <span class="font-weight-bold">(150 caractères minimum) :</span></label>
                                 <textarea {{ ($show) ? 'disabled' : ''}} name="description" class="form-control" rows="6">{{ $activite->description ?? old('description') }}</textarea>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
@@ -151,6 +163,31 @@
                                 <select name="responsable_ids[]" class="form-control  form-control-sm selectpicker" multiple title="Sélectionner les Responsables liés à l'Activité" data-live-search="false" {{ ($show) ? 'disabled' : ''}}>
                                     @foreach (DB::table('responsables')->select('*')->get() as $responsable)
                                         <option value="{{ $responsable->id }}" {{ isset($activite) && in_array($responsable->id, $activite->responsables->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $responsable->nom ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- Catégorie --}}
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Catégorie associée à l'Activité <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select name="categorie_id" class="form-control form-control-sm" {{ ($show) ? 'disabled' : ''}} title="Sélectionner un Type d'activité">
+                                    <option disabled selected value="">Sélectionnez une Catégorie pour l'Activité</option>
+                                    @foreach (DB::table('categories')->select('*')->get() as $categorie)
+                                        <option value="{{ $categorie->id }}" {{ isset($activite) && !is_null($activite->categorie) && ($activite->categorie->id == $categorie->id) ? 'selected' : '' }}>{{ $categorie->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- Tags --}}
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Tags associé à l'Activité <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select name="tag_ids[]" class="form-control  form-control-sm selectpicker" multiple title="Sélectionner les Tags liés à l'Activité" data-live-search="false" {{ ($show) ? 'disabled' : ''}}>
+                                    @foreach (DB::table('tags')->select('*')->get() as $tag)
+                                        <option value="{{ $tag->id }}" {{ isset($activite) && in_array($tag->id, $activite->tags->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $tag->nom ?? '' }}</option>
                                     @endforeach
                                 </select>
                             </div>

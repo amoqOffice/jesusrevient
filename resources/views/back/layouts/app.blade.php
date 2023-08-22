@@ -38,6 +38,14 @@
         {{-- Datatables --}}
         <link rel="stylesheet" href="{{ asset('assets/back/css/datatables.min.css') }}">
 
+        <style>
+            .form-control:disabled, .form-control[readonly] {
+                background-color: #FAFBFC;
+                color: #6E7174;
+                opacity: 1;
+                border: 0px;
+        }
+        </style>
 
         @yield('css')
     </head>

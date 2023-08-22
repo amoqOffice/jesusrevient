@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Back;
 
 use App\Activite;
+use App\Categorie;
+use App\Eglise;
+use App\Responsable;
+use App\Rubrique;
 use App\Type;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
@@ -21,16 +25,45 @@ class ActiviteController extends Controller
     public function create()
     {
         // Vérification de Type avant création d'Activité
-        // session()->forget('isExist');
-        session()->put('isExist', false);
+        session()->forget('isExist');
+        // session()->put('isExist', true);
+
         if(Type::first() == null) {
-            session()->put('isExist', true);
+            session()->put('isExist', false);
+            session()->put('previous_url', route('back.activite.create'));
+
             Toastr::warning('Vous devez créer le Type d\'Activité en premier', 'Alerte Système');
-            return redirect()->route('back.type.create')->with([
-                'message' => 'Vous devez créer le Type d\'Activité en premier',
-                'alert' => 'warning',
-            ]);
+            return redirect()->route('back.type.create');
         }
+        elseif (Responsable::first() == null) {
+            session()->put('isExist', false);
+            session()->put('previous_url', route('back.activite.create'));
+
+            Toastr::warning('Vous devez créer le Responsable lié à l\'Activité en premier', 'Alerte Système');
+            return redirect()->route('back.responsable.create');
+        }
+        elseif (Categorie::first() == null) {
+            session()->put('isExist', false);
+            session()->put('previous_url', route('back.activite.create'));
+
+            Toastr::warning('Vous devez créer la Catégorie liée à l\'Activité en premier', 'Alerte Système');
+            return redirect()->route('back.categorie.create');
+        }
+        elseif (Rubrique::first() == null) {
+            session()->put('isExist', false);
+            session()->put('previous_url', route('back.activite.create'));
+
+            Toastr::warning('Vous devez créer la Rubrique liée à l\'Activité en premier', 'Alerte Système');
+            return redirect()->route('back.rubrique.create');
+        }
+        elseif (Eglise::first() == null) {
+            session()->put('isExist', false);
+            session()->put('previous_url', route('back.activite.create'));
+
+            Toastr::warning('Vous devez créer l\'Eglise liée à l\'Activité en premier', 'Alerte Système');
+            return redirect()->route('back.eglise.create');
+        }
+
         return view('back.Activite.create');
     }
 
@@ -60,6 +93,8 @@ class ActiviteController extends Controller
             'date_deb' => date('Y-m-d', strtotime($request->date_deb)),
             'date_fin' => date('Y-m-d', strtotime($request->date_fin)),
             'type_id' => $request->type_id,
+            'categorie_id' => $request->categorie_id,
+            'isEvent' => (boolean)$request->isEvent,
             'img' => "assets/back/img/uploaded/$fileName",
         ]);
 
@@ -68,6 +103,7 @@ class ActiviteController extends Controller
         $type->activites()->save($activite);
 
         // Différentes Associations liées à l'Activité
+        $activite->tags()->sync($request->tag_ids);
         $activite->eglises()->sync($request->eglise_ids);
         $activite->rubriques()->sync($request->rubrique_ids);
         $activite->responsables()->sync($request->responsable_ids);

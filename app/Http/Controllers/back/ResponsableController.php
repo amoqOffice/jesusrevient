@@ -24,9 +24,23 @@ class ResponsableController extends Controller
 
     public function store(Request $request)
     {
-        Responsable::create($request->all());
+        // Enregistrement des données
+        $responsable = Responsable::create($request->all());
 
-        Toastr::success('Responsable bien ajouté(e)', 'Action sur Responsable');
+        // Valide la création de l'association
+        if ($responsable->id != null) {
+            // Message de succès
+            Toastr::success('Responsable bien ajouté(e)', 'Action sur Responsable');
+
+            session()->put('isExist', true);
+        }
+
+        // Gestion des conditions de redirection
+        if(session()->has('isExist') && session()->get('isExist') == true) {
+            session()->forget('isExist'); // Remise a 0 de isExist
+
+            return redirect(session()->get('previous_url'));
+        }
 
         return redirect()->route('back.responsable.create');
     }

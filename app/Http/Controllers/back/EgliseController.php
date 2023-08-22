@@ -24,9 +24,22 @@ class EgliseController extends Controller
 
     public function store(Request $request)
     {
-        Eglise::create($request->all());
+        // Enregistrement des données
+        $eglise = Eglise::create($request->all());
 
-        Toastr::success('Eglise bien ajouté(e)', 'Action sur Eglise');
+        if ($eglise->id != null) {
+            // Message de succès
+            Toastr::success('Eglise bien ajouté(e)', 'Action sur Eglise');
+
+            session()->put('isExist', true);
+        }
+
+        // Gestion des conditions de redirection
+        if(session()->has('isExist') && session()->get('isExist') == true) {
+            session()->forget('isExist'); // Remise a 0 de isExist
+
+            return redirect(session()->get('previous_url'));
+        }
 
         return redirect()->route('back.eglise.create');
     }

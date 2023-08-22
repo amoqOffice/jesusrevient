@@ -77,12 +77,13 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/font-awesome/css/all.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/bootstrap-icons.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/tiny-slider.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/front/css/plyr.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/plyr.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/glightbox.css') }}">
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/style.css') }}">
+
+    @yield('style')
 
     <style>
         .fixed-div-400-300 {
@@ -107,8 +108,6 @@
             object-fit: contain;
         }
     </style>
-
-    @yield('style')
 </head>
 
 <body>
@@ -151,7 +150,7 @@
     <script src="{{ asset('assets/front/js/jarallax.min.js') }}"></script>
     <script src="{{ asset('assets/front/js/jarallax-video.min.js') }}"></script>
     <script src="{{ asset('assets/front/js/sticky.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/front/js/plyr.js') }}"></script> --}}
+    <script src="{{ asset('assets/front/js/plyr.js') }}"></script>
     {{-- <script src="{{ asset('assets/back/js/lity.min.js') }}"></script> --}}
 
     <script src="{{ asset('assets/front/js/glightbox.js') }}"></script>

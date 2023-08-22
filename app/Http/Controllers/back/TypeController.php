@@ -51,24 +51,29 @@ class TypeController extends Controller
         ]);
 
         // Enregistrement des données
-        Type::create([
+        $type = Type::create([
             'nom' => $request->nom,
             'description' => $request->description,
         ]);
 
-        // Message de succès
-        Toastr::success('Type bien ajouté(e)', 'Action sur Type');
+        // Valide la création de l'association
+        if ($type->id != null) {
+            // Message de succès
+            Toastr::success('Type bien ajouté(e)', 'Action sur Type');
 
-        // Gestion des Différentes conditions de redirection
+            session()->put('isExist', true);
+        }
+
+        // Gestion des conditions de redirection
         if(session()->has('isExist') && session()->get('isExist') == true) {
+            $url = session()->get('previous_url');
+
             session()->forget('isExist'); // Remise a 0 de isExist
-            return redirect()->route('back.activite.create');
-        } // Redirection quand controle procédure enclenché
-        elseif (session()->has('back')) {
-            $backUrl = session()->get('back');
-            session()->forget('back'); // Remise a 0 de back
-            return redirect($backUrl);
-        } // Redirection quand ajouter select 2 cliqué
+            session()->forget('previous_url'); // Remise a 0 de previous_url
+
+            return redirect($url);
+        }
+
         return redirect()->route('back.type.create');
     }
 

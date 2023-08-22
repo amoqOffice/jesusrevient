@@ -1,8 +1,49 @@
 @extends('front/layouts/app', ['title' => 'Accueil'])
 
+@section('style')
+    <style>
+        .btn-pulse {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: none;
+            box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+            border-radius: 50%;
+            background-color: #e84c3d;
+            /* background-image: url(http:YOUR-URL-IMAGE.png); */
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrer horizontalement et verticalement */
+            -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+
+        .btn-pulse:hover {
+            -webkit-animation: none;
+            -moz-animation: none;
+            -ms-animation: none;
+            animation: none;
+        }
+        @-webkit-keyframes pulse { to { box-shadow: 0 0 0 45px rgba(232, 76, 61, 0); } }
+        @-moz-keyframes pulse { to { box-shadow: 0 0 0 45px rgba(232, 76, 61, 0); } }
+        @-ms-keyframes pulse { to { box-shadow: 0 0 0 45px rgba(232, 76, 61, 0); } }
+        @keyframes pulse { to { box-shadow: 0 0 0 45px rgba(232, 76, 61, 0); } }
+    </style>
+@endsection
+
 @php
     // Reccupération des témoignages
-    $temoignages = $types->where('nom', 'Temoignage')->first()->activites()->orderBy('date_deb', 'desc')->get();
+    $temoignages = $types
+        ->where('nom', utf8_encode('Temoignage'))
+        ->first()
+        ->activites()
+        ->orderBy('date_deb', 'desc')
+        ->get();
 
     // Reccupération des Enseignements
     $enseignements = $types->where('nom', 'Enseignement')->first()->activites()->orderBy('date_deb', 'desc')->paginate(4);
@@ -104,19 +145,10 @@
                             <div class="card">
                                 <!-- Card img -->
                                 <div class="position-relative">
-                                    <img class="card-img" src="{{ $temoignage->img }}" alt="Card image">
+                                    <img class="card-img fixed-div-268-178" src="{{ $temoignage->img }}" alt="Card image">
                                 </div>
                                 <div class="card-body px-0 pt-3">
-                                    <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">{{ truncate_string($temoignage->titre, 50) }}</a></h5>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <!-- Card img -->
-                                <div class="position-relative">
-                                    <img class="card-img" src="{{ $temoignage->img }}" alt="Card image">
-                                </div>
-                                <div class="card-body px-0 pt-3">
-                                    <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">{{ truncate_string($temoignage->titre, 50) }}</a></h5>
+                                    <h5 class="card-title"><a href="#" class="btn-link text-reset fw-bold">{{ truncate_string($temoignage->titre, 50) }}</a></h5>
                                 </div>
                             </div>
                         @endforeach
@@ -128,27 +160,12 @@
         {{-- Afficher direct --}}
         <div class="bg-primary my-4 bg-opacity-10 rounded-3 p-5 h-100">
             <div class="row">
-                <div class="col-sm-6 position-relative text-cente my-auto">
-                    <h1 class="mb-1">Suivez le direct</h1>
-                    <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+                <div class="col-sm-8 position-relative text-cente my-auto px-4">
+                    <h1 class="mb-1 text-primary">Suivez le direct</h1>
+                    <p>Rejoignez notre diffusion en direct dédiée au salut de vos âmes. Immergez-vous dans des enseignements profonds, des prières puissantes et des moments de louange et d'adoration intenses. Restez connecté pour nourrir votre âme et fortifier votre marche spirituelle.</p>
                 </div>
-                <div class="col-sm-6 px-4">
-                    <a href="#" class="btn btn-danger btn-pulse">Le Direct</a>
-                </div>
-            </div>
-        </div>
-
-        {{-- Télécharger l'application --}}
-        <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100">
-            <div class="row">
-                <div class="col-sm-6 position-relative text-cente my-auto">
-                    <h1 class="mb-1">Télécharger l'application</h1>
-                    <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
-                    <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
-                    <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
-                </div>
-                <div class="col-sm-6 px-4">
-                    <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" alt="">
+                <div class="col-sm-2 my-auto mx-auto px-4">
+                    <a href="#" class="btn text-light btn-pulse">Cliquer ici</a>
                 </div>
             </div>
         </div>
@@ -168,18 +185,18 @@
                                 <a href="{{ $enseignement->url }}">
                                     <!-- Card img -->
                                     <div class="position-relative">
-                                        <img class="card-img img-scale" syle="width: 397.5px; height: 298.13px" src="{{ $enseignement->img }}" alt="Card image">
+                                        <img class="card-img img-scale fixed-div-400-300" syle="width: 397.5px; height: 298.13px" src="{{ $enseignement->img }}" alt="Card image">
                                     </div>
                                     <div class="card-body px-0 pt-3">
                                         <h4 class="card-title"><a href="{{ $enseignement->url }}" class="btn-link text-reset fw-bold">{{ truncate_string($enseignement->titre, 50) }}</a></h4>
-                                        <p class="card-text">{{ $enseignement->description }}</p>
+                                        <p class="card-text">{{ truncate_string($enseignement->description, 150) }}</p>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                                             <li class="nav-item">
                                                 <div class="nav-link">
                                                     <div class="d-flex align-items-center position-relative">
                                                         <div class="avatar avatar-sm">
-                                                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/accueil_logo.png') }}" alt="avatar">
+                                                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar">
                                                         </div>
                                                         <span class="ms-2">par
                                                             <a href="#" class="stretched-link text-reset btn-link">
@@ -235,7 +252,7 @@
 
 					<!-- Trending topics widget START -->
 					<div>
-						<h4 class="mt-4 mb-3">Thèmes récents</h4>
+						<h5 class="mt-4 mb-3">Les Eglises JESUS-REVIENT</h5>
 						<!-- Category item -->
                         @foreach ($tags as $tag)
                             <div class="text-center mb-2 card-bg-scale position-relative overflow-hidden rounded bg-primary bg-dark-overlay-4">
@@ -291,7 +308,7 @@
                         <div class="card card-overlay-bottom card-img-scale">
                             <a href="#">
                                 <!-- Card Image -->
-                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
+                                <img class="card-img" src="{{ generateImage(40, 40) }}" alt="">
                                 <!-- Card Image overlay -->
                                 <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
                                     <div class="w-100 my-auto text-center">
@@ -364,12 +381,132 @@
         </div>
     </div>
 
-    {{-- Apk --}}
-    <div class="row mt-4 mb-4">
-        <div class="col">
-            <a href="#" class="d-block card-img-flash  rounded-3 overflow-hidden">
-                <img src="{{ asset('assets/front/images/adv-3.png') }}" alt="">
-            </a>
+    {{-- Télécharger l'application --}}
+    <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
+        <div class="row">
+            <div class="col-sm-6 position-relative text-cente my-auto">
+                <h1 class="mb-1">Télécharger l'application</h1>
+                <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
+                <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
+                <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+            </div>
+            <div class="col-sm-6 px-4">
+                <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" alt="">
+            </div>
+        </div>
+    </div>
+
+    {{-- TV Programs --}}
+    <div class="row mt-4">
+        <!-- Title -->
+        <div class="mb-3 d-md-flex justify-content-between align-items-center">
+            <h2 class="m-0"><i class="bi bi-megaphone"></i> Messages d'Evangélisation</h2>
+        </div>
+        <div class="col-12">
+            <div class="tiny-slider arrow-blur arrow-round rounded-3 overflow-hidden">
+                <div class="tiny-slider-inner"
+                data-autoplay="true"
+                data-hoverpause="true"
+                data-gutter="24"
+                data-arrow="true"
+                data-dots="false"
+                data-items-xl="4"
+                data-items-lg="3"
+                data-items-md="3"
+                data-items-sm="2"
+                data-items-xs="1">
+                <!-- Card item START -->
+                <div>
+                    <div class="card card-overlay-bottom card-img-scale">
+                        <a href="#">
+                            <!-- Card Image -->
+                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
+                                <div class="w-100 my-auto text-center">
+                                    <!-- Card title -->
+                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
+                                    <h4>
+                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card card-overlay-bottom card-img-scale">
+                        <a href="#">
+                            <!-- Card Image -->
+                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
+                                <div class="w-100 my-auto text-center">
+                                    <!-- Card title -->
+                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
+                                    <h4>
+                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card card-overlay-bottom card-img-scale">
+                        <a href="#">
+                            <!-- Card Image -->
+                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
+                                <div class="w-100 my-auto text-center">
+                                    <!-- Card title -->
+                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
+                                    <h4>
+                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card card-overlay-bottom card-img-scale">
+                        <a href="#">
+                            <!-- Card Image -->
+                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
+                                <div class="w-100 my-auto text-center">
+                                    <!-- Card title -->
+                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
+                                    <h4>
+                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card card-overlay-bottom card-img-scale">
+                        <a href="#">
+                            <!-- Card Image -->
+                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
+                                <div class="w-100 my-auto text-center">
+                                    <!-- Card title -->
+                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
+                                    <h4>
+                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

@@ -24,9 +24,22 @@ class RubriqueController extends Controller
 
     public function store(Request $request)
     {
-        Rubrique::create($request->all());
+        // Enregistrement des données
+        $rubrique = Rubrique::create($request->all());
 
-        Toastr::success('Rubrique bien ajouté(e)', 'Action sur Rubrique');
+        if ($rubrique->id != null) {
+            // Message de succès
+            Toastr::success('Rubrique bien ajouté(e)', 'Action sur Rubrique');
+
+            session()->put('isExist', true);
+        }
+
+        // Gestion des conditions de redirection
+        if(session()->has('isExist') && session()->get('isExist') == true) {
+            session()->forget('isExist'); // Remise a 0 de isExist
+
+            return redirect(session()->get('previous_url'));
+        }
 
         return redirect()->route('back.rubrique.create');
     }

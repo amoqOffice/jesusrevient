@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResponsablesTable extends Migration
+class CreateFichiersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateResponsablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('responsables', function (Blueprint $table) {
+        Schema::create('fichiers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
-            $table->string('poste');
-            $table->string('email')->unique()->nullable();
-            $table->string('contact')->unique();
-            $table->string('photo')->nullable();
-            $table->text('description')->nullable();
+            $table->string('nom')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateResponsablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responsables');
+        Schema::dropIfExists('fichiers');
     }
 }

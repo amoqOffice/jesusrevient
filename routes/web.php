@@ -20,6 +20,12 @@ Route::prefix('predications')->group(function () {
     Route::get('enseignements', 'front\EnseignementController@index')->name('front.predications.enseignements'); //Retourne la liste des enseignements
 
     Route::get('evangelisations', 'front\EvangelisationController@index')->name('front.predications.evangelisations'); //Retourne la liste des evangelisations)
+
+    Route::get('/', 'front\PredicationController@index')->name('front.predications.index'); //Retourne la liste des prédications
+
+    Route::get('{id}/details', 'front\PredicationController@show')->name('front.predications.show'); //Retourne une prédication
+
+    Route::get('{id}/details_videos', 'front\PredicationController@show_videos')->name('front.predications.show_videos'); //Retourne une prédication
 });
 
 Route::prefix('eglises')->group(function () {

@@ -25,8 +25,15 @@
                         <!-- Champ ministere -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label> Ministere <span class="text-danger font-weight-bold">*</span> :</label>
-                                <input class="form-control form-control-sm" type="text" required name="ministere" value="{{ $responsable->ministere ?? old('ministere') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <label> Poste <span class="text-danger font-weight-bold">*</span> :</label>
+                                <select class="form-control form-control-sm" name="poste" {{ ($show) ? 'disabled' : ''}}>
+                                    <option value="Docteur">Docteur</option>
+                                    <option value="{{ utf8_encode('Prophète') }}">Prophète</option>
+                                    <option value="Pasteur">Pasteur</option>
+                                    <option value="{{ utf8_encode('Evangéliste') }}">Evangéliste</option>
+                                    <option value="Docteur">Docteur</option>
+                                    <option value="{{ utf8_encode('Apôtre') }}">Apôtre</option>
+                                </select>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}

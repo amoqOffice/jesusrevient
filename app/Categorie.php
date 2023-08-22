@@ -8,11 +8,12 @@ class Categorie extends Model
 {
     protected $guarded = ['id'];
 
-    public function articles()
+    public function activites()
     {
-        return $this->hasMany(Article::class, 'categorie_id');
+        return $this->hasMany(Activite::class);
     }
 
     //
+
 
 }

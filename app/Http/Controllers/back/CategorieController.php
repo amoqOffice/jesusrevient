@@ -24,9 +24,22 @@ class CategorieController extends Controller
 
     public function store(Request $request)
     {
-        Categorie::create($request->all());
+        // Enregistrement des données
+        $categorie = Categorie::create($request->all());
 
-        Toastr::success('Categorie bien ajouté(e)', 'Action sur Categorie');
+        if ($categorie->id != null) {
+            // Message de succès
+            Toastr::success('Categorie bien ajouté(e)', 'Action sur Categorie');
+
+            session()->put('isExist', true);
+        }
+
+        // Gestion des conditions de redirection
+        if(session()->has('isExist') && session()->get('isExist') == true) {
+            session()->forget('isExist'); // Remise a 0 de isExist
+
+            return redirect(session()->get('previous_url'));
+        }
 
         return redirect()->route('back.categorie.create');
     }

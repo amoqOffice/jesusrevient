@@ -16,10 +16,12 @@ class CreateEglisesTable extends Migration
         Schema::create('eglises', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->string('adresse')->nullable();
+            $table->string('indication')->nullable();
             $table->string('ville');
+            $table->string('map')->nullable();
             $table->string('pays');
-            $table->text('description')->nullable;
+            $table->string('photo')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

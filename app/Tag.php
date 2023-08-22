@@ -8,11 +8,12 @@ class Tag extends Model
 {
     protected $guarded = ['id'];
 
-    public function articles()
+    public function activites()
     {
-        return $this->belongsToMany(Article::class, 'article_tag');
+        return $this->belongsToMany(Activite::class, 'activite_tag');
     }
 
     //
+
 
 }

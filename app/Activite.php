@@ -28,7 +28,25 @@ class Activite extends Model
         return $this->belongsTo(Type::class, 'type_id');
     }
 
+    public function categorie()
+    {
+        return $this->belongsTo(Categorie::class, 'categorie_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'activite_tag');
+    }
+
+    public function fichiers()
+    {
+        return $this->hasMany(Fichier::class, 'activite_fichier');
+    }
+
     //
+
+
+
 
 
 
