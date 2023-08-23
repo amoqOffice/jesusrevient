@@ -24,8 +24,16 @@ class RubriqueController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         // Enregistrement des données
-        $rubrique = Rubrique::create($request->all());
+        $rubrique = Rubrique::create([
+            'nom' => $request->nom,
+            'icon' => $request->icon,
+            'color' => $request->color,
+            'short' => $request->short,
+            'description' => $request->description,
+        ]);
+
 
         if ($rubrique->id != null) {
             // Message de succès
@@ -38,7 +46,7 @@ class RubriqueController extends Controller
         if(session()->has('isExist') && session()->get('isExist') == true) {
             session()->forget('isExist'); // Remise a 0 de isExist
 
-            return redirect(session()->get('previous_url'));
+            return !is_null(session()->get('previous_url')) ? redirect(session()->get('previous_url')) : redirect()->route('back.rubrique.create');
         }
 
         return redirect()->route('back.rubrique.create');

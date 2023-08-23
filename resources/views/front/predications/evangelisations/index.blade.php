@@ -150,7 +150,7 @@
                                 <div>
                                     <h4 class="mt-4 mb-3">Liste des Pays</h4>
                                     <!-- Category item -->
-                                    <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(data:image/png;base64, {{ generateImage(100, 100) }}); background-position: center left; background-size: cover;">
+                                    <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url({{ generateImage(100, 100) }}); background-position: center left; background-size: cover;">
                                         <div class="p-3">
                                             <a href="#" class="stretched-link btn-link fw-bold text-white h5">Travel</a>
                                         </div>
@@ -208,7 +208,7 @@
                                     <div class="card">
                                         <div class="position-relative">
                                             <a href="{{ asset('assets/front/images/blog/3by2/02.jpg') }}" data-glightbox class="d-block card-img-flash  rounded-3 overflow-hidden">
-                                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="Card image">
+                                                <img class="card-img" src="{{ generateImage(100, 100) }}" alt="Card image">
                                             </a>
                                         </div>
                                     </div>
@@ -218,7 +218,7 @@
                                     <div class="card">
                                         <div class="position-relative">
                                             <a href="{{ asset('assets/front/images/blog/3by2/02.jpg') }}" data-glightbox class="d-block card-img-flash  rounded-3 overflow-hidden">
-                                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="Card image">
+                                                <img class="card-img" src="{{ generateImage(100, 100) }}" alt="Card image">
                                             </a>
                                         </div>
                                     </div>
@@ -228,7 +228,7 @@
                                     <div class="card">
                                         <div class="position-relative">
                                             <a href="{{ asset('assets/front/images/blog/3by2/02.jpg') }}" data-glightbox class="d-block card-img-flash  rounded-3 overflow-hidden">
-                                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="Card image">
+                                                <img class="card-img" src="{{ generateImage(100, 100) }}" alt="Card image">
                                             </a>
                                         </div>
                                     </div>
@@ -238,7 +238,7 @@
                                     <div class="card">
                                         <div class="position-relative">
                                             <a href="{{ asset('assets/front/images/blog/3by2/02.jpg') }}" data-glightbox class="d-block card-img-flash  rounded-3 overflow-hidden">
-                                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="Card image">
+                                                <img class="card-img" src="{{ generateImage(100, 100) }}" alt="Card image">
                                             </a>
                                         </div>
                                     </div>
@@ -248,7 +248,7 @@
                                     <div class="card">
                                         <div class="position-relative">
                                             <a href="{{ asset('assets/front/images/blog/3by2/02.jpg') }}" data-glightbox class="d-block card-img-flash  rounded-3 overflow-hidden">
-                                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="Card image">
+                                                <img class="card-img" src="{{ generateImage(100, 100) }}" alt="Card image">
                                             </a>
                                         </div>
                                     </div>

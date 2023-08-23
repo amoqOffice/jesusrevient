@@ -48,7 +48,7 @@ function getBestYouTubeThumbnail($url) {
         $external_link = 'https://img.youtube.com/vi/'.getYoutubeVideoId($url).'/'.$quality.'.jpg';
 
         if (@getimagesize($external_link)) {
-            return $external_link.'<br>';
+            return $external_link;
         }
         else {
             return null;

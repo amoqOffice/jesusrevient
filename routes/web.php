@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // FRONT ONLY
 Route::get('/', 'front\AccueilController@index')->name('front.accueil'); // Afficher la page d'accueil
 
+Route::post('youtube/getInformationFromUrl}', 'YoutubeController@getInformationFromLink')->name('youtube.getInformationFromLink');
+
 Route::prefix('predications')->group(function () {
     Route::get('enseignements', 'front\EnseignementController@index')->name('front.predications.enseignements'); //Retourne la liste des enseignements
 

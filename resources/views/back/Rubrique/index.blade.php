@@ -48,7 +48,7 @@
                                         </div>
                                     </td>
                                     <td data-id="{{ $rubrique->id }}">#{{ $loop->index + 1 }}</td>
-                                    <td>{{ $rubrique->nom }}</td>
+                                    <td><i class="fa {{ $rubrique->icon ?? '' }} text-{{ $rubrique->color }} pr-1"></i> {{ $rubrique->short.' - '.$rubrique->nom }}</td>
 
                                     <td>
                                         <a href="{{ route('back.rubrique.show', $rubrique->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">

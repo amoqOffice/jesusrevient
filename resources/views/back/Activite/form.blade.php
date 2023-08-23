@@ -1,3 +1,7 @@
+@php
+    // dd(getBestYouTubeThumbnail('https://www.youtube.com/watch?v=SElhkuDVmVE'));
+@endphp
+
 <div class="row">
     <div class="col-xl-12 d-flex">
         <div class="card flex-fill">
@@ -41,10 +45,10 @@
                             <div class="form-group">
                                 <label for="">Image <span class="text-danger font-weight-bold">*</span> :</label><br>
                                 <div class="avatar avatar-xxl">
-                                    <img id="blah" data-lity style="cursor: pointer" class="avatar-img rounded-circle" alt="{{ $activite->nom ?? 'your image' }}" src="{{ isset($activite) ? asset("$activite->img") : 'data:image/png;base64,'.generateImage(128, 128) }}"/>
+                                    <img id="blah" data-lity style="cursor: pointer" class="avatar-img rounded-circle" alt="{{ $activite->nom ?? 'your image' }}" src="{{ isset($activite) ? asset("$activite->img") : generateImage(128, 128) }}"/>
                                 </div>
-                                <input class="ml-3" name="img" type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-
+                                <input class="ml-3" name="img" type="file" {{ ($show) ? 'disabled' : ''}} onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                                <input type="hidden" name="imgLink">
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -57,7 +61,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label> Lien de la video :</label>
-                                <input class="form-control form-control-sm" type="text" name="url" value="{{ $activite->url ?? old('url') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <div class="input-group mt-2">
+                                    <input class="form-control form-control-sm" placeholder="Lien youtube de la vidéo" type="text" name="url" value="{{ $activite->url ?? old('url') }}" {{ ($show) ? 'disabled' : ''}}>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary btn-sm" {{ ($show) ? 'disabled' : ''}} id="btnChercher">Chercher</button>
+                                    </div>
+                                </div>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -210,14 +219,26 @@
 
 @section('script')
     <script>
-        function formatDate(input) {
-            const dateValue = input.value;
+        // Vérifie si le lien du input url est un lien youtube
+        $('#btnChercher').click(function (e) {
+            e.preventDefault()
+            var userInputUrl = $('input[name="url"]').val(); // valeur du input
 
-            if (dateValue) {
-                const [year, month, day] = dateValue.split('-');
-                const formattedDate = `${day}-${month}-${year}`;
-                input.value = formattedDate;
-            }
-        }
+            $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            });
+            $.ajax({
+                type: "POST",
+                url: "{{ route('youtube.getInformationFromLink') }}",
+                data: {url: userInputUrl},
+                success: function (response) {
+                    $('input[name="titre"]').val(response.titre);
+                    $('textarea[name="description"]').val(response.description);
+                    $('input[name="date_deb"]').val(response.date);
+                    $('input[name="date_fin"]').val(response.date);
+                    $('#blah').attr('src', response.image);
+                }
+            });
+        });
     </script>
 @endsection

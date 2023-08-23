@@ -74,15 +74,22 @@ class ActiviteController extends Controller
             'type_id' => 'required',
         ]);
 
+        dd($request->all());
         // Vérifie l'image
+        $imgLink = null;
         if($request->img == null) {
-            Toastr::error('Image non ajoutée', 'Action sur Activité');
-            return back();
-        }
 
-        // Enregistrement de l'image
-        $fileName = time() . '.' . $request->img->extension();
-        $request->img->move('assets/back/img/uploaded', $fileName);
+            $imgLink = getBestYouTubeThumbnail($request->url);
+            if (is_null($request->imgLink)) {
+                Toastr::error('Image non ajoutée', 'Action sur Activité');
+                return back();
+            }
+        }
+        else {
+            // Enregistrement de l'image
+            $fileName = time() . '.' . $request->img->extension();
+            $request->img->move('assets/back/img/uploaded', $fileName);
+        }
 
         // Enregistrements de l'Activité
         $activite = Activite::create([
@@ -95,7 +102,7 @@ class ActiviteController extends Controller
             'type_id' => $request->type_id,
             'categorie_id' => $request->categorie_id,
             'isEvent' => (boolean)$request->isEvent,
-            'img' => "assets/back/img/uploaded/$fileName",
+            'img' => !is_null($imgLink) ? $imgLink : "assets/back/img/uploaded/$fileName",
         ]);
 
         // Association du Type à l'Activité

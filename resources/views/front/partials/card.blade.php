@@ -26,7 +26,7 @@
                     <div class="nav-link">
                         <div class="d-flex align-items-center position-relative">
                             <div class="avatar avatar-xs">
-                                <img class="avatar-img rounded-circle" src="data:image/png;base64, {{ generateImage(200, 200) ?? $card->logo }}" alt="avatar">
+                                <img class="avatar-img rounded-circle" src="{{ generateImage(200, 200) ?? $card->logo }}" alt="avatar">
                             </div>
                             <span class="ms-3">par <a href="{{ $card->author_link }}" class="stretched-link text-reset btn-link">{{ $card->author_name }}</a></span>
                         </div>
