@@ -79,7 +79,7 @@ class ActiviteController extends Controller
         if($request->img == null) {
 
             $imgLink = getBestYouTubeThumbnail($request->url);
-            if (is_null($request->imgLink)) {
+            if (is_null($imgLink)) {
                 Toastr::error('Image non ajoutée', 'Action sur Activité');
                 return back();
             }
