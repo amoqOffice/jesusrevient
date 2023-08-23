@@ -59,11 +59,11 @@
                             <div class="form-group">
                                 <label> Couleur <span class="text-danger font-weight-bold">*</span> :</label>
                                 <select name="color" value="{{ $rubrique->color ?? old('color') }}" {{ ($show) ? 'disabled' : ''}} class="form-control form-control-sm">
-                                    <option {{ ($rubrique->color == 'primary') ? 'selected' : '' }} class="text-primary" value="primary">Primary</option>
-                                    <option {{ ($rubrique->color == 'warning') ? 'selected' : '' }} class="text-warning" value="warning">Warning</option>
-                                    <option {{ ($rubrique->color == 'success') ? 'selected' : '' }} class="text-success" value="success">Success</option>
-                                    <option {{ ($rubrique->color == 'danger') ? 'selected' : '' }} class="text-danger" value="danger">Danger</option>
-                                    <option {{ ($rubrique->color == 'default') ? 'selected' : '' }} class="text-default" value="default">Default</option>
+                                    <option {{ (isset($rubrique) && $rubrique->color == 'primary') ? 'selected' : '' }} class="text-primary" value="primary">Primary</option>
+                                    <option {{ (isset($rubrique) && $rubrique->color == 'warning') ? 'selected' : '' }} class="text-warning" value="warning">Warning</option>
+                                    <option {{ (isset($rubrique) && $rubrique->color == 'success') ? 'selected' : '' }} class="text-success" value="success">Success</option>
+                                    <option {{ (isset($rubrique) && $rubrique->color == 'danger') ? 'selected' : '' }} class="text-danger" value="danger">Danger</option>
+                                    <option {{ (isset($rubrique) && $rubrique->color == 'default') ? 'selected' : '' }} class="text-default" value="default">Default</option>
                                 </select>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
