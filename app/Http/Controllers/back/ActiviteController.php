@@ -74,7 +74,6 @@ class ActiviteController extends Controller
             'type_id' => 'required',
         ]);
 
-        dd($request->all());
         // Vérifie l'image
         $imgLink = null;
         if($request->img == null) {
