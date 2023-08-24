@@ -16,12 +16,12 @@
                         <div class="col-12">
                             <div class="border bg-light py-4 text-center rounded-3">
                                 <h1>Les {{ $typePrincipal }}s</h1>
-                                <nav class="d-flex justify-content-center" aria-label="breadcrumb">
+                                {{-- <nav class="d-flex justify-content-center" aria-label="breadcrumb">
                                     <ol class="breadcrumb breadcrumb-dots m-0">
                                         <li class="breadcrumb-item"><a href="#"><i class="bi bi-house me-1"></i> Accueil</a></li>
                                         <li class="breadcrumb-item active">All post</li>
                                     </ol>
-                                </nav>
+                                </nav> --}}
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                                 <!-- Card play button -->
                                                 <div class="position-absolute top-50 start-50 translate-middle pb-5">
                                                     <!-- Popup video -->
-                                                    <a href="https://youtu.be/n_Cn8eFo7u8" class="icon-lg text-bg-danger d-block text-white rounded-circle" data-glightbox data-gallery="y-video">
+                                                    <a href="{{ $activite->url }}" class="icon-lg text-bg-danger d-block text-white rounded-circle" data-glightbox data-gallery="y-video">
                                                         <i class="fas fa-play"></i>
                                                     </a>
                                                 </div>
@@ -50,7 +50,7 @@
                                                 <div class="w-100 mt-auto">
                                                     <div class="col text-center">
                                                         <!-- Card title -->
-                                                        <h4 class="text-white"><a href="#" class="btn-link text-reset text-capitalize fw-normal">{{ str_limit($activite->titre, 40) }}</a></h4>
+                                                        <h4 class="text-white"><a href="{{ route('front.eglises.activites.show', [$typePrincipal, $activite->id]) }}" class="btn-link text-reset text-capitalize fw-normal">{{ str_format(str_limit($activite->titre, 40)) }}</a></h4>
                                                     </div>
                                                 </div>
                                             </div>

@@ -38,6 +38,7 @@ class EglisesTableSeeder extends Seeder
                 'ville' => $eglise->ville,
                 'map' => $eglise->map,
                 'pays' => $eglise->pays,
+                'seeder' => 'EglisesTableSeeder',
             ]);
 
             // Enregistrement du code avec association

@@ -21,7 +21,7 @@ class CreateResponsablesTable extends Migration
             $table->string('contact')->unique();
             $table->string('photo')->nullable();
             $table->text('description')->nullable();
-            $table->string('migration')->nullable();
+            $table->string('seeder')->nullable();
 
             $table->timestamps();
         });

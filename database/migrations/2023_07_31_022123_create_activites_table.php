@@ -23,7 +23,7 @@ class CreateActivitesTable extends Migration
             $table->string('date_deb')->nullable();
             $table->string('date_fin')->nullable();
             $table->boolean('isEvent')->default(false);
-            $table->string('migration')->nullable();
+            $table->string('seeder')->nullable();
 
             $table->timestamps();
         });

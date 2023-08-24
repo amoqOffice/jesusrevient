@@ -20,7 +20,7 @@ class CreateRubriquesTable extends Migration
             $table->string('icon')->nullable();
             $table->string('color')->nullable();
             $table->string('short')->nullable();
-            $table->string('migration')->nullable();
+            $table->string('seeder')->nullable();
 
             $table->timestamps();
         });

@@ -12,16 +12,6 @@ class RubriquesTableSeeder extends Seeder
      */
     public function run()
     {
-        // Parole de vie
-        // Qu'en dit la saine doctrine
-        // Comprendre les écritures
-        // Alerte rouge
-        // Au pied du souverain
-        // Parole de sagesse
-        // Devançons l'aurore
-        // Priere agressive
-        // Allons gagner des âmes
-        // Du passé au présent
 
         $rubriques = [
             (object)[
@@ -103,6 +93,7 @@ class RubriquesTableSeeder extends Seeder
                 'color' => $rubrique->color,
                 'short' => $rubrique->short,
                 'description' => $rubrique->description,
+                'seeder' => 'RubriquesTableSeeder',
             ]);
         }
     }

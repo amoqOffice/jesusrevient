@@ -14,11 +14,11 @@
         <div class="row my-3 pb-3">
             <div class="col-12">
                 <div class="border bg-light py-4 text-center rounded-3">
-                    <h1>Détails de l'Activité</h1>
+                    <h1>Détails sur {{ $typePrincipal->nom }}</h1>
                     <nav class="d-flex justify-content-center" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-dots m-0">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house me-1"></i> Home</a></li>
-                            <li class="breadcrumb-item active">All post</li>
+                            {{-- <li class="breadcrumb-item"><a href="#"><i class="bi bi-house me-1"></i> Home</a></li>
+                            <li class="breadcrumb-item active">All post</li> --}}
                         </ol>
                     </nav>
                 </div>
@@ -44,9 +44,9 @@
                             </div>
                         </div>
                     </div>
-                    {{-- @dd($activite) --}}
+
                     <div class="card-body px-0 pt-3">
-                        <h3 class="card-title my-2"><a href="#" class="btn-link fw-bold">{{ str_format($activite->titre) }}</a></h3>
+                        <h3 class="card-title my-2">{{ str_format($activite->titre) }}</h3>
                         <!-- Card info -->
                         <div class="avatar avatar-sm">
                             {{-- <img class="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar"> --}}

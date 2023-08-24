@@ -19,7 +19,7 @@ class CreateMembresTable extends Migration
             $table->string('telephone')->unique();
             $table->string('pays');
             $table->string('email')->unique()->nullable();
-            $table->string('migration')->nullable();
+            $table->string('seeder')->nullable();
 
             $table->timestamps();
         });

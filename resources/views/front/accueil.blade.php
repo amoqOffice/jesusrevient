@@ -149,13 +149,15 @@
 
 						@foreach ($temoignages as $temoignage)
                             <div class="card">
-                                <!-- Card img -->
-                                <div class="position-relative">
-                                    <img class="card-img fixed-div-268-178" src="{{ $temoignage->img }}" alt="Card image">
-                                </div>
-                                <div class="card-body px-0 pt-3">
-                                    <h5 class="card-title"><a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($temoignage->titre), 50) }}</a></h5>
-                                </div>
+                                <a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img fixed-div-268-178" src="{{ $temoignage->img }}" alt="Card image">
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($temoignage->titre), 50) }}</a></h5>
+                                    </div>
+                                </a>
                             </div>
                         @endforeach
 					</div>
@@ -342,7 +344,7 @@
                     <h1 class="mb-1">Télécharger l'application</h1>
                     <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
                     <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
-                    <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+                    <a href="https://bit.ly/3D0VgDo" target="blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
                 </div>
                 <div class="col-sm-6 px-4">
                     <a href="https://bit.ly/3D0VgDo">

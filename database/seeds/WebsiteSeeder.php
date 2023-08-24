@@ -20,6 +20,7 @@ class WebsiteSeeder extends Seeder
         foreach ($donnees as $donnee) {
             Type::create([
                 'nom' => $donnee->nom,
+                'seeder' => 'WebsiteSeeder',
             ]);
         }
     }

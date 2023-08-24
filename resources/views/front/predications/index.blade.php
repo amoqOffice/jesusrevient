@@ -17,12 +17,12 @@
                         <div class="col-12">
                             <div class="border bg-light py-4 text-center rounded-3">
                                 <h1>{{ $categoriePrincipale }}</h1>
-                                <nav class="d-flex justify-content-center" aria-label="breadcrumb">
+                                {{-- <nav class="d-flex justify-content-center" aria-label="breadcrumb">
                                     <ol class="breadcrumb breadcrumb-dots m-0">
                                         <li class="breadcrumb-item"><a href="#"><i class="bi bi-house me-1"></i> Accueil</a></li>
                                         <li class="breadcrumb-item active">All post</li>
                                     </ol>
-                                </nav>
+                                </nav> --}}
                             </div>
                         </div>
                     </div>

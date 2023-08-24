@@ -16,7 +16,7 @@ class CreateCodesTable extends Migration
         Schema::create('codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content');
-            $table->string('migration')->nullable();
+            $table->string('seeder')->nullable();
 
             $table->timestamps();
         });

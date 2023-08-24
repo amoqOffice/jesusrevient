@@ -1,72 +1,63 @@
 <!-- =======================
 Footer START -->
-<footer class="pb-0">
-	<div class="container">
-		<hr>
-		<!-- Widgets START -->
+<footer class="pb-5 mt-5 bg-dark mx- rounded-">
+	<div class="full-container">
 		<div class="row pt-5">
-			<!-- Footer Widget -->
-			<div class="col-md-6 col-lg-4 mb-4">
-				<img class="light-mode-item" src="{{ asset('assets/front/images/logo-footer.png') }}" alt="logo">
-				<img class="dark-mode-item" src="{{ asset('assets/front/images/logo-footer.png') }}" alt="logo">
-				<p class="mt-3">The next-generation blog, news, and magazine theme for you to start sharing your stories today! This Bootstrap 5 based theme is ideal for all types of sites that deliver the news.</p>
-				<div class="mt-4">©2023 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">JESUS-REVIENT.STUDIO</a>. Tout droits sont réservés
-				</div>
-			</div>
+			<div class="col-lg-7 mx-auto text-center">
+				<!-- Logo -->
+				<img class="mx-auto" src="{{ asset('assets/front/images/logo-jr.png') }}" alt="logo">
+				<p class="mt-3 text-light" style="opacity: 0.7">Le Groupe JESUS-REVIENT est un groupe chrétien succité par le Seigneur Jésus-Christ pour sonner la trompette de la repentance à toute la terre. Elle dispose en plus de son site web et réseaux sociaux, une plateforme télé afin de ne rien manquer de nos activités, disponible également sur android. Vous trouverez les liens ci-dessous</p>
+				<!-- Links -->
 
-			<!-- Footer Widget -->
-			<div class="col-md-6 col-lg-3 mb-4">
-				<h5 class="mb-4">Navigation</h5>
-				<div class="row">
-					<div class="col-6">
-						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link pt-0" href="#">Features</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Style Guide</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Get Theme</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-						</ul>
-					</div>
- 					<div class="col-6">
-						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link pt-0" href="#">News</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Career <span class="badge text-bg-danger ms-2">2 Job</span></a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Technology</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Startups</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Gadgets</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+                <ul class="nav justify-content-center">
+                    {{-- Youtube --}}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 fs-5" target="_blank" href="https://www.youtube.com/@jesusrevienttv"><i class="fab fa-youtube text-white"></i></a>
+                    </li>
+                    {{-- Facebook --}}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 fs-5" target="_blank" href="https://www.facebook.com/groupejesusrevient"><i class="fab fa-facebook-square text-white"></i></a>
+                    </li>
+                    {{-- Whatsapp --}}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 fs-5" target="_blank" href="https://wa.me/+22997253539"><i class="fab fa-whatsapp text-white"></i></a>
+                    </li>
+                    {{-- Telegram --}}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 fs-5" target="_blank" href="https://t.me/jesusrevient_tv"><i class="fab fa-telegram text-white"></i></a>
+                    </li>
+                    {{-- Mail --}}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 fs-5" target="_blank" href="mailto:contact@jesusrevient.tv"><i class="far fa-envelope text-white"></i></a>
+                    </li>
+                    <!-- Twitter -->
+                    {{-- <li class="nav-item">
+                        <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
+                    </li> --}}
 
-			<!-- Footer Widget -->
-			<div class="col-sm-6 col-lg-3 mb-4">
-				<h5 class="mb-4">Browse by Tag</h5>
-				<ul class="list-inline">
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-primary-soft">Travel</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-warning-soft">Business</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-success-soft">Tech</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-danger-soft">Gadgets</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-info-soft">Lifestyle</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-primary-soft">Vaccine</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-warning-soft">Marketing</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-success-soft">Sports</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-danger-soft">Covid-19</a></li>
-					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-info-soft">Politics</a></li>
-				</ul>
-			</div>
+                  </ul>
 
-			<!-- Footer Widget -->
-			<div class="col-sm-6 col-lg-2 mb-4">
-				<h5 class="mb-4">Our Social handles</h5>
-				<ul class="nav flex-column">
-					<li class="nav-item"><a class="nav-link pt-0" href="#"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-twitter-square fa-fw me-2 text-twitter"></i>Twitter</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-linkedin fa-fw me-2 text-linkedin"></i>Linkedin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-youtube-square fa-fw me-2 text-youtube"></i>YouTube</a></li>
-				</ul>
+                <ul class="nav text-center text-primary text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
+                    <li class="nav-item">
+                        <a target="_blank" href="https://wa.me/+22997253539"><i class="text-dar fa fa-whatsapp"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" href="https://www.facebook.com/groupejesusrevient"><i class="text-dar fas fa-facebook"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" href="https://www.youtube.com/@jesusrevienttv"><i class="text-dar fa fa-youtube"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" href="https://t.me/jesusrevient_tv"><i class="text-dar fa fa-telegram"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" href="https://bit.ly/3D0VgDo"><i class="text-dar fa fa-television"></i></a>
+                    </li>
+                </ul>
+
+                <!-- Copyright -->
+				<div class="mt-2">©2023 <a href="" class="text-reset btn-link">JESUS-REVIENT STUDIO</a>. Tout droits réservé </div>
 			</div>
 		</div>
-		<!-- Widgets END -->
 	</div>
 </footer>

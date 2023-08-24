@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->text('contenu');
-            $table->string('migration')->nullable();
+            $table->string('seeder')->nullable();
 
             $table->timestamps();
         });

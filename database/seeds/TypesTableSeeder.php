@@ -27,8 +27,7 @@ class TypesTableSeeder extends Seeder
         foreach ($types as $type) {
             Type::firstOrCreate([
                 'nom' => $type,
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
+                'seeder' => 'TypesTableSeeder',
             ]);
         }
     }

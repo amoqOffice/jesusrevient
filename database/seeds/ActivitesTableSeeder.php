@@ -315,6 +315,7 @@ class ActivitesTableSeeder extends Seeder
                 'type_id'=> ($youtube_video->type == '') ? null : $youtube_video->type->id,
                 'categorie_id' => ($youtube_video->categorie == '') ? null : $youtube_video->categorie->id,
                 'isEvent' => false,
+                'seeder' => 'ActivitesTableSeeder',
             ]);
 
             // // Les associations

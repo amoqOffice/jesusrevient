@@ -27,7 +27,8 @@ class TagsTableSeeder extends Seeder
 
         foreach ($tags as $tag) {
             Tag::create([
-                'nom' => $tag->nom
+                'nom' => $tag->nom,
+                'seeder' => 'TagsTableSeeder',
             ]);
         }
     }

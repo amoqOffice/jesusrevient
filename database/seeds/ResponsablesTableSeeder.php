@@ -49,6 +49,7 @@ class ResponsablesTableSeeder extends Seeder
                 'nom' => $responsable->nom,
                 'poste' => $responsable->poste,
                 'contact' => $responsable->contact,
+                'seeder' => 'ResponsablesTableSeeder',
             ]);
         }
     }

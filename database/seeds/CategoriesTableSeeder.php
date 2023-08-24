@@ -27,7 +27,8 @@ class CategoriesTableSeeder extends Seeder
 
         foreach ($categories as $categorie) {
             Categorie::create([
-                'nom' => $categorie->nom
+                'nom' => $categorie->nom,
+                'seeder' => 'CategoriesTableSeeder',
             ]);
         }
     }

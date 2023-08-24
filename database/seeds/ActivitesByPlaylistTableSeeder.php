@@ -19,8 +19,8 @@ class ActivitesByPlaylistTableSeeder extends Seeder
 
         // Playlist youtube pour le site web
         $youtubeVideos = [
-            (object)['nom_type' => 'Enseignement', 'playlist' => 'PLSpKxRyN4Ds0rOYD2f9fNc-n4VNxwJ_Kc'],
-            (object)['nom_type' => 'Temoignage', 'playlist' => 'PLSpKxRyN4Ds1FoXB2kUR0cPN53Zgi29y-'],
+            (object)['nom_type' => 'Priere', 'playlist' => 'PLSpKxRyN4Ds0NgWDENbuBi9VDS2KUUMdT'],
+            (object)['nom_type' => 'Culte', 'playlist' => 'PLSpKxRyN4Ds3_KMV4CfgLFLdny2OB6pNv'],
         ];
 
         foreach ($youtubeVideos as $youtubeVideo) {
