@@ -10,7 +10,7 @@ class EvenementController extends Controller
 {
     public function index() {
         $evenements = Activite::where('isEvent', true)->orderBy('date_deb', 'desc')->get();
-        
+
         return view('front.eglises.evenements.index', compact('evenements'));
     }
 }

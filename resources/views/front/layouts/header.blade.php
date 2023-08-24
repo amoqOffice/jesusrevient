@@ -1,3 +1,7 @@
+@php
+    $categories = App\Categorie::has('activites')->limit(10)->pluck('nom');
+@endphp
+
 <header class="navbar-light navbar-sticky header-static">
 	<!-- Logo Nav START -->
 	<nav class="navbar navbar-expand-lg">
@@ -26,59 +30,16 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link {{ request()->routeIs('front.predications.*') ? 'active' : '' }} dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prédications</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="{{ route('front.predications.enseignements') }}">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}Crainte de Dieu
-								</a>
-							</li>
-                            <li>
+                            @foreach ($categories as $categorie)
+                                <li>
+                                    <a class="dropdown-item {{ request()->route('categorie') == $categorie ? 'item-active' : '' }}" href="{{ route('front.predications.index', $categorie) }}">
+                                        {{ str_normalise($categorie) }}
+                                    </a>
+                                </li>
+                            @endforeach
+                            {{-- <li>
 								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}Nouvelle naissance
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}La Foi en Jésus-Christ
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}Sanctification
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}Dépouillement
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}Baptême au nom de Jésus
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}L'Enlèvement
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}La Prière
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}La Grâce
-								</a>
-							</li>
-                            <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.enseignements') ? 'item-active' : '' }}" href="#">
-									{{-- <i class="text-warning fa-fw bi bi-life-preserver me-2"></i> --}}Les Bonnes oeuvres
-								</a>
-							</li>
-							{{-- <li>
-								<a class="dropdown-item {{ request()->routeIs('front.predications.evangelisations') ? 'item-active' : '' }}" href="{{ route('front.predications.evangelisations') }}">
-									<i class="text-danger fa-fw bi bi-card-text me-2"></i>Evangélisations
+									<i class="text-warning fa-fw bi bi-life-preserver me-2"></i>Les Bonnes oeuvres
 								</a>
 							</li> --}}
 						</ul>
@@ -93,12 +54,10 @@
                             <li class="dropdown-submenu dropend">
 								<a class="dropdown-item dropdown-toggle" href="#">Activités</a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="#">Baptêmes</a> </li>
-									<li> <a class="dropdown-item" href="#">Cultes</a> </li>
-									<li> <a class="dropdown-item" href="#">Délivrances</a> </li>
-									<li> <a class="dropdown-item" href="#">Prières Matinales</a> </li>
-									<li> <a class="dropdown-item" href="#">Prières Agressives</a> </li>
-									<li> <a class="dropdown-item" href="#">Séminaires</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.activites.index', 'bapteme') }}">Baptêmes</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.activites.index', 'culte') }}">Cultes</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.activites.index', 'evangelisation') }}">Evangélisations</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.activites.index', 'priere') }}">Prières</a> </li>
 									<li> <a class="dropdown-item" href="{{ route('front.activites.index', 'temoignage') }}">Témoignages</a> </li>
                                     {{-- <li>
                                         <a class="dropdown-item {{ request()->routeIs('front.eglises.evenements') ? 'item-active' : '' }}" href="{{ route('front.eglises.evenements') }}">Activités</a>

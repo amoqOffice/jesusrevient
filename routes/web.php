@@ -19,13 +19,13 @@ Route::get('/', 'front\AccueilController@index')->name('front.accueil'); // Affi
 Route::post('youtube/getInformationFromUrl}', 'YoutubeController@getInformationFromLink')->name('youtube.getInformationFromLink');
 
 Route::prefix('predications')->group(function () {
-    Route::get('enseignements', 'front\EnseignementController@index')->name('front.predications.enseignements'); //Retourne la liste des enseignements
+    // Route::get('enseignements', 'front\EnseignementController@index')->name('front.predications.enseignements'); //Retourne la liste des enseignements
 
-    Route::get('evangelisations', 'front\EvangelisationController@index')->name('front.predications.evangelisations'); //Retourne la liste des evangelisations)
+    // Route::get('evangelisations', 'front\EvangelisationController@index')->name('front.predications.evangelisations'); //Retourne la liste des evangelisations)
 
-    Route::get('/', 'front\PredicationController@index')->name('front.predications.index'); //Retourne la liste des prédications
+    Route::get('{categorie}/', 'front\PredicationController@index')->name('front.predications.index'); //Retourne la liste des prédications
 
-    Route::get('{id}/details', 'front\PredicationController@show')->name('front.predications.show'); //Retourne une prédication
+    Route::get('{categorie}/{predication_id}/details', 'front\PredicationController@show')->name('front.predications.show'); //Retourne une prédication
 
     Route::get('{id}/details_videos', 'front\PredicationController@show_videos')->name('front.predications.show_videos'); //Retourne une prédication
 });

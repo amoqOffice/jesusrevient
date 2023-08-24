@@ -189,10 +189,12 @@
                         <div class="col-sm-6">
                             <div class="card">
                                 <a href="{{ $enseignement->url }}">
+
                                     <!-- Card img -->
                                     <div class="position-relative">
                                         <img class="card-img img-scale fixed-div-400-300" syle="width: 397.5px; height: 298.13px" src="{{ $enseignement->img }}" alt="Card image">
                                     </div>
+
                                     <div class="card-body px-0 pt-3">
                                         <h4 class="card-title"><a href="{{ $enseignement->url }}" class="btn-link text-reset fw-bold">{{ truncate_string($enseignement->titre, 50) }}</a></h4>
                                         <p class="card-text">{{ truncate_string($enseignement->description, 150) }}</p>

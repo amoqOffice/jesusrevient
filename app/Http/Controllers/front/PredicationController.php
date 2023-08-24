@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Activite;
+use App\Categorie;
 use App\Http\Controllers\Controller;
 use App\Type;
 use Brian2694\Toastr\Facades\Toastr;
@@ -10,15 +12,23 @@ use Illuminate\Http\Request;
 
 class PredicationController extends Controller
 {
-    public function index() {
-        $predications = Type::where('nom', 'Enseignement')->orWhere('nom', 'Predication')->first()->activites()->paginate(4);
+    public function index($categorie) {
 
-        return view('front.predications.index', compact('predications'));
+        $categoriePrincipale = Categorie::where('nom', 'like', "%$categorie%")->first();
+        $predications = $categoriePrincipale->activites()->orderBy('date_deb', 'desc')->paginate(4);
+
+        return view('front.predications.index', compact('predications'))->with([
+            'predications' => $predications,
+            'categoriePrincipale' => $categoriePrincipale->nom,
+        ]);
     }
 
-    public function show($id)
+    public function show($categorie, $predication_id)
     {
-        return view('front.predications.show');
+        $predication = Activite::findOrFail($predication_id);
+        // dd($categorie);
+
+        return view('front.predications.show', compact('predication', 'categorie'));
     }
 
     public function show_videos() {

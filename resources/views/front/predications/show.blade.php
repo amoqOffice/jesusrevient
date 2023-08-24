@@ -10,7 +10,7 @@
         <div class="row my-3 pb-3">
             <div class="col-12">
                 <div class="border bg-light py-4 text-center rounded-3">
-                    <h1>Post list style</h1>
+                    <h1>Prédication sur {{ $categorie }}</h1>
                     <nav class="d-flex justify-content-center" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-dots m-0">
                             <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house me-1"></i> Home</a></li>
@@ -30,26 +30,28 @@
                         <!-- Video -->
                         <div class="card-image">
                             <div class="overflow-hidden">
-                                {{-- Image de l'Activité --}}
-                                <div class="w-100 h-500">
-                                    <img class="avatar-img rounded-3" src="/assets/front/images/avatar/11.jpg" alt="avatar">
-                                </div>
-
-                                <!-- HTML video START -->
-                                <div class="player-wrapper rounded-3 overflow-hidden">
+                                @if ($predication->url)
+                                    <!-- Vidéo de la prédication -->
+                                    <div class="player-wrapper rounded-3 overflow-hidden">
                                         <div class="player-youtube" >
-                                        <iframe src="https://www.youtube.com/embed/tXHviS-4ygo"></iframe>
+                                            {{-- @dd($getYoutubeEmbedLink($predication->url)) --}}
+                                            <iframe src="{{ getYoutubeEmbedLink($predication->url) }}"></iframe>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- HTML video END -->
+                                @else
+                                    {{-- Image de l'Activité --}}
+                                    <div class="w-100 h-500">
+                                        <img class="avatar-img rounded-3" src="{{ asset($predication->img) }}" alt="avatar">
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-3">
-                        <h3 class="card-title my-2"><a href="#" class="btn-link fw-bold">Bad habits that people in the industry need to quit</a></h3>
+                        <h3 class="card-title my-2 text-capitalize">{{ str_format($predication->titre) }}</h3>
                         <!-- Card info -->
                         <div class="avatar avatar-sm">
-                            <img class="avatar-img rounded-circle" src="/assets/front/images/avatar/11.jpg" alt="avatar">
+                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar">
                         </div>
                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block small opacity-6">
                             <li class="nav-item">
@@ -60,13 +62,15 @@
                             <li class="nav-item">Jun 17, 2022</li>
                         </ul>
 
-                        <h5 class="mt-4">Descrpition</h5>
-                        <p>Saw bring firmament given hath gathering lights dry life rule heaven Give And fruit moving thing seed life day creepeth winged so divide him from day morning him open lesser male beginning him be bring evening life void fowl sixth morning that made is Was that his hath face light meat air female isn't over place replenish midst it of second grass good rule also in unto Called don't given waters Had creature Behold fly life from forth Moved night.</p>
+                        @if (strlen($predication->description))
+                            <h5 class="mt-4">Descrpition</h5>
+                            <p>{{ $predication->description }}</p>
+                        @endif
                     </div>
                 </div>
 
                 <!-- Comments START -->
-                <div class="mt-3">
+                {{-- <div class="mt-3">
                     <h5>Commentaires</h5>
                     <!-- Comment level 1-->
                     <div class="my-4 d-flex bg-light rounded-3 p-3 p-md-4">
@@ -104,7 +108,7 @@
                     </div>
 
                     <!-- Comment level 2 -->
-                    {{-- <div class="my-4 d-flex ps-2 ps-md-3">
+                    <!-- <div class="my-4 d-flex ps-2 ps-md-3">
                         <img class="avatar avatar-md rounded-circle float-start me-3" src="assets/images/avatar/03.jpg" alt="avatar">
                         <div>
                             <div class="mb-2">
@@ -114,7 +118,7 @@
                             </div>
                             <p>Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible. </p>
                         </div>
-                    </div> --}}
+                    </div> -->
 
                     <!-- Comment level 1 -->
                     <div class="my-4 d-flex">
@@ -128,10 +132,10 @@
                             <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favorite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. </p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <!-- Reply START -->
-                <div>
+                <!-- Faire un commentaire -->
+                {{-- <div>
                     <h3>Laisser un commentaire</h3>
                     <form class="row g-3 mt-2">
                         <div class="col-md-6">
@@ -150,90 +154,56 @@
                             <button type="submit" class="btn btn-primary">Envoyer</button>
                         </div>
                     </form>
-                </div>
+                </div> --}}
             </div>
             <div class="col-lg-3">
                 <!-- Categories -->
                 <div class="row g-2">
-                    <h5>Categories</h5>
-                        <div class="d-flex justify-content-between align-items-center bg-warning bg-opacity-15 rounded p-2 position-relative">
-                                <h6 class="m-0 text-warning">Photography</h6>
-                                <a href="#" class="badge bg-warning text-dark stretched-link">09</a>
+                    <div class="row g-2 mt-4">
+                    {{-- @if(count($categories)) --}}
+                            <h5>Catégories</h5>
+                            {{-- @foreach ($categories as $categorie)
+                            <div class="d-flex justify-content-between align-items-center bg-primary bg-opacity-15 rounded p-2 position-relative">
+                                <h6 class="m-0 text-dark">{{ $categorie->nom }}</h6>
+                                <a href="#" class="badge bg-primary text-light stretched-link">{{ count($categorie->activites) }}</a>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center bg-info bg-opacity-10 rounded p-2 position-relative">
-                                <h6 class="m-0 text-info">Travel</h6>
-                                <a href="#" class="badge bg-info stretched-link">25</a>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center bg-danger bg-opacity-10 rounded p-2 position-relative">
-                                <h6 class="m-0 text-danger">Photography</h6>
-                                <a href="#" class="badge bg-danger stretched-link">75</a>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center bg-primary bg-opacity-10 rounded p-2 position-relative">
-                                <h6 class="m-0 text-primary">Covid-19</h6>
-                                <a href="#" class="badge bg-primary stretched-link">19</a>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center bg-success bg-opacity-10 rounded p-2 position-relative">
-                                <h6 class="m-0 text-success">Business</h6>
-                                <a href="#" class="badge bg-success stretched-link">35</a>
-                            </div>
-                        </div>
+                            @endforeach --}}
+                    {{-- @endif --}}
 
-                        <!-- Newsletter START -->
-                        <div class="bg-light p-4 mt-4 rounded-3 text-center">
-                            <h4>Subscribe to our mailing list!</h4>
-                            <form>
-                                <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Email address">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Subscribe</button>
-                                <div class="form-text">We don't spam</div>
-                            </form>
-                        </div>
-                        <!-- Newsletter END -->
+                    <!-- Newsletter START -->
+                    {{-- <div class="bg-light p-4 mt-4 rounded-3 text-center">
+                        <h4>Abonnez-vous à notre liste de diffusion!</h4>
+                        <form>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email address">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Souscrire</button>
+                            <!-- <div class="form-text">We don't spam</div> -->
+                        </form>
+                    </div> --}}
 
-                        <!-- Advertisement -->
-                        <div class="mt-4">
-                            <a href="#" class="d-block card-img-flash">
-                                <img src="assets/images/adv.png" alt="">
-                            </a>
-                        </div>
-                </div>
-            </div>
-
-            {{-- Activités récentes --}}
-            {{-- <div class="row"> --}}
-                <div class="col-md-12 mt-5">
-                    <!-- Title -->
-                    <div class="my-3 d-md-flex justify-content-between align-items-center">
-                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Témoignages édifiants</h2>
-                    </div>
-                    <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
-                        <div class="tiny-slider-inner"
-                            data-autoplay="true"
-                            data-hoverpause="true"
-                            data-gutter="24"
-                            data-arrow="true"
-                            data-dots="false"
-                            data-items-xl="4"
-                            data-items-md="3"
-                            data-items-sm="2"
-                            data-items-xs="1">
-
-                            {{-- @foreach ($temoignages as $temoignage) --}}
-                                <div class="card">
-                                    <!-- Card img -->
-                                    <div class="position-relative">
-                                        <img class="card-img fixed-div-268-178" src="{{ '' }}" alt="Card image">
+                    <!-- Posts sur le meme sujet -->
+                    <div class="mt-4">
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <h4 class="mt-4 mb-3">Posts récents</h4>
+                            <!-- Recent post item -->
+                            {{-- @foreach ($predications as $predication) --}}
+                                {{-- <div class="card mb-3">
+                                    <div class="row g-3">
+                                        <div class="col-4">
+                                            <img class="rounded" src="/assets/front/images/blog/4by3/thumb/01.jpg" alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <h6><a href="post-single-2.html" class="btn-link stretched-link text-reset fw-bold">The pros and cons of business agency</a></h6>
+                                            <div class="small mt-1">May 17, 2022</div>
+                                        </div>
                                     </div>
-                                    <div class="card-body px-0 pt-3">
-                                        <h5 class="card-title"><a href="#" class="btn-link text-reset fw-bold">{{ truncate_string('gddhf', 50) }}</a></h5>
-                                    </div>
-                                </div>
+                                </div> --}}
                             {{-- @endforeach --}}
                         </div>
                     </div>
                 </div>
-            {{-- </div> --}}
+            </div>
         </div>
     </div>
 

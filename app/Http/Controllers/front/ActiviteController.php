@@ -10,8 +10,12 @@ use Illuminate\Http\Request;
 class ActiviteController extends Controller
 {
     public function index($type) {
-        $activites = Type::where('nom', 'like', "%$type%")->first()->activites()->orderBy('date_deb', 'desc')->paginate(4);
+        $typePrincipal = Type::where('nom', 'like', "%$type%")->first();
+        $activites = $typePrincipal->activites()->orderBy('date_deb', 'desc')->paginate(4);
 
-        return view('front.activites.index', compact('activites'));
+        return view('front.activites.index')->with([
+            'activites' => $activites,
+            'typePrincipal' => $typePrincipal->nom,
+        ]);
     }
 }
