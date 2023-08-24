@@ -201,7 +201,7 @@
                                                         <span class="ms-2">par
                                                             <a href="#" class="stretched-link text-reset btn-link">
                                                                 @foreach ($enseignement->responsables as $responsable)
-                                                                    {{ $responsable->nom }}
+                                                                    {{ $responsable->poste.' '.$responsable->nom }}
                                                                 @endforeach
                                                             </a>
                                                         </span>
