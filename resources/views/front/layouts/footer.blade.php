@@ -6,7 +6,7 @@ Footer START -->
 			<div class="col-lg-7 mx-auto text-center">
 				<!-- Logo -->
 				<img class="mx-auto" src="{{ asset('assets/front/images/logo-jr.png') }}" alt="logo">
-				<p class="mt-3 text-light" style="opacity: 0.7">Le Groupe JESUS-REVIENT est un groupe chrétien succité par le Seigneur Jésus-Christ pour sonner la trompette de la repentance à toute la terre. Elle dispose en plus de son site web et réseaux sociaux, une plateforme télé afin de ne rien manquer de nos activités, disponible également sur android. Vous trouverez les liens ci-dessous</p>
+				<p class="mt-3 text-light" style="opacity: 0.7">Le Groupe JESUS-REVIENT est un groupe chrétien succité par le Seigneur Jésus-Christ pour sonner la trompette de la repentance à toute la terre. Elle dispose en plus de son site web et réseaux sociaux, une plateforme télé afin de ne rien manquer de nos activités, disponible également sur android. Vous trouverez les liens ci-dessous </p>
 				<!-- Links -->
 
                 <ul class="nav justify-content-center">
