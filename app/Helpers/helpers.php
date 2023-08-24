@@ -57,4 +57,12 @@ function getYoutubeEmbedLink($url) {
     return isset($matches[1]) ? "https://www.youtube.com/embed/".getYoutubeVideoId($url) : null;
 }
 
+function str_limit($text, $maxLength, $suffix = "...")
+{
+    if (strlen($text) > $maxLength) {
+        return substr($text, 0, $maxLength) . $suffix;
+    } else {
+        return $text;
+    }
+}
 

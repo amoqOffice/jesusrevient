@@ -99,7 +99,7 @@
 									<li> <a class="dropdown-item" href="#">Prières Matinales</a> </li>
 									<li> <a class="dropdown-item" href="#">Prières Agressives</a> </li>
 									<li> <a class="dropdown-item" href="#">Séminaires</a> </li>
-									<li> <a class="dropdown-item" href="#">Témoignages</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.activites.index', 'temoignage') }}">Témoignages</a> </li>
                                     {{-- <li>
                                         <a class="dropdown-item {{ request()->routeIs('front.eglises.evenements') ? 'item-active' : '' }}" href="{{ route('front.eglises.evenements') }}">Activités</a>
                                     </li> --}}

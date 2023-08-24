@@ -50,6 +50,12 @@
 
     // Reccupération des Tags
     $tags = DB::table('tags')->select('*')->get();
+
+    // Programmes TV
+    $rubriques = DB::table('rubriques')->select('*')->get();
+
+    // Eglises JESUS-REVIENT
+    $eglises = DB::table('eglises')->select('*')->get();
 @endphp
 
 @section('content')
@@ -225,6 +231,8 @@
             {{-- Side bar --}}
             <div class="col-lg-3 mt-5 mt-lg-0">
 				<div>
+					<h5 class="mt-4 mb-3">Les Réseaux sociaux</h5>
+
 					<!-- Social widget START -->
 					<div class="row g-2">
 						<div class="col-4">
@@ -254,10 +262,10 @@
 					<div>
 						<h5 class="mt-4 mb-3">Les Eglises JESUS-REVIENT</h5>
 						<!-- Category item -->
-                        @foreach ($tags as $tag)
-                            <div class="text-center mb-2 card-bg-scale position-relative overflow-hidden rounded bg-primary bg-dark-overlay-4">
+                        @foreach ($eglises as $eglise)
+                            <div class="text-center mb-2 card-bg-scale position-relative overflow-hidden rounded bg-danger bg-dark-overlay-4">
                                 <div class="p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">{{ $tag->nom }}</a>
+                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">{{ str_limit($eglise->nom, 15) }}</a>
                                 </div>
                             </div>
                         @endforeach
@@ -266,11 +274,32 @@
 			</div>
         </div>
 
+        {{-- Faire un don --}}
+        <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
+            <div class="row">
+                <div class="col-sm-8 position-relative text-cente my-auto">
+                    <h1 class="mb-3">Faire un don</h1>
+                    <h3 class="mb-1 font-weight-bold">Rejoignez-nous dans cette grande mission</h3>
+                    <p class="my- h5 fw-light lead">
+                        <small>
+                            Votre don, quelle que soit sa taille, joue un rôle essentiel pour faire une différence positive dans cette mission de grand réveil. Ensemble, nous répandons la lumière de l'Évangile là où elle est nécessaire et semons les graines du changement et de la bonté. Votre soutien nous permet de poursuivre cette œuvre précieuse et de diffuser le message de sanctification et de dépouillement à chaque coin de la planète.
+                        </small>
+                    </p>
+                    <a href="" class="btn btn-primary rounded-5 mt-3">Faire un don</a>
+                </div>
+                <div class="col-sm-4 px-4 text-center my-auto">
+                    <h3>
+                        <i class="fas fa-hand-holding-heart p-4 text-primary bg-primary bg-opacity-10 rounded-5 fa-5x"></i>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
         {{-- TV Programs --}}
         <div class="row mt-4">
             <!-- Title -->
             <div class="mb-3 d-md-flex justify-content-between align-items-center">
-                <h2 class="m-0"><i class="bi bi-megaphone"></i> Programmes TV</h2>
+                <h2 class="m-0"><i class="fas fa-tv"></i> Programmes TV</h2>
             </div>
             <div class="col-12">
                 <div class="tiny-slider arrow-blur arrow-round rounded-3 overflow-hidden">
@@ -286,96 +315,19 @@
                     data-items-sm="2"
                     data-items-xs="1">
                     <!-- Card item START -->
-                    <div>
-                        <div class="card card-overlay-bottom card-img-scale">
-                            <a href="#">
-                                <!-- Card Image -->
-                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                                <!-- Card Image overlay -->
-                                <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                    <div class="w-100 my-auto text-center">
-                                        <!-- Card title -->
-                                        <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                        <h4>
-                                            <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                        </h4>
-                                    </div>
+
+                    @foreach ($rubriques as $rubrique)
+                        <div>
+                            <div class="card text-center border">
+                                <div class="card-body">
+                                    <i class="{{ $rubrique->icon }} text-{{ $rubrique->color }} fa-3x mb-3"></i>
+                                    <h5 class="card-title text-capitalize">{{ ($rubrique->nom == "Qu'en dit la saine doctrine") ? 'La Saine Doctrine' : ($rubrique->nom) }}</h5>
+                                    <p class="card-text">{{ str_limit($rubrique->description, 35) }}.</p>
+                                    <a href="#" class="btn btn-primary btn-sm rounded-5">Consulter</a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="card card-overlay-bottom card-img-scale">
-                            <a href="#">
-                                <!-- Card Image -->
-                                <img class="card-img" src="{{ generateImage(40, 40) }}" alt="">
-                                <!-- Card Image overlay -->
-                                <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                    <div class="w-100 my-auto text-center">
-                                        <!-- Card title -->
-                                        <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                        <h4>
-                                            <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="card card-overlay-bottom card-img-scale">
-                            <a href="#">
-                                <!-- Card Image -->
-                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                                <!-- Card Image overlay -->
-                                <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                    <div class="w-100 my-auto text-center">
-                                        <!-- Card title -->
-                                        <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                        <h4>
-                                            <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="card card-overlay-bottom card-img-scale">
-                            <a href="#">
-                                <!-- Card Image -->
-                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                                <!-- Card Image overlay -->
-                                <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                    <div class="w-100 my-auto text-center">
-                                        <!-- Card title -->
-                                        <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                        <h4>
-                                            <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="card card-overlay-bottom card-img-scale">
-                            <a href="#">
-                                <!-- Card Image -->
-                                <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                                <!-- Card Image overlay -->
-                                <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                    <div class="w-100 my-auto text-center">
-                                        <!-- Card title -->
-                                        <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                        <h4>
-                                            <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -391,7 +343,9 @@
                 <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
             </div>
             <div class="col-sm-6 px-4">
-                <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" alt="">
+                <a href="https://bit.ly/3D0VgDo">
+                    <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" data-tilt alt="">
+                </a>
             </div>
         </div>
     </div>
@@ -416,97 +370,21 @@
                 data-items-sm="2"
                 data-items-xs="1">
                 <!-- Card item START -->
-                <div>
-                    <div class="card card-overlay-bottom card-img-scale">
-                        <a href="#">
-                            <!-- Card Image -->
-                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                            <!-- Card Image overlay -->
-                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                <div class="w-100 my-auto text-center">
-                                    <!-- Card title -->
-                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                    <h4>
-                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                    </h4>
-                                </div>
+
+                @for($i = 1; $i <= 10; $i++)
+                    <div>
+                        <div class="card">
+                            <!-- Card img -->
+                            <div class="position-relative card-img-scale card-img-flash">
+                                <img data-glightbox role="button" class="card-img fixed-div-268-178" src="{{ asset('assets/front/images/_content/evangelisation/evg'.$i.'.jpg') }}" alt="Card image">
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="card card-overlay-bottom card-img-scale">
-                        <a href="#">
-                            <!-- Card Image -->
-                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                            <!-- Card Image overlay -->
-                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                <div class="w-100 my-auto text-center">
-                                    <!-- Card title -->
-                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                    <h4>
-                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <div class="card card-overlay-bottom card-img-scale">
-                        <a href="#">
-                            <!-- Card Image -->
-                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                            <!-- Card Image overlay -->
-                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                <div class="w-100 my-auto text-center">
-                                    <!-- Card title -->
-                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                    <h4>
-                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <div class="card card-overlay-bottom card-img-scale">
-                        <a href="#">
-                            <!-- Card Image -->
-                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                            <!-- Card Image overlay -->
-                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                <div class="w-100 my-auto text-center">
-                                    <!-- Card title -->
-                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                    <h4>
-                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <div class="card card-overlay-bottom card-img-scale">
-                        <a href="#">
-                            <!-- Card Image -->
-                            <img class="card-img" src="data:image/png;base64, {{ generateImage(100, 100) }}" alt="">
-                            <!-- Card Image overlay -->
-                            <div class="card-img-overlay d-flex text-bg-warning flex-column p-3 p-sm-4">
-                                <div class="w-100 my-auto text-center">
-                                    <!-- Card title -->
-                                    <i class="fa fa-home pb-3 fa-5x text-dark"></i>
-                                    <h4>
-                                        <a href="#" class="btn-link text-reset stretched-link">Qu'en dis la saine doctrine</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                @endfor
             </div>
+        </div>
+        <div class="col-12 text-center my-4">
+            <button type="button" class="btn btn-primary-soft">Voir plus de contenues <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
         </div>
     </div>
 @endsection

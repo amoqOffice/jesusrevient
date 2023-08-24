@@ -253,6 +253,42 @@ class ActivitesTableSeeder extends Seeder
                 'tags' => [$tag_foi->id],
                 'responsables' => [$responsable_Pasteur->id],
             ],
+            (object)[
+                'url' => 'https://youtu.be/usyXTWK_bdk',
+                'type' => $type_enseignement,
+                'categorie' => $categorie_amour,
+                'rubriques' => [],
+                'eglises' => [],
+                'tags' => [$tag_amour->id],
+                'responsables' => [$responsable_Docteur->id],
+            ],
+            (object)[
+                'url' => 'https://youtu.be/ZFO1dSyvlSo',
+                'type' => $type_enseignement,
+                'categorie' => $categorie_amour,
+                'rubriques' => [],
+                'eglises' => [],
+                'tags' => [$tag_amour->id],
+                'responsables' => [$responsable_Docteur->id],
+            ],
+            (object)[
+                'url' => 'https://youtu.be/aiNxCJ0gVHE',
+                'type' => $type_enseignement,
+                'categorie' => $categorie_amour,
+                'rubriques' => [],
+                'eglises' => [],
+                'tags' => [$tag_amour->id],
+                'responsables' => [$responsable_Docteur->id],
+            ],
+            (object)[
+                'url' => 'https://youtu.be/vWQSZlOYX4c',
+                'type' => $type_enseignement,
+                'categorie' => $categorie_amour,
+                'rubriques' => [],
+                'eglises' => [],
+                'tags' => [$tag_amour->id],
+                'responsables' => [$responsable_Docteur->id],
+            ],
         ];
 
         foreach ($data as $youtube_video) {

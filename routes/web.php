@@ -30,6 +30,10 @@ Route::prefix('predications')->group(function () {
     Route::get('{id}/details_videos', 'front\PredicationController@show_videos')->name('front.predications.show_videos'); //Retourne une prédication
 });
 
+Route::prefix('activites')->group(function () {
+    Route::get('{type}/', 'front\ActiviteController@index')->name('front.activites.index'); //Retourne la liste des prédications
+});
+
 Route::prefix('eglises')->group(function () {
     Route::get('evenements', 'front\EvenementController@index')->name('front.eglises.evenements'); // Affiche la liste des evenements des églises
 
