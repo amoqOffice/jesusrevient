@@ -146,27 +146,26 @@ class ActiviteController extends Controller
         $activite->type_id = $request->type_id;
 
         // Vérifie l'image
-        $imgLink = null;
+        // $imgLink = null;
         if($request->img == null) {
 
+            // Enregistrement de l'image
             $imgLink = getBestYouTubeThumbnail($request->url);
+
             if (is_null($imgLink)) {
                 Toastr::error('Image non ajoutée', 'Action sur Activité');
                 return back();
             }
+            else {
+                $activite->img = $imgLink;
+            }
         }
         else {
-            // Enregistrement de l'image
-            $fileName = time() . '.' . $request->img->extension();
-            $request->img->move('assets/back/img/uploaded', $fileName);
-        }
-        
-        // Enregistrement de l'image si ajoutée
-        if($request->img) {
             $fileName = time() . '.' . $request->img->extension();
             $request->img->move('assets/back/img/uploaded', $fileName);
             $activite->img = "assets/back/img/uploaded/$fileName";
         }
+
         $activite->save();
 
         // Association du Type à l'Activité
