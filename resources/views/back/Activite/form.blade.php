@@ -8,6 +8,7 @@
             <div class="card-header">
                 <h4 class="card-title"> {{ $title }} </h4>
             </div>
+
             <div class="card-body">
                 <form action="{{ !$edit ? route('back.activite.store') : route('back.activite.update', $activite->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -28,8 +29,8 @@
                         <!-- Champ lieu -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label> Lieu <span class="text-danger font-weight-bold">*</span> :</label>
-                                <input class="form-control form-control-sm" type="text" required name="lieu" value="{{ $activite->lieu ?? old('lieu') }}" {{ ($show) ? 'disabled' : ''}}>
+                                <label> Lieu :</label>
+                                <input class="form-control form-control-sm" type="text" name="lieu" value="{{ $activite->lieu ?? old('lieu') }}" {{ ($show) ? 'disabled' : ''}}>
                                 {{-- @error('')
                                     <span class="invalid-feedback">
                                         {{ $errors->first('') }}
@@ -76,8 +77,8 @@
                             <div class="form-group mt-3">
                                 <label> Ajouter en Evènement ?</label>
                                 <select name="isEvent" {{ ($show) ? 'disabled' : ''}} class="form-control form-control-sm">
-                                    <option value="true" {{ isset($activite) && ($activite->isEvent == true) ? 'selected' : '' }}>Oui</option>
                                     <option value="false" {{ isset($activite) && ($activite->isEvent == false) ? 'selected' : '' }}>Non</option>
+                                    <option value="true" {{ isset($activite) && ($activite->isEvent == true) ? 'selected' : '' }}>Oui</option>
                                 </select>
                                 {{-- @error('')
                                     <span class="invalid-feedback">

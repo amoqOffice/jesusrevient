@@ -18,7 +18,7 @@ class CreateEglisesTable extends Migration
             $table->string('nom');
             $table->string('indication')->nullable();
             $table->string('ville');
-            $table->string('map')->nullable();
+            $table->text('map')->nullable();
             $table->string('pays');
             $table->string('photo')->nullable();
             $table->text('description')->nullable();

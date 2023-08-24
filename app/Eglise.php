@@ -18,7 +18,13 @@ class Eglise extends Model
         return $this->belongsToMany(Responsable::class, 'eglise_responsable');
     }
 
+    public function code()
+    {
+        return $this->hasOne(Code::class, 'eglise_id');
+    }
+
     //
+
 
 
 }

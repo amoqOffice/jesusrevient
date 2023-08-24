@@ -44,7 +44,7 @@
                 color: #6E7174;
                 opacity: 1;
                 border: 0px;
-        }
+            }
         </style>
 
         @yield('css')

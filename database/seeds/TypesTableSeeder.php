@@ -13,12 +13,12 @@ class TypesTableSeeder extends Seeder
      */
     public function run() {
         $types = [
-            'Delivrance',
             'Bapteme',
-            'Enseignement',
-            'Predication',
-            'Evangelisation',
             'Culte',
+            'Delivrance',
+            'Enseignement',
+            'Evangelisation',
+            'Predication',
             'Prophetie',
             'Priere',
             'Temoignage',

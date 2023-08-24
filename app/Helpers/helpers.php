@@ -50,9 +50,6 @@ function getBestYouTubeThumbnail($url) {
         if (@getimagesize($external_link)) {
             return $external_link;
         }
-        else {
-            return null;
-        }
     }
 }
 

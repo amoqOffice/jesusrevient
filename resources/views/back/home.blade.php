@@ -2,17 +2,17 @@
 
 @section('content')
 @php
-    $data = [(object)[
-            'text' => 'Admin',
-            'link' => route('back.home'),
-            'css_class' => 'text-primary',
-        ], (object)[
-            'text' => 'Dashboard',
-            'link' => '#',
-            'css_class' => 'cursor-default',
-        ]
-    ];
-    $content = 'Dashboard';
+    // $data = [(object)[
+    //         'text' => 'Admin',
+    //         'link' => route('back.home'),
+    //         'css_class' => 'text-primary',
+    //     ], (object)[
+    //         'text' => 'Dashboard',
+    //         'link' => '#',
+    //         'css_class' => 'cursor-default',
+    //     ]
+    // ];
+    // $content = 'Dashboard';
 @endphp
 
 @include('front/partials/breadcrumb')

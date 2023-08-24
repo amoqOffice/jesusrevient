@@ -109,10 +109,10 @@ class ActiviteController extends Controller
         $type->activites()->save($activite);
 
         // Différentes Associations liées à l'Activité
-        $activite->tags()->sync($request->tag_ids);
-        $activite->eglises()->sync($request->eglise_ids);
-        $activite->rubriques()->sync($request->rubrique_ids);
-        $activite->responsables()->sync($request->responsable_ids);
+        $activite->tags()->attach($request->tag_ids);
+        $activite->eglises()->attach($request->eglise_ids);
+        $activite->rubriques()->attach($request->rubrique_ids);
+        $activite->responsables()->attach($request->responsable_ids);
 
         // Message de succès et redirection
         Toastr::success('Activité bien ajouté(e)', 'Action sur Activité');
@@ -144,6 +144,23 @@ class ActiviteController extends Controller
         $activite->date_deb = $request->date_deb;
         $activite->date_fin = $request->date_fin;
         $activite->type_id = $request->type_id;
+
+        // Vérifie l'image
+        $imgLink = null;
+        if($request->img == null) {
+
+            $imgLink = getBestYouTubeThumbnail($request->url);
+            if (is_null($imgLink)) {
+                Toastr::error('Image non ajoutée', 'Action sur Activité');
+                return back();
+            }
+        }
+        else {
+            // Enregistrement de l'image
+            $fileName = time() . '.' . $request->img->extension();
+            $request->img->move('assets/back/img/uploaded', $fileName);
+        }
+        
         // Enregistrement de l'image si ajoutée
         if($request->img) {
             $fileName = time() . '.' . $request->img->extension();

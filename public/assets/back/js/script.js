@@ -6,19 +6,19 @@ Version      : 1.0
 
 (function($) {
     "use strict";
-	
+
 	// Variables declarations
-	
+
 	var $wrapper = $('.main-wrapper');
 	var $pageWrapper = $('.page-wrapper');
 	var $slimScrolls = $('.slimscroll');
-	
+
 	// Sidebar
-	
+
 	var Sidemenu = function() {
 		this.$menuItem = $('#sidebar-menu a');
 	};
-	
+
 	function init() {
 		var $this = Sidemenu;
 		$('#sidebar-menu a').on('click', function(e) {
@@ -37,12 +37,12 @@ Version      : 1.0
 		});
 		$('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');
 	}
-	
+
 	// Sidebar Initiate
 	init();
-	
+
 	// Mobile menu sidebar overlay
-	
+
 	$('body').append('<div class="sidebar-overlay"></div>');
 	$(document).on('click', '#mobile_btn', function() {
 		$wrapper.toggleClass('slide-nav');
@@ -50,42 +50,42 @@ Version      : 1.0
 		$('html').addClass('menu-opened');
 		return false;
 	});
-	
+
 	// Sidebar overlay
-	
+
 	$(".sidebar-overlay").on("click", function () {
 		$wrapper.removeClass('slide-nav');
 		$(".sidebar-overlay").removeClass("opened");
 		$('html').removeClass('menu-opened');
 	});
-	
+
 	// Page Content Height
-	
+
 	if($('.page-wrapper').length > 0 ){
-		var height = $(window).height();	
+		var height = $(window).height();
 		$(".page-wrapper").css("min-height", height);
 	}
-	
+
 	// Page Content Height Resize
-	
+
 	$(window).resize(function(){
 		if($('.page-wrapper').length > 0 ){
 			var height = $(window).height();
 			$(".page-wrapper").css("min-height", height);
 		}
 	});
-	
+
 	// Select 2
-	
+
     if ($('.select').length > 0) {
         $('.select').select2({
             minimumResultsForSearch: -1,
             width: '100%'
         });
     }
-	
+
 	// Datetimepicker
-	
+
 	if($('.datetimepicker').length > 0 ){
 		$('.datetimepicker').datetimepicker({
 			format: 'DD/MM/YYYY',
@@ -104,11 +104,11 @@ Version      : 1.0
 	}
 
 	// Tooltip
-	
+
 	if($('[data-toggle="tooltip"]').length > 0 ){
 		$('[data-toggle="tooltip"]').tooltip();
 	}
-	
+
     // Datatable
 
     if ($('.datatable').length > 0) {
@@ -116,7 +116,7 @@ Version      : 1.0
             "bFilter": false,
         });
     }
-	
+
 	// Email Inbox
 
 	if($('.clickable-row').length > 0 ){
@@ -126,7 +126,7 @@ Version      : 1.0
 	}
 
 	// Check all email
-	
+
 	$(document).on('click', '#check_all', function() {
 		$('.checkmail').click();
 		return false;
@@ -142,15 +142,15 @@ Version      : 1.0
 			});
 		});
 	}
-	
+
 	// Mail important
-	
+
 	$(document).on('click', '.mail-important', function() {
 		$(this).find('i.fa').toggleClass('fa-star').toggleClass('fa-star-o');
 	});
-	
+
 	// Summernote
-	
+
 	if($('.summernote').length > 0) {
 		$('.summernote').summernote({
 			height: 200,                 // set editor height
@@ -159,7 +159,7 @@ Version      : 1.0
 			focus: false                 // set focus to editable area after initializing summernote
 		});
 	}
-	
+
     // Product thumb images
 
     if ($('.proimage-thumb li a').length > 0) {
@@ -180,7 +180,7 @@ Version      : 1.0
             selector: 'a'
         });
     }
-	
+
 	// Sidebar Slimscroll
 
 	if($slimScrolls.length > 0) {
@@ -203,7 +203,7 @@ Version      : 1.0
 			$('.sidebar .slimScrollDiv').height(rHeight);
 		});
 	}
-	
+
 	// Small Sidebar
 
 	$(document).on('click', '#toggle_btn', function() {
@@ -214,7 +214,7 @@ Version      : 1.0
 			$('body').addClass('mini-sidebar');
 			$('.subdrop + ul').slideUp();
 		}
-		setTimeout(function(){ 
+		setTimeout(function(){
 			mA.redraw();
 			mL.redraw();
 		}, 300);
@@ -234,74 +234,74 @@ Version      : 1.0
 			return false;
 		}
 	});
-	
+
 	// Template Options
-	
+
 	$(document).on('click', '.skin-sett-icon', function() {
 		$('.skin-settings').toggleClass("active");
 	});
-	
+
 	// Template Options html append
-	
-	if($('#demoSettings').length === 0) {
-		$('.main-wrapper').append('<div class="skin-settings" id="demoSettings">'+
-			'<div class="skin-sett-icon"><i class="fa fa-cog"></i></div>'+
-			'<div class="skin-sett-body">'+
-				'<h4>Template Colors</h4>'+
-				'<ul class="skin-colors">'+
-					'<li><a class="skin-purple" data-color="default" href="#"></a></li>'+
-					'<li><a class="skin-red" data-color="red" href="#"></a></li>'+
-					'<li><a class="skin-teal" data-color="teal" href="#"></a></li>'+
-					'<li><a class="skin-orange" data-color="orange" href="#"></a></li>'+
-				'</ul>'+
-			'</div>'+
-		'</div>')
-	}
-	
-	const hasTemp = localStorage.getItem('skin-color');
-	
-	if(!!hasTemp) {
-		$('head').append('<link id="tempSkin" rel="stylesheet" href="assets/css/style-'+hasTemp+'.css">')
-		$('body').find('.skin-colors a').each(function(){
-		const name = $(this).attr('data-color');
-		
-		if(name === hasTemp) {
-			$(this).addClass('active');
-		} else {
-			$(this).removeClass('active');
-		}
-	})
-	} else {
-		$('body').find('.skin-colors a').each(function(){
-			const name = $(this).attr('data-color');
-			
-			if(name === 'default') {
-				$(this).addClass('active');
-			}
-		});
-	}
-	
+
+	// if($('#demoSettings').length === 0) {
+	// 	$('.main-wrapper').append('<div class="skin-settings" id="demoSettings">'+
+	// 		'<div class="skin-sett-icon"><i class="fa fa-cog"></i></div>'+
+	// 		'<div class="skin-sett-body">'+
+	// 			'<h4>Template Colors</h4>'+
+	// 			'<ul class="skin-colors">'+
+	// 				'<li><a class="skin-purple" data-color="default" href="#"></a></li>'+
+	// 				'<li><a class="skin-red" data-color="red" href="#"></a></li>'+
+	// 				'<li><a class="skin-teal" data-color="teal" href="#"></a></li>'+
+	// 				'<li><a class="skin-orange" data-color="orange" href="#"></a></li>'+
+	// 			'</ul>'+
+	// 		'</div>'+
+	// 	'</div>')
+	// }
+
+	// const hasTemp = localStorage.getItem('skin-color');
+
+	// if(!!hasTemp) {
+	// 	$('head').append('<link id="tempSkin" rel="stylesheet" href="assets/css/style-'+hasTemp+'.css">')
+	// 	$('body').find('.skin-colors a').each(function(){
+	// 	const name = $(this).attr('data-color');
+
+	// 	if(name === hasTemp) {
+	// 		$(this).addClass('active');
+	// 	} else {
+	// 		$(this).removeClass('active');
+	// 	}
+	// })
+	// } else {
+	// 	$('body').find('.skin-colors a').each(function(){
+	// 		const name = $(this).attr('data-color');
+
+	// 		if(name === 'default') {
+	// 			$(this).addClass('active');
+	// 		}
+	// 	});
+	// }
+
 	// Skin colors change event
-	  
-	$(document).on('click', '.skin-colors a', function(e){
-		e.preventDefault();
 
-		$(this).parent().siblings().find('a').removeClass('active');
-		$(this).addClass('active');
+	// $(document).on('click', '.skin-colors a', function(e){
+	// 	e.preventDefault();
 
-		var skin = $(this).attr('data-color');
+	// 	$(this).parent().siblings().find('a').removeClass('active');
+	// 	$(this).addClass('active');
 
-		if(skin === 'default') {
-			localStorage.removeItem('skin-color');
-			$('#tempSkin').remove();
-		} else {
-			if($('#tempSkin').length === 0) {
-				$('head').append('<link id="tempSkin" rel="stylesheet" href="assets/css/style-'+skin+'.css">')
-			} else {
-				$('#tempSkin').attr('href', 'assets/css/style-'+skin+'.css');
-			}
-			localStorage.setItem('skin-color', skin);
-		}
-	})
-	
+	// 	var skin = $(this).attr('data-color');
+
+	// 	if(skin === 'default') {
+	// 		localStorage.removeItem('skin-color');
+	// 		$('#tempSkin').remove();
+	// 	} else {
+	// 		if($('#tempSkin').length === 0) {
+	// 			$('head').append('<link id="tempSkin" rel="stylesheet" href="assets/css/style-'+skin+'.css">')
+	// 		} else {
+	// 			$('#tempSkin').attr('href', 'assets/css/style-'+skin+'.css');
+	// 		}
+	// 		localStorage.setItem('skin-color', skin);
+	// 	}
+	// })
+
 })(jQuery);
