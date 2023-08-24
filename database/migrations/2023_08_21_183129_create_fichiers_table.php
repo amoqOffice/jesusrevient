@@ -17,6 +17,8 @@ class CreateFichiersTable extends Migration
             $table->increments('id');
             $table->string('nom')->nullable();
             $table->string('url')->nullable();
+            $table->string('migration')->nullable();
+
             $table->timestamps();
         });
     }

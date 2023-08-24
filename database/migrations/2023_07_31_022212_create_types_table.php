@@ -17,6 +17,8 @@ class CreateTypesTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->text('description')->nullable();
+            $table->string('migration')->nullable();
+
             $table->timestamps();
         });
     }

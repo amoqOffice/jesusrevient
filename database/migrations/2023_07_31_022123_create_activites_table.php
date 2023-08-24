@@ -22,6 +22,9 @@ class CreateActivitesTable extends Migration
             $table->text('description')->nullable();
             $table->string('date_deb')->nullable();
             $table->string('date_fin')->nullable();
+            $table->boolean('isEvent')->default(false);
+            $table->string('migration')->nullable();
+
             $table->timestamps();
         });
     }

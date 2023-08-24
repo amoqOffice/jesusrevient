@@ -16,6 +16,8 @@ class CreateReponsesTable extends Migration
         Schema::create('reponses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('contenu');
+            $table->string('migration')->nullable();
+
             $table->timestamps();
         });
     }

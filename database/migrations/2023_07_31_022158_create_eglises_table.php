@@ -22,6 +22,8 @@ class CreateEglisesTable extends Migration
             $table->string('pays');
             $table->string('photo')->nullable();
             $table->text('description')->nullable();
+            $table->string('migration')->nullable();
+
             $table->timestamps();
         });
     }

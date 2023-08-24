@@ -13,14 +13,14 @@ class WebsiteSeeder extends Seeder
     public function run()
     {
         // Création des Types
-        // $donnees = [
-        //     (object)['nom' => 'Bapteme'],
-        // ];
+        $donnees = [
+            (object)['nom' => 'Seminaire'],
+        ];
 
-        // foreach ($donnees as $donnee) {
-        //     Type::create([
-        //         'nom' => '',
-        //     ]);
-        // }
+        foreach ($donnees as $donnee) {
+            Type::create([
+                'nom' => $donnee->nom,
+            ]);
+        }
     }
 }
