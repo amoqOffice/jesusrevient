@@ -34,7 +34,6 @@
                                     <!-- Vidéo de la prédication -->
                                     <div class="player-wrapper rounded-3 overflow-hidden">
                                         <div class="player-youtube" >
-                                            {{-- @dd($getYoutubeEmbedLink($predication->url)) --}}
                                             <iframe src="{{ getYoutubeEmbedLink($predication->url) }}"></iframe>
                                         </div>
                                     </div>

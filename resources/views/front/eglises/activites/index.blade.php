@@ -31,31 +31,31 @@
                             <div class="row">
                                 {{-- Title --}}
                                 <div class="mb-3 d-md-flex justify-content-between align-items-center">
-                                    <h2 class="m-0"><i class="bi bi-megaphone"></i>  {{ $typePrincipal }} : Vidéos récentes</h2>
+                                    <h4 class="m-0"><i class="bi bi-megaphone"></i>  {{ $typePrincipal }} : Vidéos récentes</h4>
                                 </div>
 
                                 @foreach ($activites as $activite)
-                                <div class="col-sm-12 col-lg-6 pb-4">
-                                    <div class="card card-overlay-bottom card-fold h-350" style="background-image: url('{{ asset($activite->img) }}'); background-position: center left; background-size: cover;">
-                                        <!-- Card Image overlay -->
-                                        <div class="card-img-overlay d-flex flex-column p-3 p-sm-5" style="background: #00000087">
-                                            <!-- Card play button -->
-                                            <div class="position-absolute top-50 start-50 translate-middle pb-5">
-                                                <!-- Popup video -->
-                                                <a href="https://youtu.be/n_Cn8eFo7u8" class="icon-lg text-bg-danger d-block text-white rounded-circle" data-glightbox data-gallery="y-video">
-                                                    <i class="fas fa-play"></i>
-                                                </a>
-                                            </div>
-                                            <!-- Card overlay Bottom  -->
-                                            <div class="w-100 mt-auto">
-                                                <div class="col text-center">
-                                                    <!-- Card title -->
-                                                    <h4 class="text-white"><a href="#" class="btn-link text-reset text-capitalize fw-normal">{{ str_limit($activite->titre, 40) }}</a></h4>
+                                    <div class="col-sm-12 col-lg-6 pb-4">
+                                        <div class="card card-overlay-bottom card-fold h-350" style="background-image: url('{{ asset($activite->img) }}'); background-position: center left; background-size: cover;">
+                                            <!-- Card Image overlay -->
+                                            <div class="card-img-overlay d-flex flex-column p-3 p-sm-5" style="background: #00000087">
+                                                <!-- Card play button -->
+                                                <div class="position-absolute top-50 start-50 translate-middle pb-5">
+                                                    <!-- Popup video -->
+                                                    <a href="https://youtu.be/n_Cn8eFo7u8" class="icon-lg text-bg-danger d-block text-white rounded-circle" data-glightbox data-gallery="y-video">
+                                                        <i class="fas fa-play"></i>
+                                                    </a>
+                                                </div>
+                                                <!-- Card overlay Bottom  -->
+                                                <div class="w-100 mt-auto">
+                                                    <div class="col text-center">
+                                                        <!-- Card title -->
+                                                        <h4 class="text-white"><a href="#" class="btn-link text-reset text-capitalize fw-normal">{{ str_limit($activite->titre, 40) }}</a></h4>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                         </div>

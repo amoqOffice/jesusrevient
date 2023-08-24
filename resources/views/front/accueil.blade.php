@@ -154,7 +154,7 @@
                                     <img class="card-img fixed-div-268-178" src="{{ $temoignage->img }}" alt="Card image">
                                 </div>
                                 <div class="card-body px-0 pt-3">
-                                    <h5 class="card-title"><a href="#" class="btn-link text-reset fw-bold">{{ truncate_string($temoignage->titre, 50) }}</a></h5>
+                                    <h5 class="card-title"><a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($temoignage->titre), 50) }}</a></h5>
                                 </div>
                             </div>
                         @endforeach
@@ -164,7 +164,7 @@
 		</div>
 
         {{-- Afficher direct --}}
-        <div class="bg-primary my-4 bg-opacity-10 rounded-3 p-5 h-100">
+        {{-- <div class="bg-primary my-4 bg-opacity-10 rounded-3 p-5 h-100">
             <div class="row">
                 <div class="col-sm-8 position-relative text-cente my-auto px-4">
                     <h1 class="mb-1 text-primary">Suivez le direct</h1>
@@ -174,7 +174,7 @@
                     <a href="#" class="btn text-light btn-pulse">Cliquer ici</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Enseignements --}}
         <div class="row mt-4">
@@ -186,9 +186,10 @@
 				</div>
                 <div class="row gy-4">
                     @foreach ($enseignements as $enseignement)
+                    {{-- @dd($enseignement->categorie->id) --}}
                         <div class="col-sm-6">
                             <div class="card">
-                                <a href="{{ $enseignement->url }}">
+                                <a href="{{ route('front.predications.show', [$enseignement->categorie->nom ?? '', $enseignement->id]) }}">
 
                                     <!-- Card img -->
                                     <div class="position-relative">
@@ -196,7 +197,7 @@
                                     </div>
 
                                     <div class="card-body px-0 pt-3">
-                                        <h4 class="card-title"><a href="{{ $enseignement->url }}" class="btn-link text-reset fw-bold">{{ truncate_string($enseignement->titre, 50) }}</a></h4>
+                                        <h4 class="card-title"><a href="{{ route('front.predications.show', [$enseignement->categorie->nom ?? '', $enseignement->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($enseignement->titre), 50) }}</a></h4>
                                         <p class="card-text">{{ truncate_string($enseignement->description, 150) }}</p>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -277,7 +278,7 @@
         </div>
 
         {{-- Faire un don --}}
-        <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
+        {{-- <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
             <div class="row">
                 <div class="col-sm-8 position-relative text-cente my-auto">
                     <h1 class="mb-3">Faire un don</h1>
@@ -295,10 +296,10 @@
                     </h3>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- TV Programs --}}
-        <div class="row mt-4">
+        {{-- <div class="row mt-5">
             <!-- Title -->
             <div class="mb-3 d-md-flex justify-content-between align-items-center">
                 <h2 class="m-0"><i class="fas fa-tv"></i> Programmes TV</h2>
@@ -332,61 +333,61 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-    </div>
+        </div> --}}
 
-    {{-- Télécharger l'application --}}
-    <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
-        <div class="row">
-            <div class="col-sm-6 position-relative text-cente my-auto">
-                <h1 class="mb-1">Télécharger l'application</h1>
-                <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
-                <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
-                <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+        {{-- Télécharger l'application --}}
+        <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
+            <div class="row">
+                <div class="col-sm-6 position-relative text-cente my-auto">
+                    <h1 class="mb-1">Télécharger l'application</h1>
+                    <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
+                    <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
+                    <a href="https://bit.ly/3D0VgDo" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+                </div>
+                <div class="col-sm-6 px-4">
+                    <a href="https://bit.ly/3D0VgDo">
+                        <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" data-tilt alt="">
+                    </a>
+                </div>
             </div>
-            <div class="col-sm-6 px-4">
-                <a href="https://bit.ly/3D0VgDo">
-                    <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" data-tilt alt="">
-                </a>
+        </div>
+
+        {{-- Messages d'Evangelisations --}}
+        <div class="row mt-4">
+            <!-- Title -->
+            <div class="mb-3 d-md-flex justify-content-between align-items-center">
+                <h2 class="m-0"><i class="bi bi-megaphone"></i> Messages d'Evangélisation</h2>
             </div>
-        </div>
-    </div>
+            <div class="col-12">
+                <div class="tiny-slider arrow-blur arrow-round rounded-3 overflow-hidden">
+                    <div class="tiny-slider-inner"
+                    data-autoplay="true"
+                    data-hoverpause="true"
+                    data-gutter="24"
+                    data-arrow="true"
+                    data-dots="false"
+                    data-items-xl="4"
+                    data-items-lg="3"
+                    data-items-md="3"
+                    data-items-sm="2"
+                    data-items-xs="1">
+                    <!-- Card item START -->
 
-    {{-- TV Programs --}}
-    <div class="row mt-4">
-        <!-- Title -->
-        <div class="mb-3 d-md-flex justify-content-between align-items-center">
-            <h2 class="m-0"><i class="bi bi-megaphone"></i> Messages d'Evangélisation</h2>
-        </div>
-        <div class="col-12">
-            <div class="tiny-slider arrow-blur arrow-round rounded-3 overflow-hidden">
-                <div class="tiny-slider-inner"
-                data-autoplay="true"
-                data-hoverpause="true"
-                data-gutter="24"
-                data-arrow="true"
-                data-dots="false"
-                data-items-xl="4"
-                data-items-lg="3"
-                data-items-md="3"
-                data-items-sm="2"
-                data-items-xs="1">
-                <!-- Card item START -->
-
-                @for($i = 1; $i <= 10; $i++)
-                    <div>
-                        <div class="card">
-                            <!-- Card img -->
-                            <div class="position-relative card-img-scale card-img-flash">
-                                <img data-glightbox role="button" class="card-img fixed-div-268-178" src="{{ asset('assets/front/images/_content/evangelisation/evg'.$i.'.jpg') }}" alt="Card image">
+                    @for($i = 1; $i <= 10; $i++)
+                        <div>
+                            <div class="card">
+                                <!-- Card img -->
+                                <div class="position-relative card-img-scale card-img-flash">
+                                    <img data-glightbox role="button" class="card-img fixed-div-268-178" src="{{ asset('assets/front/images/_content/evangelisation/evg'.$i.'.jpg') }}" alt="Card image">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endfor
+                    @endfor
+                </div>
             </div>
-        </div>
-        <div class="col-12 text-center my-4">
-            <button type="button" class="btn btn-primary-soft">Voir plus de contenues <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
+            {{-- <div class="col-12 text-center my-4">
+                <button type="button" class="btn btn-primary-soft">Voir plus de contenues <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
+            </div> --}}
         </div>
     </div>
 @endsection

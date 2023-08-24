@@ -30,8 +30,10 @@ Route::prefix('predications')->group(function () {
     Route::get('{id}/details_videos', 'front\PredicationController@show_videos')->name('front.predications.show_videos'); //Retourne une prédication
 });
 
-Route::prefix('activites')->group(function () {
-    Route::get('{type}/', 'front\ActiviteController@index')->name('front.activites.index'); //Retourne la liste des prédications
+Route::prefix('eglises/activites')->group(function () {
+    Route::get('{type}/', 'front\ActiviteController@index')->name('front.eglises.activites.index'); //Retourne la liste des activités
+
+    Route::get('{type}/{activite_id}/details', 'front\ActiviteController@show')->name('front.eglises.activites.show'); //Retourne une activité
 });
 
 Route::prefix('eglises')->group(function () {
@@ -64,7 +66,7 @@ Route::prefix('donation')->group(function () {
 
 
 // BACKOFFICE ONLY
-Route::view('admin/accueil', 'back\home')->name('back.home');
+Route::view('admin/accueil', 'back.home')->name('back.home');
 /*
 |--------------------------------------------------------------------------
 | Rubrique Routes

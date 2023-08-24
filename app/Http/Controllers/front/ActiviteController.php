@@ -13,9 +13,16 @@ class ActiviteController extends Controller
         $typePrincipal = Type::where('nom', 'like', "%$type%")->first();
         $activites = $typePrincipal->activites()->orderBy('date_deb', 'desc')->paginate(4);
 
-        return view('front.activites.index')->with([
+        return view('front.eglises.activites.index')->with([
             'activites' => $activites,
             'typePrincipal' => $typePrincipal->nom,
         ]);
+    }
+
+    public function show($type, $activite_id) {
+        $typePrincipal = Type::where('nom', 'like', "%$type%")->first();
+        $activite = Activite::findOrFail($activite_id);
+
+        return view('front.eglises.activites.show', compact('activite', 'typePrincipal'));
     }
 }

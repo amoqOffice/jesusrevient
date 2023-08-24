@@ -21,26 +21,18 @@
 
 			<!-- Menu de la page -->
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav navbar-nav-scroll mx-auto">
+				<ul class="navbar-nav navbar-nav-scroll ms-auto">
 
 					<!-- Accueil -->
 					<li class="nav-item"> <a class="nav-link {{ request()->routeIs('front.accueil') ? 'active' : '' }}" href="{{ route('front.accueil') }}">Accueil</a></li>
 
 					<!-- Prédications -->
 					<li class="nav-item dropdown">
-						<a class="nav-link {{ request()->routeIs('front.predications.*') ? 'active' : '' }} dropdown-toggle"
-                            href="#"
-                            id="pagesMenu"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false">
-                            Prédications
-                        </a>
+						<a class="nav-link {{ request()->routeIs('front.predications.*') ? 'active' : '' }} dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prédications</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
                             @foreach ($categories as $categorie)
                                 <li>
-                                    <a class="dropdown-item {{ request()->route('categorie') == $categorie ? 'item-active' : '' }}"
-                                        href="{{ route('front.predications.index', $categorie) }}">
+                                    <a class="dropdown-item {{ request()->route('categorie') == $categorie ? 'item-active' : '' }}" href="{{ route('front.predications.index', $categorie) }}">
                                         {{ str_normalise($categorie) }}
                                     </a>
                                 </li>
@@ -52,63 +44,27 @@
 							</li> --}}
 						</ul>
 					</li>
+
 					<!-- Eglises / cellules -->
 					<li class="nav-item dropdown">
 						<a class="nav-link {{ request()->routeIs('front.eglises.*') ? 'active' : '' }} dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eglises / cellules</a>
 						<ul class="dropdown-menu" aria-labelledby="postMenu">
-                            <li>
-                                <a  class="dropdown-item {{ request()->routeIs('front.eglises.evenements') ? 'item-active' : '' }}"
-                                    href="{{ route('front.eglises.evenements') }}">
-                                    Evènements
-                                </a>
+                            <li> <a class="dropdown-item {{ request()->routeIs('front.eglises.evenements') ? 'item-active' : '' }}" href="{{ route('front.eglises.evenements') }}">Evènements</a>
                             </li>
-
                             <li class="dropdown-submenu dropend">
-								<a  class="dropdown-item dropdown-toggle {{ request()->routeIs('front.eglises.activites.*') ? 'item-active' : '' }}"
-                                    href="#">
-                                    Activités
-                                </a>
+								<a class="dropdown-item dropdown-toggle" href="#">Activités</a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li>
-                                        <a  class="dropdown-item {{ request()->routeIs('front.eglises.activites.index', ['bapteme']) ? 'item_active' : '' }}"
-                                            href="{{ route('front.eglises.activites.index', 'bapteme') }}">
-                                            Baptêmes
-                                        </a>
-                                    </li>
-
-									<li>
-                                        <a  class="dropdown-item"
-                                            href="{{ route('front.eglises.activites.index', 'culte') }}">
-                                            Cultes
-                                        </a>
-                                    </li>
-
-									<li>
-                                        <a  class="dropdown-item"
-                                            href="{{ route('front.eglises.activites.index', 'evangelisation') }}">
-                                            Evangélisations
-                                        </a>
-                                    </li>
-
-									<li>
-                                        <a  class="dropdown-item"
-                                            href="{{ route('front.eglises.activites.index', 'priere') }}">
-                                            Prières
-                                        </a>
-                                    </li>
-
-									<li>
-                                        <a  class="dropdown-item {{ request()->routeIs('front.eglises.activites.index', ['temoignage']) ? 'item_active' : '' }}"
-                                            href="{{ route('front.eglises.activites.index', 'temoignage') }}">
-                                            Témoignages
-                                        </a>
-                                    </li>
+									<li> <a class="dropdown-item" href="{{ route('front.eglises.activites.index', 'bapteme') }}">Baptêmes</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.eglises.activites.index', 'culte') }}">Cultes</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.eglises.activites.index', 'evangelisation') }}">Evangélisations</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.eglises.activites.index', 'priere') }}">Prières</a> </li>
+									<li> <a class="dropdown-item" href="{{ route('front.eglises.activites.index', 'temoignage') }}">Témoignages</a> </li>
                                     {{-- <li>
                                         <a class="dropdown-item {{ request()->routeIs('front.eglises.evenements') ? 'item-active' : '' }}" href="{{ route('front.eglises.evenements') }}">Activités</a>
                                     </li> --}}
 								</ul>
 							</li>
-							{{-- <li> <a class="dropdown-item {{ request()->routeIs('front.eglises.evangelisations') ? 'item-active' : '' }}" href="{{ route('front.eglises.apropos') }}">A Propos</a> --}}
+							<li> <a class="dropdown-item {{ request()->routeIs('front.eglises.evangelisations') ? 'item-active' : '' }}" href="{{ route('front.eglises.apropos') }}">A Propos</a>
                             </li>
 						</ul>
 					</li>
@@ -117,7 +73,7 @@
 					{{-- <li class="nav-item"> <a class="nav-link {{ request()->routeIs('front.blog') ? 'active' : '' }}" href="{{ route('front.blog') }}">Blog</a></li> --}}
 
 					<!-- Emissions TV -->
-					{{-- <li class="nav-item dropdown dropdown-fullwidth">
+					<li class="nav-item dropdown dropdown-fullwidth">
 						<a class="nav-link {{ request()->routeIs('front.emissionsTV') ? 'active' : '' }} dropdown-toggle" href="#" id="megaMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Emissions TV</a>
 						<div class="dropdown-menu" aria-labelledby="megaMenu">
 							<div class="container">
@@ -206,7 +162,7 @@
 								</div> <!-- Row END -->
 							</div>
 						</div>
-					</li> --}}
+					</li>
 
 					<!-- Bible -->
 					{{-- <li class="nav-item"> <a class="nav-link" href="dashboard.html">Bible</a></li> --}}
@@ -241,27 +197,27 @@
 								</svg>Dark
 							</button>
 						</li>
-						{{-- <li>
+						<li>
 							<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
 									<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
 									<use href="#"></use>
 								</svg>Auto
 							</button>
-						</li> --}}
+						</li>
 					</ul>
 				</div>
 				<!-- Dark mode options END -->
 
 				<!-- Direct TV -->
-				{{-- <div class="nav-item d-none d-md-block">
+				<div class="nav-item d-none d-md-block">
 					<a href="{{ route('front.directTV') }}" class="btn btn-sm btn-danger {{ request()->routeIs('front.directTV') ? 'active' : '' }} mb-0 mx-2">Direct TV</a>
-				</div> --}}
+				</div>
 
 				<!-- Donation -->
-				{{-- <div class="nav-item d-none d-md-block">
+				<div class="nav-item d-none d-md-block">
 					<a href="{{ route('front.donation') }}" class="btn btn-sm btn-primary {{ request()->routeIs('front.donation') ? 'active' : '' }} mb-0 mx-2">Faire un don</a>
-				</div> --}}
+				</div>
 			</div>
 		</div>
 	</nav>
