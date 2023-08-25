@@ -57,6 +57,22 @@ function getYoutubeEmbedLink($url) {
     return "https://www.youtube.com/embed/".getYoutubeVideoId($url);
 }
 
+function getYoutubeSuscribers($api_key = "AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA", $chann_id = "UCm0h6l5ocScSzhvQkD5AIEg") {
+    //reading the channel file containing required data in JSON format
+    $subscribers = file_get_contents('https://www.googleapis.com/youtube/v3/channels?part=statistics&id='.$chann_id.'&key='.$api_key);
+    $views = file_get_contents('https://www.googleapis.com/youtube/v3/channels?part=statistics&id='.$chann_id.'&key='.$api_key);
+
+    // Decoding the JSON string and converting it into PHP variables.
+    $response = json_decode($subscribers, true );
+    $response2 = json_decode($views, true );
+
+    // Getting the integer value from the variables of Subscribers and Lifetime views
+    $subscribersCount = intval($response['items'][0]['statistics']['subscriberCount']);
+    $viewsCount = intval($response2['items'][0]['statistics']['viewCount']);
+
+    return $subscribersCount;
+}
+
 function str_limit($text, $maxLength, $suffix = "...")
 {
     if (strlen($text) > $maxLength) {
@@ -98,6 +114,16 @@ function str_format($inputText) {
     }
 
     return $convertedText;
+}
+
+function int_formatNumber($number) {
+    if ($number >= 1000000) {
+        return floor($number / 1000000) . 'M';
+    } elseif ($number >= 1000) {
+        return floor($number / 1000) . 'k';
+    } else {
+        return (string) $number;
+    }
 }
 
 function remove_emoji($string)

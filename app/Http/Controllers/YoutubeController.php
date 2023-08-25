@@ -11,8 +11,6 @@ class YoutubeController extends Controller
     public function getInformationFromLink(Request $request) {
         $videoUrl = $request->url;
 
-        // $thumbnail = getBestYouTubeThumbnail('https://www.youtube.com/watch?v=SElhkuDVmVE');
-
         Youtube::setApiKey('AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA');
 
         $video = Youtube::getVideoInfo(getYoutubeVideoId($videoUrl));

@@ -241,25 +241,25 @@
 					<!-- Social widget START -->
 					<div class="row g-2">
 						<div class="col-4">
-							<a href="#" class="bg-facebook rounded text-center text-white-force p-3 d-block">
+							<a href="https://www.youtube.com/@JESUSREVIENTTV?sub_confirmation=1" target="_blank" class="bg-youtube rounded text-center text-white-force p-3 d-block">
+								<i class="fab fa-youtube-square fs-5 mb-2"></i>
+								<h6 class="m-0">73k</h6>
+								<span class="small">Subs</span>
+							</a>
+						</div>
+                        <div class="col-4">
+							<a href="https://web.facebook.com/groupejesusrevient?_rdc=1&_rdr" target="_blank" class="bg-facebook rounded text-center text-white-force p-3 d-block">
 								<i class="fab fa-facebook-square fs-5 mb-2"></i>
-								<h6 class="m-0">1.5K</h6>
+								<h6 class="m-0">7.3K</h6>
 								<span class="small">Fans</span>
 							</a>
 						</div>
 						<div class="col-4">
-							<a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
-								<i class="fab fa-instagram fs-5 mb-2"></i>
-								<h6 class="m-0">1.8M</h6>
-								<span class="small">Followers</span>
-							</a>
-						</div>
-						<div class="col-4">
-							<a href="#" class="bg-youtube rounded text-center text-white-force p-3 d-block">
-								<i class="fab fa-youtube-square fs-5 mb-2"></i>
-								<h6 class="m-0">22K</h6>
-								<span class="small">Subs</span>
-							</a>
+							<a href="https://t.me/jesusrevient_tv" target="_blank" class="bg-telegram rounded text-center text-white-force p-3 d-block">
+                                <i class="fab fa-telegram fs-5 mb-2"></i>
+                                <h6 class="m-0">807</h6>
+                                <span class="small">Subs</span>
+                            </a>
 						</div>
 					</div>
 
@@ -353,6 +353,21 @@
                 </div>
             </div>
         </div>
+        {{-- <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-3 p-md-5">
+            <div class="row">
+                <div class="col-md-6 position-relative text-center my-auto">
+                    <h1 class="mb-3">Télécharger l'application</h1>
+                    <h2 class="mb-3 font-weight-bold">JESUS-REVIENT TV</h2>
+                    <p class="my-3 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
+                    <a href="https://bit.ly/3D0VgDo" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+                </div>
+                <div class="col-md-6 px-4 mt-3 mt-md-0">
+                    <a href="https://bit.ly/3D0VgDo">
+                        <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="img-fluid" data-tilt alt="">
+                    </a>
+                </div>
+            </div>
+        </div> --}}
 
         {{-- Messages d'Evangelisations --}}
         <div class="row mt-4">

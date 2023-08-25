@@ -15868,6 +15868,24 @@ small,
   color: #3aacdd;
 }
 
+.bg-telegram {
+    background-color: #0088cc;
+    color: var(--bs-white);
+}
+
+.bg-telegram:hover {
+    background-color: #0077b3;
+    color: var(--bs-white);
+}
+
+.text-telegram {
+    color: #0088cc;
+}
+
+.text-telegram:hover {
+    color: #0077b3;
+}
+
 .bg-linkedin {
   background-color: #238cc8;
   color: var(--bs-white);

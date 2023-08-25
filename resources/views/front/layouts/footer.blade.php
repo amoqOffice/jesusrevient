@@ -12,7 +12,7 @@ Footer START -->
                 <ul class="nav justify-content-center">
                     {{-- Youtube --}}
                     <li class="nav-item">
-                        <a class="nav-link px-2 fs-5" target="_blank" href="https://www.youtube.com/@jesusrevienttv"><i class="fab fa-youtube text-white"></i></a>
+                        <a class="nav-link px-2 fs-5" target="_blank" href="https://www.youtube.com/@JESUSREVIENTTV?sub_confirmation=1"><i class="fab fa-youtube text-white"></i></a>
                     </li>
                     {{-- Facebook --}}
                     <li class="nav-item">
@@ -45,7 +45,7 @@ Footer START -->
                         <a target="_blank" href="https://www.facebook.com/groupejesusrevient"><i class="text-dar fas fa-facebook"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a target="_blank" href="https://www.youtube.com/@jesusrevienttv"><i class="text-dar fa fa-youtube"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@JESUSREVIENTTV?sub_confirmation=1"><i class="text-dar fa fa-youtube"></i></a>
                     </li>
                     <li class="nav-item">
                         <a target="_blank" href="https://t.me/jesusrevient_tv"><i class="text-dar fa fa-telegram"></i></a>

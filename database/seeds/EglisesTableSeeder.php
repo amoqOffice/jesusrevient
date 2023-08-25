@@ -16,7 +16,7 @@ class EglisesTableSeeder extends Seeder
     {
         $eglises = [
             (object)[
-                'nom' => 'Eglise JESUS-REVIENT de Dèkoungbé',
+                'nom' => 'Dèkoungbé',
                 'indication' => "L'EGLISE PRINCIPALE JESUS-REVIENT EST SITUEE A COTONOU (BENIN), DEKOUNGBE, HEDOMEY",
                 'ville' => 'Godomey',
                 'map' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.17202663575!2d2.3167812999999997!3d6.3717789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023571903cc0a0d%3A0xa0177fb570842acb!2sGROUPE%20J%C3%89SUS%20REVIENT!5e0!3m2!1sfr!2sbj!4v1692818298885!5m2!1sfr!2sbj',
