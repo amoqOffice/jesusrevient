@@ -82,7 +82,7 @@
                                             <!-- Card category -->
                                             <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualité</a>
                                             <!-- Card title -->
-                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Le feu du reveil embrase tout les pays du monde entier🔥</a></h2>
+                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Le feu du réveil embrase tous les pays du monde entier🔥</a></h2>
                                             <p class="text-white">Tel un feu, le réveil enflamme le monde chaque jour, d'un bout à l'autre. </p>
                                         </div>
                                     </div>
