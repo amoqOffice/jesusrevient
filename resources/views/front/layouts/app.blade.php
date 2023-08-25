@@ -106,6 +106,24 @@
             max-height: 100%;
             object-fit: contain;
         }
+
+        .bg-telegram {
+            background-color: #0088cc;
+            color: var(--bs-white);
+        }
+
+        .bg-telegram:hover {
+            background-color: #0077b3;
+            color: var(--bs-white);
+        }
+
+        .text-telegram {
+            color: #0088cc;
+        }
+
+        .text-telegram:hover {
+            color: #0077b3;
+        }
     </style>
 
     @yield('style')

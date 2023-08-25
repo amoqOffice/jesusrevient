@@ -12,10 +12,10 @@
                 <div class="border bg-light py-4 text-center rounded-3">
                     <h1>Prédication sur {{ $categorie }}</h1>
                     <nav class="d-flex justify-content-center" aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-dots m-0">
+                        {{-- <ol class="breadcrumb breadcrumb-dots m-0">
                             <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house me-1"></i> Home</a></li>
                             <li class="breadcrumb-item active">All post</li>
-                        </ol>
+                        </ol> --}}
                     </nav>
                 </div>
             </div>
