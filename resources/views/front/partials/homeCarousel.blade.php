@@ -20,7 +20,7 @@
                                         <!-- Card category -->
                                         <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
                                         <!-- Card title -->
-                                        <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">This is why this year will be the year of startups</a></h2>
+                                        <h2 class="text-white display-5"><a class="btn-link text-reset fw-normal">This is why this year will be the year of startups</a></h2>
                                         <p class="text-white">Particular way thoroughly unaffected projection favorable Mrs can be projecting own. </p>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                         <!-- Card category -->
                                         <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
                                         <!-- Card title -->
-                                        <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">This is why this year will be the year of startups</a></h2>
+                                        <h2 class="text-white display-5"><a class="btn-link text-reset fw-normal">This is why this year will be the year of startups</a></h2>
                                         <p class="text-white">Particular way thoroughly unaffected projection favorable Mrs can be projecting own. </p>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         <!-- Card category -->
                                         <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
                                         <!-- Card title -->
-                                        <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">This is why this year will be the year of startups</a></h2>
+                                        <h2 class="text-white display-5"><a class="btn-link text-reset fw-normal">This is why this year will be the year of startups</a></h2>
                                         <p class="text-white">Particular way thoroughly unaffected projection favorable Mrs can be projecting own. </p>
                                     </div>
                                 </div>

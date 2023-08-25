@@ -93,6 +93,14 @@
             align-items: center;
         }
 
+        .fixed-div-315-178 {
+            width: 315px;
+            height: 178px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .fixed-div-268-178 {
             width: 268px;
             height: 178px;
@@ -123,6 +131,17 @@
 
         .text-telegram:hover {
             color: #0077b3;
+        }
+
+        @media (max-width: 767px) {
+            /* Align text to center */
+            .text-xs-center {
+                text-align: center;
+            }
+
+            .mt-xs-4 {
+                margin-top: 2rem !important;
+            }
         }
     </style>
 

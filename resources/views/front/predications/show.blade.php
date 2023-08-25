@@ -49,16 +49,20 @@
                     <div class="card-body px-0 pt-3">
                         <h3 class="card-title my-2 text-capitalize">{{ str_format($predication->titre) }}</h3>
                         <!-- Card info -->
-                        <div class="avatar avatar-sm">
-                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar">
-                        </div>
-                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block small opacity-6">
+                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                             <li class="nav-item">
                                 <div class="nav-link">
-                                    by <a href="#" class="text-reset btn-link">Bryan</a>
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="avatar avatar-sm">
+                                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar">
+                                        </div>
+                                        <span class="ms-2">par
+                                            <a href="{{ $predication->url }}" target="_blank" class="pl-1 text-reset btn-link">JESUS-REVIENT TV</a>
+                                        </span>
+                                    </div>
                                 </div>
                             </li>
-                            <li class="nav-item">Jun 17, 2022</li>
+                            <li class="nav-item">{{ date('d/m/Y', strtotime($predication->date_deb)) }}</li>
                         </ul>
 
                         @if (strlen($predication->description))

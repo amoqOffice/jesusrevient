@@ -31,12 +31,19 @@
                     <div class="card">
                     <!-- Image -->
                         <div class="card-image">
-                            <img class="card-img" src="{{ asset("$firstEvent->img") }}" alt="">
+                            <img class="card-img" src="{{ asset("$firstEvent->img") }}" style="height: 35rem" alt="">
                         </div>
                         <div class="card-body px-0 pt-3">
-                            <h2 class="card-title"><a href="#" class="btn-link text-reset fw-bold">{{ $firstEvent->titre }}</a></h2>
-                            <p>{{ $firstEvent->description }}</p>
-                            <div class="d-md-flex align-items-center mt-3">
+                            <h2 class="card-title fw-bold">
+                                {{ str_format($firstEvent->titre) }}
+                            </h2>
+                            <p class="card-text">{{ $firstEvent->description }}</p>
+                            <a href="{{ $firstEvent->url }}"
+                               class="btn btn-primary mt-3"
+                               target="_blank">
+                                Consulter l'Évènement
+                            </a>
+                            {{-- <div class="d-md-flex align-items-center mt-3">
                                 <h5 class="text-black me-3">Partager sur: </h5>
                                 <ul class="nav text-white-force">
                                     <li class="nav-item">
@@ -65,7 +72,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 @else
@@ -108,7 +115,7 @@
                                             <img class="card-img" src="{{ asset("$evenement->img") }}" alt="Card image">
                                         </div>
                                         <div class="card-body px-0 pt-3">
-                                            <h5 class="card-title"><a href="javascript:;" class="btn-link text-reset fw-bold">{{ $evenement->titre }}</a></h5>
+                                            <h5 class="card-title text-center"><a href="javascript:;" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($evenement->titre), 50) }}</a></h5>
                                         </div>
                                     </div>
                                 @endif

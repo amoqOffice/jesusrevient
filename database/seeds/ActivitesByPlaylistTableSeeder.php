@@ -19,8 +19,8 @@ class ActivitesByPlaylistTableSeeder extends Seeder
 
         // Playlist youtube pour le site web
         $youtubeVideos = [
-            (object)['nom_type' => 'Priere', 'playlist' => 'PLSpKxRyN4Ds0NgWDENbuBi9VDS2KUUMdT'],
-            (object)['nom_type' => 'Culte', 'playlist' => 'PLSpKxRyN4Ds3_KMV4CfgLFLdny2OB6pNv'],
+            (object)['nom_type' => 'Priere', 'playlist' => 'PLSpKxRyN4Ds0NgWDENbuBi9VDS2KUUMdT', 'event' => false],
+            // (object)['nom_type' => 'Culte', 'playlist' => 'PLSpKxRyN4Ds3_KMV4CfgLFLdny2OB6pNv', 'event' => true],
         ];
 
         foreach ($youtubeVideos as $youtubeVideo) {
@@ -57,6 +57,8 @@ class ActivitesByPlaylistTableSeeder extends Seeder
                         'date_deb'=> date('Y-m-d', strtotime($video->snippet->publishedAt)),
                         'date_fin'=> date('Y-m-d', strtotime($video->snippet->publishedAt)),
                         'type_id'=> $type->id,
+                        'isEvent' => $youtubeVideo->event,
+                        'seeder' => 'ActivitesByPlaylistTableSeeder',
                         'created_at'=> $timestamp,
                         'updated_at'=> $timestamp,
                     ]);

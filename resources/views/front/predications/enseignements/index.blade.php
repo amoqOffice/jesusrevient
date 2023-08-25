@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body px-0 pt-3">
-                                            <h4 class="card-title"><a href="post-single-4.html" class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
+                                            <h4 class="card-title"><a class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
                                             <p class="card-text">Place voice no arises along to. Parlors waiting so against me no. Wishing calling is warrant settled was lucky. Express besides it present if at an opinion visitor.</p>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -91,7 +91,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body px-0 pt-3">
-                                            <h4 class="card-title"><a href="post-single-4.html" class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
+                                            <h4 class="card-title"><a class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
                                             <p class="card-text">Place voice no arises along to. Parlors waiting so against me no. Wishing calling is warrant settled was lucky. Express besides it present if at an opinion visitor.</p>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -131,7 +131,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body px-0 pt-3">
-                                            <h4 class="card-title"><a href="post-single-4.html" class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
+                                            <h4 class="card-title"><a class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
                                             <p class="card-text">Place voice no arises along to. Parlors waiting so against me no. Wishing calling is warrant settled was lucky. Express besides it present if at an opinion visitor.</p>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -171,7 +171,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body px-0 pt-3">
-                                            <h4 class="card-title"><a href="post-single-4.html" class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
+                                            <h4 class="card-title"><a class="btn-link text-reset fw-bold">Dirty little secrets about the business industry</a></h4>
                                             <p class="card-text">Place voice no arises along to. Parlors waiting so against me no. Wishing calling is warrant settled was lucky. Express besides it present if at an opinion visitor.</p>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -200,23 +200,23 @@
                                 <h4 class="mb-3">Réseaux sociaux</h4>
                                 <div class="row g-2">
                                     <div class="col-4">
-                                        <a href="#" class="bg-facebook rounded text-center text-white-force p-3 d-block">
+                                        <a href="https://www.youtube.com/@JESUSREVIENTTV?sub_confirmation=1" target="_blank" class="bg-youtube rounded text-center text-white-force p-3 d-block">
+                                            <i class="fab fa-youtube-square fs-5 mb-2"></i>
+                                            <h6 class="m-0">73k</h6>
+                                            <span class="small">Subs</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="https://web.facebook.com/groupejesusrevient?_rdc=1&_rdr" target="_blank" class="bg-facebook rounded text-center text-white-force p-3 d-block">
                                             <i class="fab fa-facebook-square fs-5 mb-2"></i>
-                                            <h6 class="m-0">1.5K</h6>
+                                            <h6 class="m-0">7.3K</h6>
                                             <span class="small">Fans</span>
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
-                                            <i class="fab fa-instagram fs-5 mb-2"></i>
-                                            <h6 class="m-0">1.8M</h6>
-                                            <span class="small">Followers</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#" class="bg-youtube rounded text-center text-white-force p-3 d-block">
-                                            <i class="fab fa-youtube-square fs-5 mb-2"></i>
-                                            <h6 class="m-0">22K</h6>
+                                        <a href="https://t.me/jesusrevient_tv" target="_blank" class="bg-telegram rounded text-center text-white-force p-3 d-block">
+                                            <i class="fab fa-telegram fs-5 mb-2"></i>
+                                            <h6 class="m-0">807</h6>
                                             <span class="small">Subs</span>
                                         </a>
                                     </div>

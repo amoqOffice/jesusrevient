@@ -1,6 +1,6 @@
 <!-- =======================
 Footer START -->
-<footer class="pb-5 mt-5 bg-dark mx- rounded-">
+<footer class="pb-5 mt-5 bg-dark px-4">
 	<div class="full-container">
 		<div class="row pt-5">
 			<div class="col-lg-7 mx-auto text-center">
@@ -56,7 +56,7 @@ Footer START -->
                 </ul>
 
                 <!-- Copyright -->
-				<div class="mt-2">©2023 <a href="" class="text-reset btn-link">JESUS-REVIENT STUDIO</a>. Tout droits réservé </div>
+				<div class="mt-2">©2023 <a href="{{ route('front.accueil') }}" class="text-reset btn-link">JESUS-REVIENT STUDIO</a>. Tout droits réservé </div>
 			</div>
 		</div>
 	</div>

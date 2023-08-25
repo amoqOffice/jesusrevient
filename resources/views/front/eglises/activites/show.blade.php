@@ -46,16 +46,20 @@
                     </div>
 
                     <div class="card-body px-0 pt-3">
+                        {{-- Titre --}}
                         <h3 class="card-title my-2">{{ str_format($activite->titre) }}</h3>
-                        <!-- Card info -->
-                        <div class="avatar avatar-sm">
-                            {{-- <img class="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar"> --}}
-                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar">
-                        </div>
-                        <ul class="nav nav-divider ml-2 align-items-center d-none d-sm-inline-block small opacity-6">
+                        {{-- Par JESUS-REVIENT² --}}
+                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                             <li class="nav-item">
-                                <div class=" nav-link">
-                                    par <a href="{{ $activite->url }}" target="blank" class="text-reset btn-link">JESUS-REVIENT TV</a>
+                                <div class="nav-link">
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="avatar avatar-xs">
+                                            <img class="avatar-img rounded-circle" src="{{ asset('assets/front/images/_content/card_logo.png') }}" alt="avatar">
+                                        </div>
+                                        <span class="ms-2">par
+                                            <a href="{{ $activite->url }}" target="_blank" class="pl-1 text-reset btn-link">JESUS-REVIENT TV</a>
+                                        </span>
+                                    </div>
                                 </div>
                             </li>
                             <li class="nav-item">{{ date('d/m/Y', strtotime($activite->date_deb)) }}</li>
@@ -78,23 +82,23 @@
                 <h4 class="mb-3">Réseaux sociaux</h4>
                 <div class="row g-2">
                     <div class="col-4">
-                        <a href="#" class="bg-facebook rounded text-center text-white-force p-3 d-block">
+                        <a href="https://www.youtube.com/@JESUSREVIENTTV?sub_confirmation=1" target="_blank" class="bg-youtube rounded text-center text-white-force p-3 d-block">
+                            <i class="fab fa-youtube-square fs-5 mb-2"></i>
+                            <h6 class="m-0">73k</h6>
+                            <span class="small">Subs</span>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://web.facebook.com/groupejesusrevient?_rdc=1&_rdr" target="_blank" class="bg-facebook rounded text-center text-white-force p-3 d-block">
                             <i class="fab fa-facebook-square fs-5 mb-2"></i>
-                            <h6 class="m-0">1.5K</h6>
+                            <h6 class="m-0">7.3K</h6>
                             <span class="small">Fans</span>
                         </a>
                     </div>
                     <div class="col-4">
-                        <a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
-                            <i class="fab fa-instagram fs-5 mb-2"></i>
-                            <h6 class="m-0">1.8M</h6>
-                            <span class="small">Followers</span>
-                        </a>
-                    </div>
-                    <div class="col-4">
-                        <a href="#" class="bg-youtube rounded text-center text-white-force p-3 d-block">
-                            <i class="fab fa-youtube-square fs-5 mb-2"></i>
-                            <h6 class="m-0">22K</h6>
+                        <a href="https://t.me/jesusrevient_tv" target="_blank" class="bg-telegram rounded text-center text-white-force p-3 d-block">
+                            <i class="fab fa-telegram fs-5 mb-2"></i>
+                            <h6 class="m-0">807</h6>
                             <span class="small">Subs</span>
                         </a>
                     </div>
@@ -116,36 +120,34 @@
             <div class="mt-5 mb-3 d-md-flex justify-content-between align-items-center">
                 <h4 class="m-0"><i class="bi bi-megaphone"></i> Autres contenues interessants</h4>
             </div>
-            <div class="row">
-                <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
-                    <div class="tiny-slider-inner"
-                        data-autoplay="true"
-                        data-hoverpause="true"
-                        data-gutter="24"
-                        data-arrow="true"
-                        data-dots="false"
-                        data-items-xl="4"
-                        data-items-md="3"
-                        data-items-sm="2"
-                        data-items-xs="1">
+            <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
+                <div class="tiny-slider-inner"
+                    data-autoplay="true"
+                    data-hoverpause="true"
+                    data-gutter="24"
+                    data-arrow="true"
+                    data-dots="false"
+                    data-items-xl="4"
+                    data-items-md="3"
+                    data-items-sm="2"
+                    data-items-xs="1">
 
-                        @foreach ($autresActivites as $autreActivite)
+                    @foreach ($autresActivites as $autreActivite)
                         <div class="card">
-                                <a  href="{{ route('front.eglises.activites.show', [$typePrincipal->nom, $autreActivite->id]) }}"
-                                    class="btn-link text-reset fw-bold">
-                                    <!-- Card img -->
-                                    <div class="position-relative">
-                                        <img class="card-img fixed-div-268-178" src="{{ $autreActivite->img }}" alt="Card image">
-                                    </div>
-                                    <div class="card-body px-0 pt-3">
-                                        <h5 class="card-title"><a href="{{ route('front.eglises.activites.show', [$typePrincipal->nom, $autreActivite->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($autreActivite->titre), 50) }}</a></h5>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
+                            <a href="{{ route('front.eglises.activites.show', [$typePrincipal->nom, $autreActivite->id]) }}">
+                                <!-- Card img -->
+                                <div class="position-relative">
+                                    <img class="card-img" style="height: 13rem" src="{{ $autreActivite->img }}" alt="{{ str_format($autreActivite->titre) }}">
+                                </div>
+                                <div class="card-body px-0 pt-3">
+                                    <h5 class="card-title text-center"><a href="{{ route('front.eglises.activites.show', [$typePrincipal->nom, $autreActivite->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($autreActivite->titre), 50) }}</a></h5>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
         </div>
     </div>
 

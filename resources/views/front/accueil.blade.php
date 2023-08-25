@@ -82,7 +82,7 @@
                                             <!-- Card category -->
                                             <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualité</a>
                                             <!-- Card title -->
-                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Le feu du réveil embrase tous les pays du monde entier🔥</a></h2>
+                                            <h2 class="text-white display-5"><a class="btn-link text-reset fw-normal">Le feu du réveil embrase tous les pays du monde entier🔥</a></h2>
                                             <p class="text-white">Tel un feu, le réveil enflamme le monde chaque jour, d'un bout à l'autre. </p>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
                                             <!-- Card category -->
                                             <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualité</a>
                                             <!-- Card title -->
-                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">💥La puissance de l'Evangile transforme les vies</a></h2>
+                                            <h2 class="text-white display-5"><a class="btn-link text-reset fw-normal">💥La puissance de l'Evangile transforme les vies</a></h2>
                                             <p class="text-white">Des vies sont profondément transformées par la puissance de l'Evangile. </p>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                             <!-- Card category -->
                                             <a href="#" class="badge text-bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Actualié</a>
                                             <!-- Card title -->
-                                            <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Jésus-Christ prépare son Eglise pour l'enlèvement</a></h2>
+                                            <h2 class="text-white display-5"><a class="btn-link text-reset fw-normal">Jésus-Christ prépare son Eglise pour l'enlèvement</a></h2>
                                             <p class="text-white">La fin des temps est proche, Rachetez le temps car les jours sont mauvais, soyez prêt. </p>
                                         </div>
                                     </div>
@@ -152,10 +152,10 @@
                                 <a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}">
                                     <!-- Card img -->
                                     <div class="position-relative">
-                                        <img class="card-img fixed-div-268-178" src="{{ $temoignage->img }}" alt="Card image">
+                                        <img class="card-img" style="height: 13rem" src="{{ $temoignage->img }}" alt="Card image">
                                     </div>
                                     <div class="card-body px-0 pt-3">
-                                        <h5 class="card-title"><a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($temoignage->titre), 50) }}</a></h5>
+                                        <h5 class="card-title text-center"><a href="{{ route('front.eglises.activites.show', ['temoignage', $temoignage->id]) }}" class="btn-link text-reset fw-bold">{{ truncate_string(str_format($temoignage->titre), 50) }}</a></h5>
                                     </div>
                                 </a>
                             </div>
@@ -179,7 +179,7 @@
         </div> --}}
 
         {{-- Enseignements --}}
-        <div class="row mt-4">
+        <div class="row mt-lg-3 mt-xs-1">
             {{-- Content --}}
             <div class="col-lg-9 col-sm-12">
                 <div class="mb-4">
@@ -290,7 +290,7 @@
                             Votre don, quelle que soit sa taille, joue un rôle essentiel pour faire une différence positive dans cette mission de grand réveil. Ensemble, nous répandons la lumière de l'Évangile là où elle est nécessaire et semons les graines du changement et de la bonté. Votre soutien nous permet de poursuivre cette œuvre précieuse et de diffuser le message de sanctification et de dépouillement à chaque coin de la planète.
                         </small>
                     </p>
-                    <a href="" class="btn btn-primary rounded-5 mt-3">Faire un don</a>
+                    <a href="{{ route('front.accueil') }}" class="btn btn-primary rounded-5 mt-3">Faire un don</a>
                 </div>
                 <div class="col-sm-4 px-4 text-center my-auto">
                     <h3>
@@ -340,34 +340,19 @@
         {{-- Télécharger l'application --}}
         <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-5 h-100">
             <div class="row">
-                <div class="col-sm-6 position-relative text-cente my-auto">
+                <div class="col-md-6 position-relative text-xs-center my-auto">
                     <h1 class="mb-1">Télécharger l'application</h1>
                     <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
                     <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
                     <a href="https://bit.ly/3D0VgDo" target="blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
                 </div>
-                <div class="col-sm-6 px-4">
+                <div class="col-sm-6 px-4 mt-xs-4">
                     <a href="https://bit.ly/3D0VgDo">
                         <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" data-tilt alt="">
                     </a>
                 </div>
             </div>
         </div>
-        {{-- <div class="bg-primary mt-4 bg-opacity-10 rounded-3 p-3 p-md-5">
-            <div class="row">
-                <div class="col-md-6 position-relative text-center my-auto">
-                    <h1 class="mb-3">Télécharger l'application</h1>
-                    <h2 class="mb-3 font-weight-bold">JESUS-REVIENT TV</h2>
-                    <p class="my-3 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
-                    <a href="https://bit.ly/3D0VgDo" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
-                </div>
-                <div class="col-md-6 px-4 mt-3 mt-md-0">
-                    <a href="https://bit.ly/3D0VgDo">
-                        <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="img-fluid" data-tilt alt="">
-                    </a>
-                </div>
-            </div>
-        </div> --}}
 
         {{-- Messages d'Evangelisations --}}
         <div class="row mt-4">
@@ -395,7 +380,7 @@
                             <div class="card">
                                 <!-- Card img -->
                                 <div class="position-relative card-img-scale card-img-flash">
-                                    <img data-glightbox role="button" class="card-img fixed-div-268-178" src="{{ asset('assets/front/images/_content/evangelisation/evg'.$i.'.jpg') }}" alt="Card image">
+                                    <img style="height: 13rem" data-glightbox role="button" class="card-img " src="{{ asset('assets/front/images/_content/evangelisation/evg'.$i.'.jpg') }}" alt="Card image">
                                 </div>
                             </div>
                         </div>
