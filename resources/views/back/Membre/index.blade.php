@@ -35,10 +35,9 @@
                                 </th>
                                 <th>ID</th>
                                 <th>Nom</th>
-<th>Telephone</th>
-<th>Pays</th>
-<th>Email</th>
-
+                                <th>Telephone</th>
+                                <th>Pays</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -52,9 +51,9 @@
                                     </td>
                                     <td data-id="{{ $membre->id }}">#{{ $loop->index + 1 }}</td>
                                     <td>{{ $membre->nom }}</td>
-<td>{{ $membre->telephone }}</td>
-<td>{{ $membre->pays }}</td>
-<td>{{ $membre->email }}</td>
+                                    <td>{{ $membre->telephone }}</td>
+                                    <td>{{ $membre->pays }}</td>
+                                    <td>{{ $membre->email }}</td>
 
                                     <td>
                                         <a href="{{ route('back.membre.show', $membre->id) }}" class="btn bg-success-light btn-sm mr-1" title="Voir">

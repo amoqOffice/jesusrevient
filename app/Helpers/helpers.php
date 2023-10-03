@@ -41,6 +41,23 @@ function getYoutubeVideoId($url) {
     return isset($matches[1]) ? $matches[1] : null;
 }
 
+function getYoutubeVideoTags($video_id)
+{
+    $api_key = 'AIzaSyAt7PLp7wU-50-FfsbRRIOqFO8nyzs2dmA';
+
+    $data = (json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='.$video_id.'&type=video&key='.$api_key))); // reccupere les informations sur la vidéo
+
+    if ($data == false)
+    {
+        return null;
+    }
+    else
+    {
+        $tags = isset($data->items[0]->snippet->tags) ? $data->items[0]->snippet->tags : null; // reccupere tous les tags de la vidéo
+        return $tags; // retour des tags
+    }
+}
+
 function getBestYouTubeThumbnail($url) {
     $qualities = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', 'default'];
 

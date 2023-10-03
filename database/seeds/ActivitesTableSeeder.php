@@ -342,7 +342,7 @@ class ActivitesTableSeeder extends Seeder
                 'seeder' => 'ActivitesTableSeeder',
             ]);
 
-            // // Les associations
+            // Les associations
             ($youtube_video->categorie) ? $youtube_video->categorie->activites()->save($activite) : ''; // Categorie
 
             count($youtube_video->eglises) ? $activite->eglises()->attach($youtube_video->eglises) : ''; // Eglise
