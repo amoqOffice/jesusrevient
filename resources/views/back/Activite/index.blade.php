@@ -43,6 +43,7 @@
                         </thead>
                         <tbody>
                             @foreach ($activites as $activite)
+                            {{-- @dd($activite->type) --}}
                                 <tr>
                                     <td>
                                         <div class="form-check">
