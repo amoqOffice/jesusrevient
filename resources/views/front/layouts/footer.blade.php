@@ -51,7 +51,7 @@ Footer START -->
                         <a target="_blank" href="https://t.me/jesusrevient_tv"><i class="text-dar fa fa-telegram"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a target="_blank" href="https://bit.ly/3D0VgDo"><i class="text-dar fa fa-television"></i></a>
+                        <a target="_blank" href="https://bit.ly/49hs2y8"><i class="text-dar fa fa-television"></i></a>
                     </li>
                 </ul>
 

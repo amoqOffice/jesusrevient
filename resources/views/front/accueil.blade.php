@@ -344,10 +344,10 @@
                     <h1 class="mb-1">Télécharger l'application</h1>
                     <h2 class="mb-1 font-weight-bold">JESUS-REVIENT TV</h2>
                     <p class="my-4 h5 fw-light lead">Découvrez une expérience unique pour plonger au cœur des écrits bibliques grâce à notre application inédite. <br>Accédez à une multitude d'émissions bibliques captivantes diffusées depuis la télévision, laissez-vous inspirer par des enseignements profonds, des discussions éclairantes et des réflexions qui nourriront votre esprit. </p>
-                    <a href="https://bit.ly/3D0VgDo" target="blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
+                    <a href="https://bit.ly/49hs2y8" target="blank" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger</a>
                 </div>
                 <div class="col-sm-6 px-4 mt-xs-4">
-                    <a href="https://bit.ly/3D0VgDo">
+                    <a href="https://bit.ly/49hs2y8">
                         <img src="{{ asset('assets/front/images/_content/phone_mockup.png') }}" class="h-100px h-sm-200px" data-tilt alt="">
                     </a>
                 </div>
