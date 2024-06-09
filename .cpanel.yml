@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/magr1093/sites/jesusrevient/
-    - /bin/cp * $DEPLOYPATH
+    - find . -type f ! -name '.env' -exec /bin/cp --parents {} $DEPLOYPATH \;
