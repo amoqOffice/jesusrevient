@@ -133,7 +133,7 @@
 			<div class="col-md-12">
 				<!-- Title -->
 				<div class="my-3 d-md-flex justify-content-between align-items-center">
-					<h2 class="m-0"><i class="bi bi-megaphone"></i> Témoignages édifiants</h2>
+					<h2 class="m-0"><i class="bi bi-megaphone"></i> Témoignages édifiant</h2>
 				</div>
 				<div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
 					<div class="tiny-slider-inner"
