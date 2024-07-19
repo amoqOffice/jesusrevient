@@ -14,7 +14,6 @@ class ActivitesByPlaylistTableSeeder extends Seeder
      * Vérifie si la vidéo appartient à une playlist, a un tag et une description
      */
     private function getVideoInformation($videoUrl, $nomPlaylist) {
-
         $response = (object)[
             'nom_playlist' => $nomPlaylist,
             'animateurs_video' => [],
@@ -47,6 +46,9 @@ class ActivitesByPlaylistTableSeeder extends Seeder
         return $response;
     }
 
+    /**
+     *
+     */
     private function getVideoPlaylistFromLink(string $videoLink): string
     {
         // Get the video ID from the video link.
@@ -83,34 +85,27 @@ class ActivitesByPlaylistTableSeeder extends Seeder
                 'nom_playlist' => 'Priere',
                 'key_playlist' => 'PLSpKxRyN4Ds0NgWDENbuBi9VDS2KUUMdT',
                 'event' => false
-            ],
-            (object)[
+            ], (object)[
                 'nom_playlist' => 'Predication',
                 'key_playlist' => 'PLSpKxRyN4Ds2ZxqvLyCBnFVQVoYX1vJTs',
                 'event' => false
-            ],
-            (object)[
+            ], (object)[
                 'nom_playlist' => 'Culte',
                 'key_playlist' => 'PLSpKxRyN4Ds3_KMV4CfgLFLdny2OB6pNv',
                 'event' => true
-            ],
-            (object)[
+            ], (object)[
                 'nom_playlist' => 'Parole de Sagesse',
                 'key_playlist' => 'PLSpKxRyN4Ds0rOYD2f9fNc-n4VNxwJ_Kc',
                 'event' => false
-            ],
-            (object)[
+            ], (object)[
                 'nom_playlist' => 'Temoignage',
                 'key_playlist' => 'PLSpKxRyN4Ds2_7z5eD3JkgrBe3nZrvMjw',
                 'event' => false
-            ],
-            (object)[
+            ], (object)[
                 'nom_playlist' => 'Du Passé au Présent',
                 'key_playlist' => 'PLSpKxRyN4Ds0W97Mgdc84EC-Tmz1ylq0L',
                 'event' => false
             ],
-
-
         ];
 
         // Step 2: Enregistrement de chaque video de la playlist dans la table Activite
@@ -135,7 +130,7 @@ class ActivitesByPlaylistTableSeeder extends Seeder
 
                 $videoUrl = "https://www.youtube.com/watch?v=".$video->contentDetails->videoId;
                 $video = (object)array_merge((array)$video, (array)$this->getVideoInformation($videoUrl, $eachPlaylist->nom_playlist));
-                dd($video);
+                // dd($video);
 
                 if ($video->status->privacyStatus === "public") {
                     // Génération du timestamp pour l'enregistrment
@@ -207,18 +202,18 @@ class ActivitesByPlaylistTableSeeder extends Seeder
                     }
 
                     // Tag
-                    $youtubeVideoTags = getYoutubeVideoTags($videoUrl);
-                    if ($youtubeVideoTags != null) {
-                        $tagActivite = Tag::where('nom', 'like', "%$youtubeVideoTags[0]%")->firstOrCreate([
-                            'nom' => $youtubeVideoTags[0],
-                            'seeder' => 'ActivitesByPlaylistTableSeeder',
-                        ]);
-                        ($tagActivite != null) ? $activite->tags()->attach($tagActivite) : '';
-                    } // Reccupere dynamiquement la catégorie de la vidéo
+                    // $youtubeVideoTags = getYoutubeVideoTags($videoUrl);
+                    // if ($youtubeVideoTags != null) {
+                    //     $tagActivite = Tag::where('nom', 'like', "%$youtubeVideoTags[0]%")->firstOrCreate([
+                    //         'nom' => $youtubeVideoTags[0],
+                    //         'seeder' => 'ActivitesByPlaylistTableSeeder',
+                    //     ]);
+                    //     ($tagActivite != null) ? $activite->tags()->attach($tagActivite) : '';
+                    // } // Reccupere dynamiquement la catégorie de la vidéo
 
-                    // Rubrique
-                    $rubriqueActivite = Rubrique::where('nom', $eachPlaylist->nom_playlist)->first();
-                    ($rubriqueActivite != null) ? $activite->rubriques()->attach($rubriqueActivite->id) : '';
+                    // // Rubrique
+                    // $rubriqueActivite = Rubrique::where('nom', $eachPlaylist->nom_playlist)->first();
+                    // ($rubriqueActivite != null) ? $activite->rubriques()->attach($rubriqueActivite->id) : '';
                 }
             }
         }
