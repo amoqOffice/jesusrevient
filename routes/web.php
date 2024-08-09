@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // FRONT ONLY
 Route::get('/', 'front\AccueilController@index')->name('front.accueil'); // Afficher la page d'accueil
 
+Route::get('/ministre-infos/{matricule}', 'back\ResponsableController@infos')->name('front.responsable_infos'); // Affiche la page d'information des ministres
+
 Route::post('youtube/getInformationFromUrl}', 'YoutubeController@getInformationFromLink')->name('youtube.getInformationFromLink');
 
 Route::prefix('predications')->group(function () {

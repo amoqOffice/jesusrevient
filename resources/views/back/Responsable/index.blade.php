@@ -35,10 +35,9 @@
                                 </th>
                                 <th>ID</th>
                                 <th>Photo</th>
-<th>Nom</th>
-<th>Ministere</th>
-<th>Contact</th>
-
+                                <th>Nom</th>
+                                <th>Ministère</th>
+                                <th>Contact</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -50,7 +49,7 @@
                                             <input style="margin-left: 0.5px; cursor: pointer" class="form-check-input checkbox-child" type="checkbox" value="{{ $responsable->id }}">
                                         </div>
                                     </td>
-                                    <td data-id="{{ $responsable->id }}">#{{ $loop->index + 1 }}</td>
+                                    <td data-id="{{ $responsable->matricule }}">#{{ $loop->index + 1 }}</td>
                                     <td>
                                         <img src="{{ asset($responsable->photo) }}" data-lity class="rounded-circle mr-2 img-fluid" style="width: 45px; height: 45px; cursor: pointer">
                                     </td>

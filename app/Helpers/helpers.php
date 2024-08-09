@@ -193,3 +193,25 @@ function remove_emoji($string)
 
     return $clear_string;
 }
+
+function createFolder($files) {
+    $fileName = $files;
+    if(file_exists($fileName)) {
+        $files = array_diff(scandir($files), array('.', '..'));
+
+        if(count($files)) {
+            foreach ($files as $file)
+            {
+                if(explode('.', $file)[1] == "png")
+                    unlink(("$fileName/$file"));
+            }
+        }
+        // else
+        // {
+        //     rmdir($fileName);
+        // }
+    }
+    else {
+        mkdir($fileName, 0777);
+    }
+}

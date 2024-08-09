@@ -6,6 +6,7 @@ use App\Responsable;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
+use LaravelQRCode\Facades\QRCode;
 
 
 class ResponsableController extends Controller
@@ -50,6 +51,22 @@ class ResponsableController extends Controller
         $responsable = Responsable::findOrFail($id);
 
         return view('back.Responsable.show', compact('responsable'));
+    }
+
+    public function infos($matricule) {
+        // Faire un check dans la BDD
+        $responsable = Responsable::where('matricule', $matricule)->first();
+
+        $code_qr = "https://jesusrevient.tv/ministre-infos/$matricule";
+
+        createFolder('QrCode');
+
+        // Texte en codeQr
+        $fileCodeQR = public_path("QrCode/codeOr_$matricule.png");
+        QRCode::text($code_qr)->setOutfile($fileCodeQR)->png();
+
+
+        return view('front.responsable.infos', compact('responsable'));
     }
 
     public function edit($id)

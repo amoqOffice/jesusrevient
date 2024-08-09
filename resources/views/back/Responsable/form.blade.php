@@ -21,8 +21,34 @@
                                 @enderror --}}
                             </div>
                         </div>
+                        <!-- Champ prenom -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> Prénoms <span class="text-danger font-weight-bold">*</span> :</label>
+                                <input class="form-control form-control-sm" type="text" required name="nom" value="{{ $responsable->prenoms ?? old('prenoms') }}" {{ ($show) ? 'disabled' : ''}}>
+                                {{-- @error('')
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('') }}
+                                    </span>
+                                @enderror --}}
+                            </div>
+                        </div>
+                    </div>
 
                         <!-- Champ ministere -->
+                    <div class="row">
+                        <!-- Champ nom de baptême -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> Nom de Baptême <span class="text-danger font-weight-bold">*</span> :</label>
+                                <input class="form-control form-control-sm" type="text" required name="nom_bapteme" value="{{ $responsable->nom_bapteme ?? old('nom_bapteme') }}" {{ ($show) ? 'disabled' : ''}}>
+                                {{-- @error('')
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('') }}
+                                    </span>
+                                @enderror --}}
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label> Poste <span class="text-danger font-weight-bold">*</span> :</label>
@@ -41,9 +67,37 @@
                                 @enderror --}}
                             </div>
                         </div>
- </div>
+                    </div>
 
-<div class="row">                        <!-- Champ email -->
+                    <div class="row">
+                        <!-- Champ naissance -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> Date de Naissance <span class="text-danger font-weight-bold">*</span> :</label>
+                                <input class="form-control form-control-sm" type="date" required name="naissance" value="{{ $responsable->naissance ?? old('naissance') }}" {{ ($show) ? 'disabled' : ''}}>
+                                {{-- @error('')
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('') }}
+                                    </span>
+                                @enderror --}}
+                            </div>
+                        </div>
+                        <!-- Champ Matricule -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> Matricule <span class="text-danger font-weight-bold">*</span> :</label>
+                                <input class="form-control form-control-sm" type="text" required name="matricule" value="{{ $responsable->matricule ?? old('matricule') }}" {{ ($show) ? 'disabled' : ''}}>
+                                {{-- @error('')
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('') }}
+                                    </span>
+                                @enderror --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Champ email -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label> Email <span class="text-danger font-weight-bold">*</span> :</label>
@@ -68,9 +122,9 @@
                                 @enderror --}}
                             </div>
                         </div>
- </div>
+                    </div>
 
-<div class="row">
+                    <div class="row">
                         <!-- Champ photo -->
                         <div class="col-md-12">
                             <div class="form-group">
@@ -83,9 +137,9 @@
                                 @enderror --}}
                             </div>
                         </div>
- </div>
+                    </div>
 
-<div class="row">
+                    <div class="row">
                         <!-- Champ description -->
                         <div class="col-md-12">
                             <div class="form-group">
@@ -98,7 +152,7 @@
                                 @enderror --}}
                             </div>
                         </div>
- </div>
+                    </div>
 
                     <div class="text-right pt-2">
                         <a href="{{ route('back.responsable.index') }}" class="btn btn-sm btn-danger  btn-navs"><i class="fa fa-close"></i> Fermer</a>
